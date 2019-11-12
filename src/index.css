@@ -1,0 +1,323 @@
+@font-face {
+    font-family: 'davat';
+    src: url('./fonts/BDavat.eot');
+    src: url('./fonts/BDavat.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/BDavat.woff2') format('woff2'),
+    url('./fonts/BDavat.woff') format('woff'),
+    url('./fonts/BDavat.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+nav {
+    direction: rtl;
+}
+
+@font-face {
+    font-family: 'yekan';
+    src: url('./fonts/BYekan.eot');
+    src: url('./fonts/BYekan.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/BYekan.woff2') format('woff2'),
+    url('./fonts/BYekan.woff') format('woff'),
+    url('./fonts/BYekan.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'yekan', 'Segoe UI',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif !important;
+    background:#ffe0b2;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.feather {
+    width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
+}
+
+/*
+   * Content
+*/
+
+[role='main'] {
+    padding-top: 48px; /* Space for fixed navbar */
+    padding-bottom: 50px;
+}
+
+.copyright {
+    color: white;
+    font-size: 13px;
+}
+
+.socialmedia {
+    color: white;
+}
+
+
+.image-logo {
+    width: 41px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    margin-right: 11px;
+}
+
+.home-banner-area {
+    background: #efecec;
+    background-size: cover;
+    background-position: center center;
+    max-height: 1200px;
+    height: 573px;
+    margin-top: 68px;
+}
+
+.agent-banner-area {
+    background: #efecec;
+    background-size: cover;
+    background-position: center center;
+    max-height: 1200px;
+    min-height: 400px;
+    margin-top: 68px;
+}
+
+.panel {
+    height: 50vh;
+    width: 100vw;
+    text-align: center;
+}
+
+.panel span {
+    position: relative;
+    display: block;
+    overflow: visible;
+    top: 50%;
+    font-size: 80px;
+}
+
+.panel.blue {
+    background-color: #ffff;
+}
+
+.panel.turqoise {
+    background-color: #ffff;
+}
+
+.panel.green {
+    background-color: #22d659;
+    margin-bottom: 800px;
+}
+
+.panel.bordeaux {
+    background-color: #953543;
+}
+
+
+.download-app {
+    width: 58px;
+    height: 58px;
+    border-radius: 15px 15px 15px 15px;
+}
+
+
+.feature-area {
+    margin-top: -210px;
+}
+
+@media (max-width: 1680px) and (min-width: 1200px) {
+    .feature-area {
+        margin-top: -110px;
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 991px) {
+    .feature-area {
+        display: none;
+    }
+}
+
+@media (max-width: 991px) {
+    .feature-area {
+        margin-top: 0px;
+    }
+}
+
+.feature-area .container-fluid {
+    padding-left: 50px;
+}
+
+@media (min-width: 1921px) {
+    .feature-area .container-fluid {
+        max-width: 1140px;
+        padding-left: 0;
+    }
+
+    .feature-area .container-fluid .col-lg-2.col-md-6 {
+        -ms-flex: 0 0 16.666667%;
+        flex: 0 0 22.666667%;
+        max-width: 22.666667%;
+    }
+}
+
+@media (max-width: 767px) {
+    .feature-area .container-fluid {
+        padding-left: 15px;
+    }
+}
+.feature-item {
+    margin: 30px 0px;
+    border-right: 1px solid rgba(130, 139, 178, 0.2);
+    padding-right: 20px;
+    padding-top: 20px;
+}
+.feature-item-first {
+    padding-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 380px;
+}
+
+.feature-item i {
+    font-size: 30px;
+    color: #828bb2;
+}
+
+.checkbox-item  {
+    border-radius: 15px 15px 15px 15px;
+    /*height: 37px;*/
+    width: 150px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.button-item  {
+    border-radius: 15px 15px 15px 15px;
+    /*height: 37px;*/
+    /*width: 150px;*/
+    /*margin-left: 10px;*/
+}
+
+.feature-item h4 {
+    font-size: 18px;
+    /*margin-bottom: 20px;*/
+}
+
+/*.feature-item p {*/
+/*    margin-bottom: 0px;*/
+/*}*/
+
+.feature-inner {
+    margin-right: 60px;
+}
+.opacity-item{
+    opacity: 0.5;
+}
+
+.item-style-selected {
+    border: 1px solid !important;
+    border-color: green !important;
+    color: green;
+}
+
+.item-style {
+    border-radius: 15px;
+    margin-right: 35px;
+    width:58px !important;
+    height:58px !important;
+}
+.item-style:hover {
+    background-color: rgba(255, 255, 0, 0.52);
+    cursor: pointer;
+}
+.image-style {
+    margin-right: 10px;
+}
+.image-style:hover {
+    cursor: pointer;
+}
+.radius-first {
+    border-radius: 15px 40px 40px 15px;
+    background: #fff3e0
+
+;
+}
+.radius-second {
+    border-radius: 15px 15px 15px 15px;
+    background: #fff3e0
+
+}
+.radius-third {
+    border-radius: 40px 15px 15px 40px;
+    background: #fff3e0
+
+}
+.radius{
+    border-radius: 15px 15px 15px 15px;
+}
+
+.box-item{
+    min-width: 560px !important;
+}
+
+.app-mobile {
+    margin-top: 32px;
+}
+
+.services-title {
+    color: #ea5f2a;
+    padding-top: 15px;
+}
+
+.contact-icon {
+    color: #ea5f2a;
+    font-size: 22px;
+    width: 20px;
+}
+
+.services {
+    background-size: cover;
+    background-position: center center;
+    min-height: 623px;
+    margin-top: 68px;
+
+}
+
+
+.agent-services {
+    margin-top: 74px;
+}
+
+.agent-services col {
+    margin-left: 20px;
+}
+
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+    border-color: rgba(234, 95, 42, 0.8) !important;
+    box-shadow: 0 1px 1px rgba(207, 207, 207, 0.03) inset, 0 0 8px rgba(234, 95, 42, 0.6) !important;
+    outline: 0 none;
+}
