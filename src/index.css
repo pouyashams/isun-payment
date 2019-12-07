@@ -126,6 +126,19 @@ code {
     height: 58px;
     border-radius: 15px 15px 15px 15px;
 }
+.payment {
+    width: 40px;
+    height: 40px;
+    border-radius: 15px 15px 15px 15px;
+}
+.payment-rad {
+    border-radius: 15px 15px 15px 15px;
+}
+.payment-opa {
+    border-radius: 15px 15px 15px 15px;
+    opacity: 0.5;
+}
+
 
 .feature-area {
     margin-top: -210px;
@@ -198,7 +211,9 @@ code {
     margin-left: 10px;
     margin-right: 10px;
 }
-
+.payment-item {
+    border-radius: 15px 15px 15px 15px;
+}
 .checkbox-item-info {
     border-radius: 15px 15px 15px 15px;
     /*height: 37px;*/
@@ -264,6 +279,9 @@ code {
 }
 
 .image-style:hover {
+    cursor: pointer;
+}
+.image-style-payment:hover {
     cursor: pointer;
 }
 

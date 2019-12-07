@@ -1,11 +1,12 @@
 import React from 'react';
 
-const Footer = () => {
+const Footer = (props) => {
     return (
-        <footer className="rtl fixed-bottom float-left navbar navbar-dark bg-dark col-md-12 ml-sm-auto col-lg-12 shadow">
+        <footer
+            className="rtl fixed-bottom float-left navbar navbar-dark bg-dark col-md-12 ml-sm-auto col-lg-12 shadow">
             <div className="copyright">
-                <span className="fa fa-copyright m-1" />
-                تمامی حقوق این سایت محفوظ میباشید
+                <span className="fa fa-copyright m-1"/>
+                {props.languageParameter.footer}
             </div>
             <div className="socialmedia">
                 <a

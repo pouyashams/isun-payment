@@ -202,7 +202,9 @@ class App extends React.Component {
                             />
                         </Scene>
                     </Controller>
-                    <Footer/>
+                    <Footer
+                        languageParameter={this.state.languageParameter}
+                    />
                 </div>
             </React.Fragment>
         );

@@ -242,7 +242,6 @@ class Services extends React.Component {
 
     render() {
         const {languageParameter} = this.props;
-        console.log(languageParameter, 1234)
         return (
             <section>
                 <div className="justify-content-center py-5 services text-center">

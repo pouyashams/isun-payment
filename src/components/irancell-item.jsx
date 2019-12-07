@@ -189,9 +189,10 @@ class IrancellItem extends React.Component {
 
                 </div>
                 <div className="row  justify-content-center text-left ">
-
                     <div className=" mt-1 form-group checkbox-item">
-                        <label htmlFor="num1">شماره موبایل ذینفع</label>
+                        <label htmlFor="num1" className={languageParameter.rtl ? "" : "font-custom-charge "}>
+                            {languageParameter.subscriberNumber}
+                        </label>
                         <input
                             type="number" className="radius form-control" id="num1"
                             name={"subscriberNumber"}

@@ -20,11 +20,26 @@ class paymentGetway extends React.Component {
             nationalCode: "",
             postalCode: "",
             isAmazing: "",
+            fanava: false,
+            parsian: true,
+            fanavaClick: false,
+            parsianClick: false,
         };
     }
 
-    handelChangeSelect = (value, name) => {
-        this.setState({[name]: value});
+    setPaymentParsian = () => {
+        this.setState({
+            fanavaClick: false,
+            parsianClick: true,
+            paymentType: "PARSIAN_PAYMENT_GATEWAY_PROVIDER",
+        });
+    };
+    setPaymentFanava = () => {
+        this.setState({
+            fanavaClick: true,
+            parsianClick: false,
+            paymentType: "FANAVA_PAYMENT_GATEWAY_PROVIDER",
+        });
     };
     sendData = () => {
         if (this.props.type === "CHARGE") {
@@ -36,43 +51,28 @@ class paymentGetway extends React.Component {
         }
     };
     buyCharge = async () => {
-        // const data = {
-        //     "operatorCode": this.props.operatorCode,
-        //     "isAmazing": this.props.isAmazing,
-        //     "mobileNumber": this.props.mobileNumber,
-        //     "subscriberNumber": this.props.subscriberNumber,
-        //     "sumOfAmount": this.props.sumOfAmount,
-        //     "nationalCode": this.props.nationalCode,
-        //     "postalCode": this.props.postalCode,
-        //     "paymentGatewayProviderCode": this.state.paymentType,
-        //     "requesterDevicePlatformCode": "WEB",
-        //     "orderRequesterInfo": {
-        //         "callBackURL": "http://shop.isuncharge.com",
-        //         "traceCode": "",
-        //     }
-        // };
         const data = {
-            "operatorCode": "MCI",
-            "isAmazing": false,
-            "mobileNumber": "09398938040",
-            "subscriberNumber": "09398938040",
-            "sumOfAmount": "20000",
-            // "nationalCode": "0020554451",
-            // "postalCode": "1111111111",
-            "terminalRypeCode":"MOBILE",
-            "paymentGatewayProviderCode": "PARSIAN_PAYMENT_GATEWAY_PROVIDER",
-            "requesterDevicePlatformCode": "ANDROID",
+            "operatorCode": this.props.operatorCode,
+            "isAmazing": this.props.isAmazing,
+            "mobileNumber": this.props.mobileNumber,
+            "subscriberNumber": this.props.subscriberNumber,
+            "sumOfAmount": this.props.sumOfAmount,
+            "nationalCode": this.props.nationalCode,
+            "postalCode": this.props.postalCode,
+            "paymentGatewayProviderCode": this.state.paymentType,
+            "terminalTypeCode": "INTERNET",
             "orderRequesterInfo": {
                 "callBackURL": "http://shop.isuncharge.com",
                 "traceCode": "",
             }
         };
-        console.log(data,"pooxooo");
         const loginList = this.props.loginList;
         let accesstoken = await login(loginList.username, loginList.password, loginList.clientId, loginList.clientSecret);
         try {
-            const result = axios.post(`http://shop.isuncharge.com/isunshop/register/charge-order?access_token=` + accesstoken, data);
+            const result = await axios.post(`http://shop.isuncharge.com/isunshop/register/charge-order?access_token=` + accesstoken, data);
+            console.log(result);
             if (result.status === 200) {
+                window.location = result.data.data.url;
             }
         }
         catch (ex) {
@@ -144,24 +144,36 @@ class paymentGetway extends React.Component {
                         />
                     </div>
                 </div>
-                <div className="row justify-content-center py-2 text-left">
-
-                    <div className=" form-group checkbox-item">
+                <div className="row justify-content-center pt-2 ">
+                    <div className="form-group payment-item">
                         <label htmlFor="1">درگاه پرداخت</label>
-                        <select className="form-control radius" id="1"
-
-                                onChange={((e) => this.handelChangeSelect(e.target.value, "paymentType"))}
-                        >
-                            {[{value: "PARSIAN_PAYMENT_GATEWAY_PROVIDER", title: "پارسیان", selected: true}, {
-                                value: "FANAVA_PAYMENT_GATEWAY_PROVIDER",
-                                title: "فن آوا",
-                                selected: false
-                            }].map(
-                                (option) => {
-                                    return (<option value={option.value}
-                                                    selected={option.value === this.state.typeOfSim}>{option.title}</option>)
-                                })}
-                        </select>
+                        <div className="row justify-content-center payment-item">
+                            {this.state.parsian ?
+                                <div
+                                    className={this.state.parsianClick ? "py-1 mr-2 payment-rad border border-success image-style-payment" : "py-1 mr-2 payment-rad border border-dark image-style-payment"}>
+                                    <img className=" payment img-fluid " onClick={((e) => this.setPaymentParsian(e))}
+                                         src={require('./../img/Parsian.jpg')} alt=""/>
+                                </div>
+                                :
+                                <div className={"py-1 mr-2 payment-opa border "}>
+                                    <img className=" payment img-fluid "
+                                         src={require('./../img/Parsian.jpg')} alt=""/>
+                                </div>
+                            }
+                            {this.state.fanava ?
+                                <div
+                                    className={this.state.fanavaClick ? "py-1 payment-rad border border-success image-style-payment" : "py-1 payment-rad border border-dark image-style-payment"}>
+                                    <img className=" payment img-fluid " onClick={((e) => this.setPaymentFanava(e))}
+                                         src={require('./../img/fanava.png')} alt=""/>
+                                </div>
+                                :
+                                <div
+                                    className={"py-1 payment-opa border"}>
+                                    <img className=" payment img-fluid "
+                                         src={require('./../img/fanava.png')} alt=""/>
+                                </div>
+                            }
+                        </div>
                     </div>
                 </div>
                 <div className="py-3 justify-content-center ">
@@ -174,4 +186,5 @@ class paymentGetway extends React.Component {
         );
     }
 }
+
 export default paymentGetway;
