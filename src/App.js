@@ -6,6 +6,8 @@ import Services from "./components/services" ;
 import {Controller, Scene} from 'react-scrollmagic';
 // import Contact from "./components/contact";
 import Footer from "./components/footer";
+import './App.css';
+
 
 class App extends React.Component {
     state = {
@@ -75,10 +77,16 @@ class App extends React.Component {
     handelChange = (name, value) => {
         this.setState({[name]: value});
     };
+
     handelChangeLanguage = (name, value) => {
         const language = this.setLanguage(value);
         this.setState({[name]: value, languageParameter: language});
     };
+
+    handelChangeLogo = (event, isOutEvent) => {
+        console.log(isOutEvent);
+    };
+
     setLanguage = (language) => {
         if (language === "persian") {
             const language = {
@@ -177,6 +185,7 @@ class App extends React.Component {
                     <Navbar
                         handelChangeLanguage={this.handelChangeLanguage}
                         languageParameter={this.state.languageParameter}
+                        handleChangeLogo={this.handelChangeLogo}
                         colorInfo={{
                             bgColor: this.state.isTop ? 'dark' : 'dark',
                             color: this.state.isTop ? 'dark' : 'dark'

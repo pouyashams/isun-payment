@@ -25,7 +25,7 @@ const Navbar = (props) => {
                         </li>
                         <li className="nav-item">
 
-                            <select className="form-control bg-dark text-light border-0 selected-size" id=""
+                            <select className="form-control bg-dark text-light border-0 selected-size change-language" id=""
                                     onChange={((e) => props.handelChangeLanguage("language", e.target.value))}
                             >
                                 {[{value: "persian", title: "فارسی", selected: true}, {
@@ -45,9 +45,12 @@ const Navbar = (props) => {
                         </li>
                     </ul>
                 </div>
-                <a href="/" className="navbar-brand">
+                <a href="/" className="navbar-brand"
+                   onMouseOver={e => (e.currentTarget.style.color = "#ea5f2a")}
+                   onMouseOut={e => (e.currentTarget.style.color = "#ffff")}
+                >
                     {props.languageParameter.chargeStore}
-                    <img src={require('./../img/isun-logo.png')} className="img-fluid image-logo"/>
+                    <img src={require('./../img/original-isun-logo.png')} className="img-fluid image-logo" id="logo"/>
                 </a>
 
             </div>

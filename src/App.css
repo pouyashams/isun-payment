@@ -31,3 +31,17 @@
     transform: rotate(360deg);
   }
 }
+
+
+.change-language {
+  border-radius: 12px;
+  border: 1px solid #fd5200 !important;
+}
+
+.navbar-brand:hover {
+  color: #fd5200 !important;
+}
+
+.nav-link:hover{
+  color: #fd5200 !important;
+}
