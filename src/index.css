@@ -30,7 +30,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'yekan', 'Segoe UI',
     'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
     'Helvetica Neue', sans-serif !important;
-    background:#ffe0b2;
+    background: #e7e7e7;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -64,7 +64,6 @@ code {
 .socialmedia {
     color: white;
 }
-
 
 .image-logo {
     width: 41px;
@@ -122,13 +121,11 @@ code {
     background-color: #953543;
 }
 
-
 .download-app {
     width: 58px;
     height: 58px;
     border-radius: 15px 15px 15px 15px;
 }
-
 
 .feature-area {
     margin-top: -210px;
@@ -174,12 +171,14 @@ code {
         padding-left: 15px;
     }
 }
+
 .feature-item {
     margin: 30px 0px;
     border-right: 1px solid rgba(130, 139, 178, 0.2);
     padding-right: 20px;
     padding-top: 20px;
 }
+
 .feature-item-first {
     padding-top: 20px;
     margin-left: 10px;
@@ -192,14 +191,33 @@ code {
     color: #828bb2;
 }
 
-.checkbox-item  {
+.checkbox-item {
     border-radius: 15px 15px 15px 15px;
     /*height: 37px;*/
     width: 150px;
     margin-left: 10px;
     margin-right: 10px;
 }
-.button-item  {
+
+.checkbox-item-info {
+    border-radius: 15px 15px 15px 15px;
+    /*height: 37px;*/
+    width: 165px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.selected-size {
+    border-radius: 15px 15px 15px 15px;
+    height: 38px;
+    width: 94px;
+}
+
+.margin-item {
+    margin-top: -16px;
+}
+
+.button-item {
     border-radius: 15px 15px 15px 15px;
     /*height: 37px;*/
     /*width: 150px;*/
@@ -218,7 +236,8 @@ code {
 .feature-inner {
     margin-right: 60px;
 }
-.opacity-item{
+
+.opacity-item {
     opacity: 0.5;
 }
 
@@ -231,40 +250,56 @@ code {
 .item-style {
     border-radius: 15px;
     margin-right: 35px;
-    width:58px !important;
-    height:58px !important;
+    width: 59px !important;
+    height: 59px !important;
 }
+
 .item-style:hover {
     background-color: rgba(255, 255, 0, 0.52);
     cursor: pointer;
 }
+
 .image-style {
     margin-right: 10px;
 }
+
 .image-style:hover {
     cursor: pointer;
 }
+
 .radius-first {
     border-radius: 15px 40px 40px 15px;
-    background: #fff3e0
-
-;
+    background: #ffffff;
 }
+
 .radius-second {
     border-radius: 15px 15px 15px 15px;
-    background: #fff3e0
+    background: #ffffff
 
 }
+
 .radius-third {
     border-radius: 40px 15px 15px 40px;
-    background: #fff3e0
+    background: #ffffff
 
 }
-.radius{
+
+.radius {
     border-radius: 15px 15px 15px 15px;
 }
 
-.box-item{
+.success {
+    border-radius: 15px 15px 15px 15px;
+    border-color: green;
+}
+
+.wrong {
+    border-radius: 15px 15px 15px 15px;
+    border-color: red;
+
+}
+
+.box-item {
     min-width: 560px !important;
 }
 
@@ -275,6 +310,35 @@ code {
 .services-title {
     color: #ea5f2a;
     padding-top: 15px;
+    font-weight: 380;
+    font-size: 27px;
+}
+
+.font-custom {
+    font-weight: 600;
+    font-size: 14px;
+    padding-top:5px;
+    line-height: 27px;
+}
+.font-custom-charge {
+    font-weight: 600;
+    font-size: 14px;
+    padding-top:5px;
+}
+.checkbox-style-per {
+    padding-top: 4px;
+    padding-right: 17px;
+    padding-left: 10px;
+}
+.checkbox-style-eng {
+    padding-top: 5px;
+    padding-right: 17px;
+    padding-left: 10px;
+}
+
+.font-custom-net {
+    line-height: 27px;
+    font-size: 13px;
 }
 
 .contact-icon {
@@ -291,7 +355,6 @@ code {
 
 }
 
-
 .agent-services {
     margin-top: 74px;
 }
@@ -299,7 +362,6 @@ code {
 .agent-services col {
     margin-left: 20px;
 }
-
 
 textarea:focus,
 input[type="text"]:focus,

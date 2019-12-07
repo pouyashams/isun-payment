@@ -7,26 +7,46 @@ const Navbar = (props) => {
             <div className="container-fluid rtl float-right pr-0 pl-0">
                 <button className="navbar-toggler float-right" type="button" data-toggle="collapse"
                         data-target="#isun-navbar">
-                    <span className="navbar-toggler-icon"></span>
+                    <span className="navbar-toggler-icon"/>
                 </button>
                 <div className="collapse navbar-collapse" id="nav-content">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <a className="nav-link text-light" href="#">خانه</a>
+                            <a className="nav-link text-light" href="#">{props.languageParameter.home}</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link text-light" href="#">خدمات</a>
+                            <a className="nav-link text-light" href="#">{props.languageParameter.services}</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link text-light" href="#">تعرفه ها</a>
+                            <a className="nav-link text-light" href="#">{props.languageParameter.rules}</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link text-light" href="#">درباره ما</a>
+                            <a className="nav-link text-light" href="#">{props.languageParameter.aboutUs}</a>
+                        </li>
+                        <li className="nav-item">
+
+                            <select className="form-control bg-dark text-light border-0 selected-size" id=""
+                                    onChange={((e) => props.handelChangeLanguage("language", e.target.value))}
+                            >
+                                {[{value: "persian", title: "فارسی", selected: true}, {
+                                    value: "english",
+                                    title: "English",
+                                    selected: true
+                                }, {
+                                    value: "arabic",
+                                    title: "عربی",
+                                    selected: false
+                                }].map(
+                                    (option) => {
+                                        return (<option value={option.value}
+                                                        selected={option.value === "persian"}>{option.title}</option>)
+                                    })}
+                            </select>
                         </li>
                     </ul>
                 </div>
                 <a href="/" className="navbar-brand">
-                    فروشگاه شارژ آیسان
+                    {props.languageParameter.chargeStore}
                     <img src={require('./../img/isun-logo.png')} className="img-fluid image-logo"/>
                 </a>
 

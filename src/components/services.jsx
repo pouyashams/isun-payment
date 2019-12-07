@@ -6,100 +6,185 @@ import Bill from "./bill-payment"
 import Payment from "./payment-getway"
 
 class Services extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
-            irancellCharge:true,
-            operatorsCharge:false,
-            bill:false,
-            internetPack:false,
-            isOpacity:false,
+
+            irancellCharge: true,
+            operatorsCharge: false,
+            bill: false,
+            internetPack: false,
+            isOpacity: false,
         };
         this.showIrancellCharge = this.showIrancellCharge.bind(this);
         this.showOperatorsCharge = this.showOperatorsCharge.bind(this);
         this.showInternetPack = this.showInternetPack.bind(this);
         this.showBill = this.showBill.bind(this);
-
     }
 
-    showDirectCharge(e){
+    showDirectCharge(e) {
         this.handleClick(e);
         this.setState({
-            irancellCharge:true,
-            operatorsCharge:false,
-            bill:false,
-            internetPack:false
-        })
-    };
-    showNetPack(e){
-        this.handleClick(e);
-        this.setState({
-            irancellCharge:false,
-            operatorsCharge:false,
-            bill:false,
-            internetPack:true
-        })
-    };
-    showPaymentBill(e){
-        this.handleClick(e);
-        this.setState({
-            irancellCharge:false,
-            operatorsCharge:false,
-            bill:true,
-            internetPack:false
-        })
+            irancellCharge: true,
+            operatorsCharge: false,
+            bill: false,
+            internetPack: false
+        });
+        this.props.handelChange("operatorCode", "IRANCELL")
+        this.props.handelChange("type", "CHARGE")
+        this.props.handelChange("sumOfAmount", 20000);
+        this.props.handelChange("priceText", "2,000");
+        this.props.handelChange("typeOfOrederText", "شارژ مستقیم");
+        this.props.handelChange('isAmazing', false);
+        this.props.handelChange('postalCode', "");
+        this.props.handelChange('subscriberNumber', "");
+        this.props.handelChange('nationalCode', "");
+        this.props.handelChange('mobileNumber', "");
+
     };
 
-    showIrancellCharge(e,operatorCode){
-        this.handleClickImage(e);
-        this.setState({
-            irancellCharge:true,
-            operatorsCharge:false,
-            bill:false,
-            internetPack:false
-        });
-        localStorage.removeItem('operatorCode');
-        localStorage.removeItem('type');
-        localStorage.setItem('operatorCode', operatorCode);
-        localStorage.setItem('type', "charge");
+    componentDidMount() {
+
+        this.props.handelChange("sumOfAmount", 20000);
+        this.props.handelChange("priceText", "2,000");
+        this.props.handelChange("typeOfOrederText", "شارژ مستقیم");
+        this.props.handelChange("type", "CHARGE");
+        this.props.handelChange('isAmazing', false);
+        this.props.handelChange('postalCode', "");
+        this.props.handelChange('subscriberNumber', "");
+        this.props.handelChange('nationalCode', "");
+        this.props.handelChange('mobileNumber', "");
+        this.props.handelChange("operatorCode", "IRANCELL")
     };
-    showOperatorsCharge(e,operatorCode){
+
+    showIrancellCharge(e, operatorCode) {
         this.handleClickImage(e);
         this.setState({
-            irancellCharge:false,
-            operatorsCharge:true,
-            bill:false,
-            internetPack:false
+            irancellCharge: true,
+            operatorsCharge: false,
+            bill: false,
+            internetPack: false
         });
-        localStorage.removeItem('operatorCode');
-        localStorage.removeItem('type');
-        localStorage.setItem('operatorCode', operatorCode);
-        localStorage.setItem('type', "charge");
+        this.props.handelChange("operatorCode", operatorCode)
+        this.props.handelChange("type", "CHARGE")
+        this.props.handelChange("sumOfAmount", 20000);
+        this.props.handelChange("priceText", "2,000");
+        this.props.handelChange("typeOfOrederText", "شارژ مستقیم");
+        this.props.handelChange('isAmazing', false);
+        this.props.handelChange('postalCode', "");
+        this.props.handelChange('subscriberNumber', "");
+        this.props.handelChange('nationalCode', "");
+        this.props.handelChange('mobileNumber', "");
+    };
+
+    showOperatorsCharge(e, operatorCode) {
+        this.handleClickImage(e);
+        this.setState({
+            irancellCharge: false,
+            operatorsCharge: true,
+            bill: false,
+            internetPack: false
+        });
+        if (operatorCode === "MCI") {
+            this.props.handelChange("typeOfOrederText", "شارژ همراه اول")
+        } else if (operatorCode === "RIGHTEL") {
+
+            this.props.handelChange("typeOfOrederText", "شارژ رایتل")
+        } else if (operatorCode === "SAMANTEL") {
+            this.props.handelChange("typeOfOrederText", "شارژ سامانتل")
+        }
+        this.props.handelChange("operatorCode", operatorCode)
+        this.props.handelChange("type", "CHARGE")
+        this.props.handelChange("sumOfAmount", 20000);
+        this.props.handelChange("priceText", "2,000");
+        this.props.handelChange('isAmazing', false);
+        this.props.handelChange('postalCode', "");
+        this.props.handelChange('subscriberNumber', "");
+        this.props.handelChange('nationalCode', "");
+        this.props.handelChange('mobileNumber', "");
     }
-    showInternetPack(e,operatorCode){
-        this.handleClickImage(e);
-        this.setState({
-            irancellCharge:false,
-            operatorsCharge:false,
-            bill:false,
-            internetPack:true
-        });
-        localStorage.removeItem('operatorCode');
-        localStorage.removeItem('type');
-        localStorage.setItem('operatorCode', operatorCode);
-        localStorage.setItem('type', "internet");
 
+    showNetPack(e) {
+        this.handleClick(e);
+        this.setState({
+            irancellCharge: false,
+            operatorsCharge: false,
+            bill: false,
+            internetPack: true,
+        })
+        this.props.handelChange('typeOfOrederText', "بسته اینترنت")
+        this.props.handelChange("type", "INTERNET")
+        this.props.handelChange("operatorCode", "IRANCELL")
+        this.props.handelChange("sumOfAmount", 0);
+        this.props.handelChange("priceText", "0");
+        this.props.handelChange('postalCode', "");
+        this.props.handelChange('subscriberNumber', "");
+        this.props.handelChange('nationalCode', "");
+        this.props.handelChange('mobileNumber', "");
     };
-    showBill(e){
+
+    showInternetPack(e, operatorCode) {
         this.handleClickImage(e);
         this.setState({
-            irancellCharge:false,
-            operatorsCharge:false,
-            bill:true,
-            internetPack:false
+            irancellCharge: false,
+            operatorsCharge: false,
+            bill: false,
+            internetPack: true
         });
-        localStorage.removeItem('type');
-        localStorage.setItem('type', "bill");
+        this.props.handelChange("operatorCode", operatorCode)
+        this.props.handelChange("type", "INTERNET")
+        if (operatorCode === "MCI") {
+            this.props.handelChange("typeOfOrederText", "بسته همراه اول")
+        } else if (operatorCode === "RIGHTEL") {
+            this.props.handelChange("typeOfOrederText", "بسته رایتل")
+        } else if (operatorCode === "SAMANTEL") {
+            this.props.handelChange("typeOfOrederText", "بسته سامانتل")
+        } else if (operatorCode === "IRANCELL") {
+            this.props.handelChange("typeOfOrederText", "بسته ایرانسل")
+        }
+        this.props.handelChange("sumOfAmount", 0);
+        this.props.handelChange("priceText", "0");
+        this.props.handelChange('postalCode', "");
+        this.props.handelChange('subscriberNumber', "");
+        this.props.handelChange('nationalCode', "");
+        this.props.handelChange('mobileNumber', "");
+    };
+
+    showPaymentBill(e) {
+        this.handleClick(e);
+        this.setState({
+            irancellCharge: false,
+            operatorsCharge: false,
+            bill: true,
+            internetPack: false
+        })
+        this.props.handelChange("type", "BILL")
+        this.props.handelChange("typeOfOrederText", "پرداخت قبض")
+        this.props.handelChange("sumOfAmount", 0);
+        this.props.handelChange("priceText", "0");
+        this.props.handelChange('postalCode', "");
+        this.props.handelChange('subscriberNumber', "");
+        this.props.handelChange('nationalCode', "");
+        this.props.handelChange('mobileNumber', "");
+    };
+
+    showBill(e) {
+        this.handleClickBill(e);
+        this.setState({
+            irancellCharge: false,
+            operatorsCharge: false,
+            bill: true,
+            internetPack: false
+        });
+        this.props.handelChange("type", "BILL")
+        this.props.handelChange("typeOfOrederText", "پرداخت قبض")
+        this.props.handelChange("sumOfAmount", 0);
+        this.props.handelChange("priceText", "0");
+        this.props.handelChange('postalCode', "");
+        this.props.handelChange('subscriberNumber', "");
+        this.props.handelChange('nationalCode', "");
+        this.props.handelChange('mobileNumber', "");
     };
 
     handleClick = (e) => {
@@ -119,8 +204,23 @@ class Services extends React.Component {
         e.target.parentNode.className += " item-style-selected";
 
     };
+    handleClickBill = (e) => {
+        let elements = document.getElementsByClassName("actionTypeItem");
+        for (let i = 0; i < elements.length; i++) {
+            elements[i].className += " opacity-item";
+        }
+        let parent = e.target.parentNode.parentNode;
+        for (let i = 0; i < parent.childNodes.length; i++) {
+            parent.childNodes[i].classList.remove("opacity-item");
+        }
+
+        let titles = document.getElementsByClassName("actionTypeTitle");
+        for (let i = 0; i < titles.length; i++) {
+            titles[i].classList.remove("item-style-selected");
+        }
+        // e.target.parentNode.className += " item-style-selected";
+    };
     handleClickImage = (e) => {
-        console.log(e.target.className);
         let elements = document.getElementsByClassName("actionTypeItem");
         for (var i = 0; i < elements.length; i++) {
             elements[i].className += " opacity-item";
@@ -138,92 +238,139 @@ class Services extends React.Component {
                 parent.childNodes[i].className += " item-style-selected";
             }
         }
-    }
+    };
 
     render() {
+        const {languageParameter} = this.props;
+        console.log(languageParameter, 1234)
         return (
             <section>
                 <div className="justify-content-center py-5 services text-center">
                     <div className="row justify-content-center">
-                            <div className="justify-content-center feature-item-first">
-                                <div className=" ml-20  border radius-first">
-                                    <h3 className=" col-12 py-3 services-title"> نوع درخواست</h3>
-                                    <div className="row py-4 mb-1 actionType">
-                                        <div className=" item-style border actionTypeItem actionTypeTitle">
-                                            <span className=" font-weight-bold" onClick={((e) => this.showDirectCharge(e))} >شارژ مستقیم</span>
-                                        </div>
-                                        <div  className=" image-style actionTypeItem" >
-                                            <img  className=" download-app img-fluid" onClick={((e) => this.showIrancellCharge(e,"IRANCELL"))} src={require('./../img/Irancell_Logo.gif')} alt=""/>
-                                        </div>
-                                        <div  className="  image-style actionTypeItem" >
-                                            <img className=" border download-app img-fluid " onClick={((e) => this.showOperatorsCharge(e,"MCI"))} src={require('./../img/Hamrahe_Aval_logo.png')} alt=""/>
-                                        </div>
-                                        <div className=" image-style actionTypeItem" >
-                                            <img className=" download-app img-fluid " onClick={((e) => this.showOperatorsCharge(e,"RIGHTEL"))} src={require('./../img/rightel.png')} alt=""/>
-                                        </div>
-                                        <div  className=" image-style actionTypeItem" >
-                                            <img className=" download-app img-fluid " onClick={((e) => this.showOperatorsCharge(e,"SAMANTEL"))} src={require('./../img/samanTel.jpg')} alt=""/>
-                                        </div>
+                        <div className="justify-content-center feature-item-first">
+                            <div className=" ml-20 shadow border radius-first">
+                                <h3 className=" col-12 py-3 services-title">{languageParameter.typeOfRequest}</h3>
+                                <div className="row py-4 mb-1 actionType">
+                                    <div className=" item-style border actionTypeItem actionTypeTitle">
+                                        <span
+                                            className={languageParameter.rtl ? "font-weight-bold" : " font-custom font-weight-bold"}
+                                            onClick={((e) => this.showDirectCharge(e))}>{languageParameter.charge}</span>
                                     </div>
+                                    <div className=" image-style actionTypeItem">
+                                        <img className=" download-app img-fluid"
+                                             onClick={((e) => this.showIrancellCharge(e, "IRANCELL"))}
+                                             src={require('./../img/Irancell_Logo.gif')} alt=""/>
+                                    </div>
+                                    <div className="  image-style actionTypeItem">
+                                        <img className=" border download-app img-fluid "
+                                             onClick={((e) => this.showOperatorsCharge(e, "MCI"))}
+                                             src={require('./../img/hamrahAval.jpg')} alt=""/>
+                                    </div>
+                                    <div className=" image-style actionTypeItem">
+                                        <img className=" download-app img-fluid "
+                                             onClick={((e) => this.showOperatorsCharge(e, "RIGHTEL"))}
+                                             src={require('./../img/rightel.png')} alt=""/>
+                                    </div>
+                                    <div className=" image-style actionTypeItem">
+                                        <img className=" download-app img-fluid "
+                                             onClick={((e) => this.showOperatorsCharge(e, "SAMANTEL"))}
+                                             src={require('./../img/samanTel.jpg')} alt=""/>
+                                    </div>
+                                </div>
 
-                                    <div className="row py-4 mb-1 actionType">
-                                        <div className=" item-style border actionTypeItem actionTypeTitle">
-                                            <span className="py-2 font-weight-bold " onClick={((e) => this.showNetPack(e))}>بسته اینترنت</span>
-                                        </div>
-                                        <div className=" image-style actionTypeItem" >
-                                            <img  className=" download-app img-fluid " onClick={((e) => this.showInternetPack(e,"IRANCELL"))} src={require('./../img/Irancell_Logo.gif')} alt=""/>
-                                        </div>
-                                        <div className="  image-style actionTypeItem" >
-                                            <img className=" border download-app img-fluid " onClick={((e) => this.showInternetPack(e,"MCI"))} src={require('./../img/Hamrahe_Aval_logo.png')} alt=""/>
-                                        </div>
-                                        <div className=" image-style actionTypeItem" >
-                                            <img className=" download-app img-fluid "  onClick={((e) => this.showInternetPack(e,"RIGHTEL"))} src={require('./../img/rightel.png')} alt=""/>
-                                        </div>
-                                        <div className=" image-style actionTypeItem" >
-                                            <img className=" download-app img-fluid " onClick={((e) => this.showInternetPack(e,"SAMANTEL"))} src={require('./../img/samanTel.jpg')} alt=""/>
-                                        </div>
+                                <div className="row py-4 mb-1 actionType">
+                                    <div className=" item-style border actionTypeItem actionTypeTitle">
+                                        <span className={languageParameter.rtl ? "font-weight-bold" : " font-custom-net font-weight-bold"} onClick={((e) => this.showNetPack(e))}>{languageParameter.internetPack}</span>
                                     </div>
-                                    <div className="row py-4 mb-3 actionType">
-                                        <div  className=" item-style border actionTypeItem actionTypeTitle">
-                                        <span className="py-2 font-weight-bold " onClick={((e) => this.showPaymentBill(e))}>پرداخت قبض
+                                    <div className=" image-style actionTypeItem">
+                                        <img className=" download-app img-fluid "
+                                             onClick={((e) => this.showInternetPack(e, "IRANCELL"))}
+                                             src={require('./../img/Irancell_Logo.gif')} alt=""/>
+                                    </div>
+                                    <div className="  image-style actionTypeItem">
+                                        <img className=" border download-app img-fluid "
+                                             onClick={((e) => this.showInternetPack(e, "MCI"))}
+                                             src={require('./../img/hamrahAval.jpg')} alt=""/>
+                                    </div>
+                                    <div className=" image-style actionTypeItem">
+                                        <img className=" download-app img-fluid "
+                                             onClick={((e) => this.showInternetPack(e, "RIGHTEL"))}
+                                             src={require('./../img/rightel.png')} alt=""/>
+                                    </div>
+                                    <div className=" image-style actionTypeItem">
+                                        <img className=" download-app img-fluid "
+                                             onClick={((e) => this.showInternetPack(e, "SAMANTEL"))}
+                                             src={require('./../img/samanTel.jpg')} alt=""/>
+                                    </div>
+                                </div>
+                                <div className="row py-4 mb-3 actionType">
+                                    <div className=" item-style border actionTypeItem actionTypeTitle">
+                                        <span className={languageParameter.rtl ? "font-weight-bold" : " font-custom font-weight-bold"}
+                                              onClick={((e) => this.showPaymentBill(e))}>{languageParameter.bill}
                                         </span>
-                                        </div>
-                                        <div className=" image-style actionTypeItem" >
-                                            <img  className=" download-app img-fluid " onClick={((e) => this.showBill(e))} src={require('./../img/waterBill.jpg')} alt=""/>
-                                        </div>
-                                        <div className="  image-style actionTypeItem" >
-                                            <img className=" download-app img-fluid " onClick={((e) => this.showBill(e))} src={require('./../img/elcbill.jpg')} alt=""/>
-                                        </div>
-                                        <div className=" image-style actionTypeItem" >
-                                            <img className=" border download-app img-fluid " onClick={((e) => this.showBill(e))} src={require('./../img/NIOC.png')} alt=""/>
-                                        </div>
-                                        <div className=" image-style actionTypeItem" >
-                                            <img className=" download-app img-fluid " onClick={((e) => this.showBill(e))} src={require('./../img/Tci-Arm-Larg.jpg')} alt=""/>
-                                        </div>
+                                    </div>
+                                    <div className=" image-style actionTypeItem">
+                                        <img className=" download-app img-fluid " onClick={((e) => this.showBill(e))}
+                                             src={require('./../img/waterBill.jpg')} alt=""/>
+                                    </div>
+                                    <div className="  image-style actionTypeItem">
+                                        <img className=" download-app img-fluid " onClick={((e) => this.showBill(e))}
+                                             src={require('./../img/elcbill.jpg')} alt=""/>
+                                    </div>
+                                    <div className=" image-style actionTypeItem">
+                                        <img className=" border download-app img-fluid "
+                                             onClick={((e) => this.showBill(e))} src={require('./../img/NIOC.png')}
+                                             alt=""/>
+                                    </div>
+                                    <div className=" image-style actionTypeItem">
+                                        <img className=" download-app img-fluid " onClick={((e) => this.showBill(e))}
+                                             src={require('./../img/Tci-Arm-Larg.jpg')} alt=""/>
                                     </div>
                                 </div>
                             </div>
-                            <div className="feature-item-first  ">
-                                <div className="ml-20  border radius-second">
-                                    <h3 className=" services-title"> تکمیل اطلاعات</h3>
-                                    {this.state.irancellCharge===true?
-                                        <Irancell/>
-                                        :this.state.operatorsCharge===true?
-                                            <Operators/>
-                                            :this.state.bill===true?
-                                                <Bill/>
-                                                :this.state.internetPack?
-                                                    <Internet/>
-                                                    :null}
-                                </div>
+                        </div>
+                        <div className="feature-item-first  ">
+                            <div className="ml-20 shadow border radius-second">
+                                <h3 className=" services-title">{languageParameter.completeInformation}</h3>
+                                {this.state.irancellCharge === true ?
+                                    <Irancell
+                                        handelChange={this.props.handelChange}
+                                        languageParameter={this.props.languageParameter}
+                                    />
+                                    : this.state.operatorsCharge === true ?
+                                        <Operators
+                                            languageParameter={this.props.languageParameter}
+                                        />
+                                        : this.state.bill === true ?
+                                            <Bill
+                                                handelChange={this.props.handelChange}
+                                                languageParameter={this.props.languageParameter}
+                                            />
+                                            : this.state.internetPack ?
+                                                <Internet
+                                                    languageParameter={this.props.languageParameter}
+                                                />
+                                                : null}
                             </div>
-
-                            <div className="feature-item-first">
-                                <div className="ml-20 border radius-third">
-                                    <h3 className="services-title"> پرداخت نهایی </h3>
-                                    <Payment/>
-                                </div>
+                        </div>
+                        <div className="feature-item-first ">
+                            <div className="ml-20 shadow border radius-third">
+                                <h3 className="services-title"> {languageParameter.payment} </h3>
+                                <Payment
+                                    operatorCode={this.props.operatorCode}
+                                    typeOfOrederText={this.props.typeOfOrederText}
+                                    type={this.props.type}
+                                    subscriberNumber={this.props.subscriberNumber}
+                                    mobileNumber={this.props.mobileNumber}
+                                    nationalCode={this.props.nationalCode}
+                                    postalCode={this.props.postalCode}
+                                    sumOfAmount={this.props.sumOfAmount}
+                                    priceText={this.props.priceText}
+                                    isAmazing={this.props.isAmazing}
+                                    loginList={this.props.loginList}
+                                />
                             </div>
+                        </div>
                     </div>
                 </div>
             </section>
