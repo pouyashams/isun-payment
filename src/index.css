@@ -225,7 +225,7 @@ code {
 .selected-size {
     border-radius: 15px 15px 15px 15px;
     height: 38px;
-    width: 94px;
+    width: 99px;
 }
 
 .margin-item {
@@ -341,12 +341,25 @@ code {
 .font-custom-charge {
     font-weight: 600;
     font-size: 14px;
+    padding-right: 15px;
     padding-top:5px;
+}
+.font-custom-number {
+    font-weight: 600;
+    font-size: 14px;
 }
 .checkbox-style-per {
     padding-top: 4px;
     padding-right: 17px;
     padding-left: 10px;
+}
+.checkbox-style-amzing {
+    padding-top: 5px;
+    padding-right: 15px;
+}
+.checkbox-style-isAmzing {
+    padding-top: 5px;
+    padding-right: 8px;
 }
 .checkbox-style-eng {
     padding-top: 5px;
