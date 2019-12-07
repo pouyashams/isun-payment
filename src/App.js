@@ -10,7 +10,7 @@ import './App.css';
 
 
 class App extends React.Component {
-    state = {
+    state =   {
         isTop: true,
 
         loginList: {
@@ -213,6 +213,7 @@ class App extends React.Component {
                     </Controller>
                     <Footer
                         languageParameter={this.state.languageParameter}
+
                     />
                 </div>
             </React.Fragment>

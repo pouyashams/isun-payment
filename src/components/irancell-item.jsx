@@ -161,36 +161,64 @@ class IrancellItem extends React.Component {
         const {languageParameter} = this.props;
         return (
             <div className="py-2">
-                <div className="row py-1 justify-content-center">
-
-                    <div className="row checkbox-item border border-success bg-light pt-1 ">
-                        <div className={languageParameter.rtl ? "checkbox-style-per" : "checkbox-style-eng"}>
-                            <input type="checkbox" id="1"
-                                   checked={this.state.isNotAmazing}
-                                   name={"notAmazing"}
-                                   onClick={((e) => this.showChecked(e.target.checked, e.target.name))}
-                            />
+                {languageParameter.rtl ?
+                    <div className="row py-1 justify-content-center">
+                        <div className="row checkbox-item border border-success bg-light pt-1 ">
+                            <div className={languageParameter.rtl ? "checkbox-style-per" : "checkbox-style-eng"}>
+                                <input type="checkbox" id="1"
+                                       checked={this.state.isNotAmazing}
+                                       name={"notAmazing"}
+                                       onClick={((e) => this.showChecked(e.target.checked, e.target.name))}
+                                />
+                            </div>
+                            <label className={languageParameter.rtl ? "" : "font-custom-charge"} htmlFor="1">
+                                {languageParameter.charge}
+                            </label>
                         </div>
-
-                        <label className={languageParameter.rtl ? "" : "font-custom-charge"}
-                               htmlFor="1">{languageParameter.charge}</label>
-                    </div>
-                    <div className="row checkbox-item  border border-success bg-light pt-1 ">
-                        <div className={languageParameter.rtl ? "checkbox-style-per" : "checkbox-style-eng"}>
-                            <input className="" type="checkbox" id="2"
-                                   checked={this.state.isAmazing}
-                                   name={"Amazing"}
-                                   onClick={((e) => this.showChecked(e.target.checked, e.target.name))}
-                            />
+                        <div className="row checkbox-item  border border-success bg-light pt-1 ">
+                            <div className={languageParameter.rtl ? "checkbox-style-per" : "checkbox-style-eng"}>
+                                <input className="" type="checkbox" id="2"
+                                       checked={this.state.isAmazing}
+                                       name={"Amazing"}
+                                       onClick={((e) => this.showChecked(e.target.checked, e.target.name))}
+                                />
+                            </div>
+                            <label className={languageParameter.rtl ? "" : "font-custom-charge"}
+                                   htmlFor="2">{languageParameter.amazingCharge}</label>
                         </div>
-                        <label className={languageParameter.rtl ? "" : "font-custom-charge"}
-                               htmlFor="2">{languageParameter.amazingCharge}</label>
                     </div>
-
-                </div>
-                <div className="row  justify-content-center text-left ">
+                    :
+                    <div className="row py-1 justify-content-center">
+                        <div className="row checkbox-item border border-success bg-light pt-1 ">
+                            <label className={languageParameter.rtl ? "" : "font-custom-charge"} htmlFor="1">
+                                {languageParameter.charge}
+                            </label>
+                            <div className={languageParameter.rtl ? "checkbox-style-per" : "checkbox-style-amzing"}>
+                                <input type="checkbox" id="1"
+                                       checked={this.state.isNotAmazing}
+                                       name={"notAmazing"}
+                                       onClick={((e) => this.showChecked(e.target.checked, e.target.name))}
+                                />
+                            </div>
+                        </div>
+                        <div className="row checkbox-item  border border-success bg-light pt-1 ">
+                            <label className={languageParameter.rtl ? "" : "font-custom-charge"}
+                                   htmlFor="2">{languageParameter.amazingCharge}
+                            </label>
+                            <div className={languageParameter.rtl ? "checkbox-style-per" : "checkbox-style-isAmzing"}>
+                                <input className="" type="checkbox" id="2"
+                                       checked={this.state.isAmazing}
+                                       name={"Amazing"}
+                                       onClick={((e) => this.showChecked(e.target.checked, e.target.name))}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div
+                    className={languageParameter.rtl ? "row justify-content-center text-left" : "row justify-content-center text-right"}>
                     <div className=" mt-1 form-group checkbox-item">
-                        <label htmlFor="num1" className={languageParameter.rtl ? "" : "font-custom-charge "}>
+                        <label htmlFor="num1" className={languageParameter.rtl ? "" : "font-custom-number"}>
                             {languageParameter.subscriberNumber}
                         </label>
                         <input
@@ -201,7 +229,8 @@ class IrancellItem extends React.Component {
                         />
                     </div>
                     <div className=" mt-1 form-group checkbox-item">
-                        <label htmlFor="num2">شماره خریدار شارژ</label>
+                        <label htmlFor="num2"
+                               className={languageParameter.rtl ? "" : "font-custom-number "}>{languageParameter.mobileNumber}</label>
                         <input type="number" className="radius form-control" id="num2"
                                name={"mobileNumber"}
                                value={this.state.mobileNumber}
@@ -211,7 +240,8 @@ class IrancellItem extends React.Component {
                     </div>
                     <div className="row margin-item ">
                         <div className="form-group mb-2 checkbox-item">
-                            <label htmlFor="num1"> شماره ملی خریدار </label>
+                            <label htmlFor="num1"
+                                   className={languageParameter.rtl ? "" : "font-custom-number "}>{languageParameter.nationalCode}</label>
                             <input type="number" className={this.state.style} id="num1"
                                    name={"nationalCode"}
                                    value={this.state.nationalCode}
@@ -220,7 +250,8 @@ class IrancellItem extends React.Component {
 
                         </div>
                         <div className="form-group checkbox-item">
-                            <label htmlFor="num2">کد پستی خریدار</label>
+                            <label htmlFor="num2"
+                                   className={languageParameter.rtl ? "" : "font-custom-number "}>{languageParameter.postalCode}</label>
                             <input type="number" className="radius form-control" id="num2"
                                    name={"postalCode"}
                                    value={this.state.postalCode}
