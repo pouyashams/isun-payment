@@ -274,7 +274,7 @@ class IrancellItem extends React.Component {
                                        onClick={((e) => this.priceChecked(e.target.checked, e.target.name))}
                                 />
                             </div>
-                            <label htmlFor="3">۲,۰۰۰ تومان</label>
+                            <label htmlFor="3">{languageParameter.doHezar}</label>
                         </div>
 
                         <div className="row checkbox-item  border  bg-light my-1">
@@ -285,7 +285,7 @@ class IrancellItem extends React.Component {
                                        onClick={((e) => this.priceChecked(e.target.checked, e.target.name))}
                                 />
                             </div>
-                            <label htmlFor="4">۵,۰۰۰ تومان</label>
+                            <label htmlFor="4">{languageParameter.panjHezar}</label>
                         </div>
 
                         <div className="row checkbox-item  border  bg-light my-1">
@@ -296,7 +296,7 @@ class IrancellItem extends React.Component {
                                        onClick={((e) => this.priceChecked(e.target.checked, e.target.name))}
                                 />
                             </div>
-                            <label htmlFor="5">۱۰,۰۰۰ تومان</label>
+                            <label htmlFor="5">{languageParameter.dahHezar}</label>
                         </div>
 
                         <div className="row checkbox-item  border  bg-light my-1">
@@ -308,7 +308,7 @@ class IrancellItem extends React.Component {
                                        onClick={((e) => this.priceChecked(e.target.checked, e.target.name))}
                                 />
                             </div>
-                            <label htmlFor="6">۲۰,۰۰۰ تومان</label>
+                            <label htmlFor="6">{languageParameter.bistHezar}</label>
                         </div>
 
                         <div className="row checkbox-item  border  bg-light my-1">
@@ -319,7 +319,7 @@ class IrancellItem extends React.Component {
                                        onClick={((e) => this.priceChecked(e.target.checked, e.target.name))}
                                 />
                             </div>
-                            <label htmlFor="7">۵۰,۰۰۰ تومان</label>
+                            <label htmlFor="7">{languageParameter.panjaHezar}</label>
                         </div>
 
                         <div className="row checkbox-item  border  bg-light my-1">
@@ -330,7 +330,7 @@ class IrancellItem extends React.Component {
                                        onClick={((e) => this.priceChecked(e.target.checked, e.target.name))}
                                 />
                             </div>
-                            <label className="ml-3" htmlFor="8"> ۱۰۰,۰۰۰ تومان</label>
+                            <label className="ml-3" htmlFor="8">{languageParameter.sadHezar}</label>
                         </div>
 
                     </div>
@@ -338,18 +338,20 @@ class IrancellItem extends React.Component {
                     <div className="row justify-content-center py-2">
                         <div className="row checkbox-item border bg-light my-1">
 
+                            <label htmlFor="3" className="font-custom-number-price">toman</label>
                             <label className="font-custom-price" htmlFor="3">{languageParameter.doHezar}</label>
                             <div className="checkbox-style-mPrice">
                                 <input
-                                       type="checkbox" id="3"
-                                       checked={this.state.doHezar}
-                                       name={"doHezar"}
-                                       onClick={((e) => this.priceChecked(e.target.checked, e.target.name))}
+                                    type="checkbox" id="3"
+                                    checked={this.state.doHezar}
+                                    name={"doHezar"}
+                                    onClick={((e) => this.priceChecked(e.target.checked, e.target.name))}
                                 />
                             </div>
                         </div>
 
                         <div className="row checkbox-item  border  bg-light my-1">
+                            <label htmlFor="3" className="font-custom-number-price">toman</label>
                             <label className="font-custom-price" htmlFor="4">{languageParameter.panjHezar}</label>
                             <div className="checkbox-style-mPrice">
                                 <input type="checkbox" id="4"
@@ -361,6 +363,7 @@ class IrancellItem extends React.Component {
                         </div>
 
                         <div className="row checkbox-item  border  bg-light my-1">
+                            <label htmlFor="3" className="font-custom-number-price">toman</label>
                             <label className="font-custom-price" htmlFor="5">{languageParameter.dahHezar}</label>
                             <div className="checkbox-style-price">
                                 <input type="checkbox" id="5"
@@ -372,6 +375,7 @@ class IrancellItem extends React.Component {
                         </div>
 
                         <div className="row checkbox-item  border  bg-light my-1">
+                            <label htmlFor="3" className="font-custom-number-price">toman</label>
                             <label className="font-custom-price" htmlFor="6">{languageParameter.bistHezar}</label>
                             <div className="checkbox-style-price">
                                 <input type="checkbox" id="6"
@@ -383,6 +387,7 @@ class IrancellItem extends React.Component {
                         </div>
 
                         <div className="row checkbox-item  border  bg-light my-1">
+                            <label htmlFor="3" className="font-custom-number-price">toman</label>
                             <label className="font-custom-price" htmlFor="7">{languageParameter.panjaHezar}</label>
                             <div className="checkbox-style-price">
                                 <input type="checkbox" id="7"
@@ -394,9 +399,10 @@ class IrancellItem extends React.Component {
                         </div>
 
                         <div className="row checkbox-item  border  bg-light my-1">
+                            <label htmlFor="3" className="font-custom-number-price">toman</label>
                             <label className="font-custom-price" htmlFor="8">{languageParameter.sadHezar}</label>
                             <div className="checkbox-style-bPrice">
-                                <input  type="checkbox" id="8"
+                                <input type="checkbox" id="8"
                                        checked={this.state.sadHezar}
                                        name={"sadHezar"}
                                        onClick={((e) => this.priceChecked(e.target.checked, e.target.name))}

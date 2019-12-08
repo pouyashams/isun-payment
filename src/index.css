@@ -350,11 +350,18 @@ code {
     padding-top:5px;
 }
 .font-custom-price {
-    padding-right: 10px;
+    font-weight: 600;
+    font-size: 14px;
     padding-top:5px;
-    margin-right: 10px;
+    margin-right: 5px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 .font-custom-number {
+    font-weight: 600;
+    font-size: 14px;
+}.font-custom-number-price {
+    padding-top: 6px;
+    margin-right: 19px;
     font-weight: 600;
     font-size: 14px;
 }
@@ -372,15 +379,15 @@ code {
     padding-right: 8px;
 }
 .checkbox-style-price {
-    padding-top: 8px;
+    padding-top: 6px;
     padding-right: 15px;
 }
 .checkbox-style-mPrice {
-    padding-top: 8px;
-    padding-right: 24px;
+    padding-top: 6px;
+    padding-right: 20px;
 }
 .checkbox-style-bPrice {
-    padding-top: 10px;
+    padding-top: 7px;
     padding-right: 8px;
 }
 .checkbox-style-eng {
