@@ -10,7 +10,7 @@ import './App.css';
 
 
 class App extends React.Component {
-    state =   {
+    state = {
         isTop: true,
 
         loginList: {
@@ -77,18 +77,18 @@ class App extends React.Component {
             PaymentGateway: "درگاه پرداخت",
             bio: "(خرید با کلیه کارتهای بانکی امکان پذیر است)",
             footer: "تمامی حقوق این سایت محفوظ میباشید",
-            waterBill:"قبض آب",
-            ElectricBill:"قبض برق",
-            gasBill:"قبض گاز",
-            LandlinePhoneBill:"قبض تلفن ثابت",
-            PhoneBill:"قبض موبایل همراه",
-            mciCharge:"شارژ همراه اول",
-            samantelCharge:"شارژ سامانتل",
-            rightelCharge:"شارژ رایتل",
-            mciNetPack:"بسته همراه اول",
-            samantelNetPack:"بسته سامانتل",
-            rightelNetPack:"بسته رایتل",
-            irancellNetPack:"بسته ایرانسل",
+            waterBill: "قبض آب",
+            ElectricBill: "قبض برق",
+            gasBill: "قبض گاز",
+            LandlinePhoneBill: "قبض تلفن ثابت",
+            PhoneBill: "قبض موبایل همراه",
+            mciCharge: "شارژ همراه اول",
+            samantelCharge: "شارژ سامانتل",
+            rightelCharge: "شارژ رایتل",
+            mciNetPack: "بسته همراه اول",
+            samantelNetPack: "بسته سامانتل",
+            rightelNetPack: "بسته رایتل",
+            irancellNetPack: "بسته ایرانسل",
         },
 
         paymentId: "",
@@ -153,18 +153,18 @@ class App extends React.Component {
                 PaymentGateway: "درگاه پرداخت",
                 bio: "(خرید با کلیه کارتهای بانکی امکان پذیر است)",
                 footer: "تمامی حقوق این سایت محفوظ میباشید",
-                waterBill:"قبض آب",
-                ElectricBill:"قبض برق",
-                gasBill:"قبض گاز",
-                LandlinePhoneBill:"قبض تلفن ثابت",
-                PhoneBill:"قبض موبایل همراه",
-                mciCharge:"شارژ همراه اول",
-                samantelCharge:"شارژ سامانتل",
-                rightelCharge:"شارژ رایتل",
-                mciNetPack:"بسته همراه اول",
-                samantelNetPack:"بسته سامانتل",
-                rightelNetPack:"بسته رایتل",
-                irancellNetPack:"بسته ایرانسل",
+                waterBill: "قبض آب",
+                ElectricBill: "قبض برق",
+                gasBill: "قبض گاز",
+                LandlinePhoneBill: "قبض تلفن ثابت",
+                PhoneBill: "قبض موبایل همراه",
+                mciCharge: "شارژ همراه اول",
+                samantelCharge: "شارژ سامانتل",
+                rightelCharge: "شارژ رایتل",
+                mciNetPack: "بسته همراه اول",
+                samantelNetPack: "بسته سامانتل",
+                rightelNetPack: "بسته رایتل",
+                irancellNetPack: "بسته ایرانسل",
             };
             return language;
 
@@ -214,19 +214,19 @@ class App extends React.Component {
                 PaymentGateway: "Payment gateway",
                 bio: "(It's possible to purchase with all bank cards)",
                 footer: "All rights reserved",
-                waterBill:"water bill",
-                ElectricBill:"electric bill",
-                gasBill:"gas bill",
-                LandlinePhoneBill:"landline phone bill",
-                PhoneBill:"phone bill",
-                mciCharge:"mci charge",
-                samantelCharge:"samantel charge",
-                rightelCharge:"rightel charge",
-                mciNetPack:"mci internet",
-                samantelNetPack:"samantel internet",
-                rightelNetPack:"rightel internet",
-                irancellNetPack:"irancell internet",
-                chooseInternetPeriod:"choose internet",
+                waterBill: "water bill",
+                ElectricBill: "electric bill",
+                gasBill: "gas bill",
+                LandlinePhoneBill: "landline phone bill",
+                PhoneBill: "phone bill",
+                mciCharge: "mci charge",
+                samantelCharge: "samantel charge",
+                rightelCharge: "rightel charge",
+                mciNetPack: "mci internet",
+                samantelNetPack: "samantel internet",
+                rightelNetPack: "rightel internet",
+                irancellNetPack: "irancell internet",
+                chooseInternetPeriod: "choose internet",
             };
             return language;
         }
@@ -272,6 +272,8 @@ class App extends React.Component {
                                 isAmazing={this.state.isAmazing}
                                 loginList={this.state.loginList}
                                 languageParameter={this.state.languageParameter}
+                                paymentId={this.state.paymentId}
+                                billId={this.state.billId}
                             />
                         </Scene>
                     </Controller>

@@ -99,26 +99,28 @@ class paymentGetway extends React.Component {
     payBill = async () => {
         const data = {
             "mobileNumber": this.props.mobileNumber,
-            "terminalTypeCode": "",
-            "requesterDevicePlatformCode": "",
+            "postalCode": this.props.postalCode,
+            "nationalCode": this.props.nationalCode,
+            "terminalTypeCode": "INTERNET",
             "paymentGatewayProviderCode": this.state.paymentType,
             "billInfo": {
                 "billId": this.props.billId,
-                "paymentId": this.props.paymentId
+                "paymentId": this.props.paymentId,
             },
-            "nationalCode": this.props.nationalCode,
-            "postalCode": this.props.postalCode,
             "orderRequesterInfo": {
                 "callBackURL": "http://shop.isuncharge.com",
                 "traceCode": ""
             }
         };
         console.log(data)
+
         const loginList = this.props.loginList;
         let accesstoken = await login(loginList.username, loginList.password, loginList.clientId, loginList.clientSecret);
         try {
-            const result = axios.post(`http://shop.isuncharge.com/isunshop/register/internet-package-order?access_token=` + accesstoken, data);
+            const result = await axios.post(`http://shop.isuncharge.com/isunshop/register/bill-order?access_token=` + accesstoken, data);
+            console.log(result);
             if (result.status === 200) {
+                window.location = result.data.data.url;
             }
         }
         catch (ex) {
@@ -134,13 +136,15 @@ class paymentGetway extends React.Component {
                 <div
                     className={languageParameter.rtl ? "row justify-content-center text-left" : "row justify-content-center text-right"}>
                     <div className=" form-group checkbox-item">
-                        <label htmlFor="num1" className={languageParameter.rtl ? "" : "font-custom-number "}>{languageParameter.typeOfRequest}</label>
+                        <label htmlFor="num1"
+                               className={languageParameter.rtl ? "" : "font-custom-number "}>{languageParameter.typeOfRequest}</label>
                         <input type="text" className="radius form-control" id="num1"
                                value={this.props.typeOfOrederText}
                         />
                     </div>
                     <div className=" form-group checkbox-item">
-                        <label htmlFor="num2" className={languageParameter.rtl ? "" : "font-custom-number "}>{languageParameter.price}</label>
+                        <label htmlFor="num2"
+                               className={languageParameter.rtl ? "" : "font-custom-number "}>{languageParameter.price}</label>
                         <input type="text" className="radius form-control" id="num2"
                                value={this.props.priceText}
                         />
@@ -148,7 +152,8 @@ class paymentGetway extends React.Component {
                 </div>
                 <div className="row justify-content-center pt-2 ">
                     <div className="form-group payment-item">
-                        <label htmlFor="1" className={languageParameter.rtl ? "" : "font-custom-number "}>{languageParameter.PaymentGateway}</label>
+                        <label htmlFor="1"
+                               className={languageParameter.rtl ? "" : "font-custom-number "}>{languageParameter.PaymentGateway}</label>
                         <div className="row justify-content-center payment-item">
                             {this.state.parsian ?
                                 <div

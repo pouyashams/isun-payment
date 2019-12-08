@@ -375,7 +375,8 @@ class Services extends React.Component {
                                     isAmazing={this.props.isAmazing}
                                     loginList={this.props.loginList}
                                     languageParameter={this.props.languageParameter}
-
+                                    paymentId={this.props.paymentId}
+                                    billId={this.props.billId}
                                 />
                             </div>
                         </div>

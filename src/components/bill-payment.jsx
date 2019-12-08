@@ -12,7 +12,7 @@ class billPayment extends React.Component {
             postalCode: "",
             style: "radius form-control",
             styleBill: "radius form-control",
-            stylePaymentId: "radius form-control"
+            stylePaymentId: "radius form-control",
         };
     }
 
@@ -24,7 +24,14 @@ class billPayment extends React.Component {
 
     handelChangeInput = (value, name) => {
         this.setState({[name]: value, item: value});
-        this.props.handelChange('name', value);
+        this.props.handelChange(name, value);
+    };
+    handelChangeInputPayment = (value, name) => {
+        this.setState({[name]: value, item: value});
+    };
+
+    handelChangeInputBill = (value, name) => {
+        this.setState({[name]: value, item: value});
     };
 
     findBillType = (list) => {
@@ -43,10 +50,12 @@ class billPayment extends React.Component {
     };
 
     handelChangeInputPaymentId = () => {
-        if (this.state.paymentId !== null && this.state.paymentId !== 0 && this.state.paymentId !== "") {
+        const num = this.state.paymentId;
+        if (num !== null && num !== 0 && num !== "") {
             const price = this.state.paymentId.replace(/^0+/, '').substr(0, 3);
             this.props.handelChange('sumOfAmount', price + "000");
             this.props.handelChange('priceText', price + "00");
+            this.props.handelChange('paymentId', num);
         } else {
             this.setState({
                 stylePaymentId: "wrong text-danger form-control",
@@ -91,15 +100,17 @@ class billPayment extends React.Component {
                     styleBill: "success text-success form-control",
                 });
                 this.findBillType(infoList);
+                this.props.handelChange('billId', num);
+
             }
             else if (remain >= 2 && 11 - (remain) === infoList[12]) {
                 this.setState({
                     styleBill: "success text-success form-control",
                 });
                 this.findBillType(infoList);
+                this.props.handelChange('billId', num);
             }
             else {
-
                 this.setState({
                     styleBill: "wrong text-danger form-control",
                 });
@@ -211,7 +222,8 @@ class billPayment extends React.Component {
         return (
             <div className="py-2">
 
-                <div className={languageParameter.rtl ? "row justify-content-center py-2 text-left" : "row justify-content-center py-2 text-right"}>
+                <div
+                    className={languageParameter.rtl ? "row justify-content-center py-2 text-left" : "row justify-content-center py-2 text-right"}>
                     <div className=" form-group checkbox-item-info">
                         <label className={languageParameter.rtl ? "" : "font-custom-number"}
                                htmlFor="num1">{languageParameter.billId}</label>
@@ -219,7 +231,7 @@ class billPayment extends React.Component {
                             type="number" className={this.state.styleBill} id="num1"
                             name={"billId"}
                             value={this.state.billId}
-                            onChange={((e) => this.handelChangeInput(e.target.value, e.target.name))}
+                            onChange={((e) => this.handelChangeInputBill(e.target.value, e.target.name))}
                         />
                     </div>
                     <div className=" form-group checkbox-item-info">
@@ -229,7 +241,7 @@ class billPayment extends React.Component {
                             type="number" className={this.state.stylePaymentId} id="num2"
                             name={"paymentId"}
                             value={this.state.paymentId}
-                            onChange={((e) => this.handelChangeInput(e.target.value, e.target.name))}
+                            onChange={((e) => this.handelChangeInputPayment(e.target.value, e.target.name))}
                         />
                     </div>
                 </div>
@@ -256,7 +268,7 @@ class billPayment extends React.Component {
                     </div>
                     <div className=" form-group checkbox-item">
                         <label className={languageParameter.rtl ? "" : "font-custom-number"}
-                               htmlFor="num1">{languageParameter.subscriberNumber}</label>
+                               htmlFor="num1">{languageParameter.nationalCode}</label>
                         <input
                             type="number" className={this.state.style} id="num1"
                             name={"nationalCode"}
