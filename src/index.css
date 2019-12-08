@@ -344,6 +344,11 @@ code {
     padding-right: 15px;
     padding-top:5px;
 }
+.font-custom-price {
+    padding-right: 10px;
+    padding-top:5px;
+    margin-right: 10px;
+}
 .font-custom-number {
     font-weight: 600;
     font-size: 14px;
@@ -359,6 +364,18 @@ code {
 }
 .checkbox-style-isAmzing {
     padding-top: 5px;
+    padding-right: 8px;
+}
+.checkbox-style-price {
+    padding-top: 8px;
+    padding-right: 15px;
+}
+.checkbox-style-mPrice {
+    padding-top: 8px;
+    padding-right: 24px;
+}
+.checkbox-style-bPrice {
+    padding-top: 10px;
     padding-right: 8px;
 }
 .checkbox-style-eng {

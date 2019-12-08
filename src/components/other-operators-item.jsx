@@ -140,23 +140,25 @@ class otheroperators extends React.Component {
     };
 
     render() {
+        const {languageParameter} = this.props;
         return (
             <div className="py-4">
-                <div className="row  justify-content-center text-left ">
-
-                    <div className=" form-group checkbox-item">
-                        <label htmlFor="num1">شماره موبایل ذینفع</label>
+                <div
+                    className={languageParameter.rtl ? "row justify-content-center text-left" : "row justify-content-center text-right"}>
+                    <div className=" mt-1 form-group checkbox-item">
+                        <label htmlFor="num1" className={languageParameter.rtl ? "" : "font-custom-number"}>
+                            {languageParameter.subscriberNumber}
+                        </label>
                         <input
                             type="number" className="radius form-control" id="num1"
                             name={"subscriberNumber"}
                             value={this.state.subscriberNumber}
                             onChange={((e) => this.handelChangeInput(e.target.value, e.target.name))}
-
                         />
-
                     </div>
-                    <div className=" form-group checkbox-item">
-                        <label htmlFor="num2"> شماره خریدار شارژ</label>
+                    <div className=" mt-1 form-group checkbox-item">
+                        <label htmlFor="num2"
+                               className={languageParameter.rtl ? "" : "font-custom-number "}>{languageParameter.mobileNumber}</label>
                         <input type="number" className="radius form-control" id="num2"
                                name={"mobileNumber"}
                                value={this.state.mobileNumber}
@@ -164,94 +166,172 @@ class otheroperators extends React.Component {
                         />
 
                     </div>
-                    <div className=" form-group checkbox-item">
-                        <label htmlFor="num1"> شماره ملی خریدار </label>
-                        <input type="number" className={this.state.style} id="num1"
-                               name={"nationalCode"}
-                               value={this.state.nationalCode}
-                               onChange={((e) => this.handelChangeNationalCode(e.target.value, e.target.name))}
-                        />
+                    <div className="row margin-item ">
+                        <div className="form-group mb-2 checkbox-item">
+                            <label htmlFor="num1"
+                                   className={languageParameter.rtl ? "" : "font-custom-number "}>{languageParameter.nationalCode}</label>
+                            <input type="number" className={this.state.style} id="num1"
+                                   name={"nationalCode"}
+                                   value={this.state.nationalCode}
+                                   onChange={((e) => this.handelChangeNationalCode(e.target.value, e.target.name))}
+                            />
 
+                        </div>
+                        <div className="form-group checkbox-item">
+                            <label htmlFor="num2"
+                                   className={languageParameter.rtl ? "" : "font-custom-number "}>{languageParameter.postalCode}</label>
+                            <input type="number" className="radius form-control" id="num2"
+                                   name={"postalCode"}
+                                   value={this.state.postalCode}
+                                   onChange={((e) => this.handelChangeInput(e.target.value, e.target.name))}
+                            />
+                        </div>
                     </div>
-                    <div className=" form-group checkbox-item">
-                        <label htmlFor="num2">کد پستی خریدار</label>
-                        <input type="number" className="radius form-control" id="num2"
-                               name={"postalCode"}
-                               value={this.state.postalCode}
-                               onChange={((e) => this.handelChangeInput(e.target.value, e.target.name))}
-                        />
-                    </div>
+
 
                 </div>
-                <div className="row justify-content-center py-2">
-                    <div className="row checkbox-item  border  bg-light my-1 ">
-                        <div className="py-1 px-3">
-                            <input className="mr-2" type="checkbox" id="3"
-                                   checked={this.state.doHezar}
-                                   name={"doHezar"}
-                                   onClick={((e) => this.priceChecked(e.target.checked, e.target.name))}
-                            />
+                {languageParameter.rtl ?
+                    <div className="row justify-content-center  py-2">
+                        <div className="row checkbox-item  border  bg-light my-1 ">
+                            <div className="py-1 px-3">
+                                <input className="mr-2" type="checkbox" id="3"
+                                       checked={this.state.doHezar}
+                                       name={"doHezar"}
+                                       onClick={((e) => this.priceChecked(e.target.checked, e.target.name))}
+                                />
+                            </div>
+                            <label htmlFor="3">۲,۰۰۰ تومان</label>
                         </div>
-                        <label htmlFor="3">۲,۰۰۰ تومان</label>
-                    </div>
 
-                    <div className="row checkbox-item  border  bg-light my-1">
-                        <div className="py-1 px-3">
-                            <input className="mr-2" type="checkbox" id="4"
-                                   checked={this.state.panjHezar}
-                                   name={"panjHezar"}
-                                   onClick={((e) => this.priceChecked(e.target.checked, e.target.name))}
-                            />
+                        <div className="row checkbox-item  border  bg-light my-1">
+                            <div className="py-1 px-3">
+                                <input className="mr-2" type="checkbox" id="4"
+                                       checked={this.state.panjHezar}
+                                       name={"panjHezar"}
+                                       onClick={((e) => this.priceChecked(e.target.checked, e.target.name))}
+                                />
+                            </div>
+                            <label htmlFor="4">۵,۰۰۰ تومان</label>
                         </div>
-                        <label htmlFor="4">۵,۰۰۰ تومان</label>
-                    </div>
 
-                    <div className="row checkbox-item  border  bg-light my-1">
-                        <div className="py-1 px-3">
-                            <input className="mr-2" type="checkbox" id="5"
-                                   checked={this.state.dahHezar}
-                                   name={"dahHezar"}
-                                   onClick={((e) => this.priceChecked(e.target.checked, e.target.name))}
-                            />
+                        <div className="row checkbox-item  border  bg-light my-1">
+                            <div className="py-1 px-3">
+                                <input className="mr-2" type="checkbox" id="5"
+                                       checked={this.state.dahHezar}
+                                       name={"dahHezar"}
+                                       onClick={((e) => this.priceChecked(e.target.checked, e.target.name))}
+                                />
+                            </div>
+                            <label htmlFor="5">۱۰,۰۰۰ تومان</label>
                         </div>
-                        <label htmlFor="5">۱۰,۰۰۰ تومان</label>
-                    </div>
 
-                    <div className="row checkbox-item  border  bg-light my-1">
-                        <div className="py-1 px-3">
-                            <input className="mr-2" type="checkbox" id="6"
+                        <div className="row checkbox-item  border  bg-light my-1">
+                            <div className="py-1 px-3">
+                                <input className="mr-2" type="checkbox" id="6"
 
-                                   checked={this.state.bistHezar}
-                                   name={"bistHezar"}
-                                   onClick={((e) => this.priceChecked(e.target.checked, e.target.name))}
-                            />
+                                       checked={this.state.bistHezar}
+                                       name={"bistHezar"}
+                                       onClick={((e) => this.priceChecked(e.target.checked, e.target.name))}
+                                />
+                            </div>
+                            <label htmlFor="6">۲۰,۰۰۰ تومان</label>
                         </div>
-                        <label htmlFor="6">۲۰,۰۰۰ تومان</label>
-                    </div>
 
-                    <div className="row checkbox-item  border  bg-light my-1">
-                        <div className="py-1 px-3">
-                            <input className="mr-2" type="checkbox" id="7"
-                                   checked={this.state.panjaHezar}
-                                   name={"panjaHezar"}
-                                   onClick={((e) => this.priceChecked(e.target.checked, e.target.name))}
-                            />
+                        <div className="row checkbox-item  border  bg-light my-1">
+                            <div className="py-1 px-3">
+                                <input className="mr-2" type="checkbox" id="7"
+                                       checked={this.state.panjaHezar}
+                                       name={"panjaHezar"}
+                                       onClick={((e) => this.priceChecked(e.target.checked, e.target.name))}
+                                />
+                            </div>
+                            <label htmlFor="7">۵۰,۰۰۰ تومان</label>
                         </div>
-                        <label htmlFor="7">۵۰,۰۰۰ تومان</label>
-                    </div>
 
-                    <div className="row checkbox-item  border  bg-light my-1">
-                        <div className="py-1">
-                            <input className="ml-3 " type="checkbox" id="8"
-                                   checked={this.state.sadHezar}
-                                   name={"sadHezar"}
-                                   onClick={((e) => this.priceChecked(e.target.checked, e.target.name))}
-                            />
+                        <div className="row checkbox-item  border  bg-light my-1">
+                            <div className="py-1">
+                                <input className="ml-3 " type="checkbox" id="8"
+                                       checked={this.state.sadHezar}
+                                       name={"sadHezar"}
+                                       onClick={((e) => this.priceChecked(e.target.checked, e.target.name))}
+                                />
+                            </div>
+                            <label className="ml-3" htmlFor="8"> ۱۰۰,۰۰۰ تومان</label>
                         </div>
-                        <label className="ml-3" htmlFor="8"> ۱۰۰,۰۰۰ تومان</label>
-                    </div>
 
-                </div>
+                    </div>
+                    :
+                    <div className="row justify-content-center py-2">
+                        <div className="row checkbox-item border bg-light my-1">
+
+                            <label className="font-custom-price" htmlFor="3">{languageParameter.doHezar}</label>
+                            <div className="checkbox-style-mPrice">
+                                <input
+                                    type="checkbox" id="3"
+                                    checked={this.state.doHezar}
+                                    name={"doHezar"}
+                                    onClick={((e) => this.priceChecked(e.target.checked, e.target.name))}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="row checkbox-item  border  bg-light my-1">
+                            <label className="font-custom-price" htmlFor="4">{languageParameter.panjHezar}</label>
+                            <div className="checkbox-style-mPrice">
+                                <input type="checkbox" id="4"
+                                       checked={this.state.panjHezar}
+                                       name={"panjHezar"}
+                                       onClick={((e) => this.priceChecked(e.target.checked, e.target.name))}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="row checkbox-item  border  bg-light my-1">
+                            <label className="font-custom-price" htmlFor="5">{languageParameter.dahHezar}</label>
+                            <div className="checkbox-style-price">
+                                <input type="checkbox" id="5"
+                                       checked={this.state.dahHezar}
+                                       name={"dahHezar"}
+                                       onClick={((e) => this.priceChecked(e.target.checked, e.target.name))}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="row checkbox-item  border  bg-light my-1">
+                            <label className="font-custom-price" htmlFor="6">{languageParameter.bistHezar}</label>
+                            <div className="checkbox-style-price">
+                                <input type="checkbox" id="6"
+                                       checked={this.state.bistHezar}
+                                       name={"bistHezar"}
+                                       onClick={((e) => this.priceChecked(e.target.checked, e.target.name))}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="row checkbox-item  border  bg-light my-1">
+                            <label className="font-custom-price" htmlFor="7">{languageParameter.panjaHezar}</label>
+                            <div className="checkbox-style-price">
+                                <input type="checkbox" id="7"
+                                       checked={this.state.panjaHezar}
+                                       name={"panjaHezar"}
+                                       onClick={((e) => this.priceChecked(e.target.checked, e.target.name))}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="row checkbox-item  border  bg-light my-1">
+                            <label className="font-custom-price" htmlFor="8">{languageParameter.sadHezar}</label>
+                            <div className="checkbox-style-bPrice">
+                                <input  type="checkbox" id="8"
+                                        checked={this.state.sadHezar}
+                                        name={"sadHezar"}
+                                        onClick={((e) => this.priceChecked(e.target.checked, e.target.name))}
+                                />
+                            </div>
+                        </div>
+
+                    </div>
+                }
             </div>
         );
     }

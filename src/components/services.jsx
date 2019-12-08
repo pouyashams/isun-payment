@@ -48,7 +48,7 @@ class Services extends React.Component {
 
         this.props.handelChange("sumOfAmount", 20000);
         this.props.handelChange("priceText", "2,000");
-        this.props.handelChange("typeOfOrederText", "شارژ مستقیم");
+        this.props.handelChange("typeOfOrederText", this.props.languageParameter.charge)
         this.props.handelChange("type", "CHARGE");
         this.props.handelChange('isAmazing', false);
         this.props.handelChange('postalCode', "");
@@ -70,7 +70,7 @@ class Services extends React.Component {
         this.props.handelChange("type", "CHARGE")
         this.props.handelChange("sumOfAmount", 20000);
         this.props.handelChange("priceText", "2,000");
-        this.props.handelChange("typeOfOrederText", "شارژ مستقیم");
+        this.props.handelChange("typeOfOrederText", this.props.languageParameter.charge)
         this.props.handelChange('isAmazing', false);
         this.props.handelChange('postalCode', "");
         this.props.handelChange('subscriberNumber', "");
@@ -87,12 +87,12 @@ class Services extends React.Component {
             internetPack: false
         });
         if (operatorCode === "MCI") {
-            this.props.handelChange("typeOfOrederText", "شارژ همراه اول")
+            this.props.handelChange("typeOfOrederText", this.props.languageParameter.mciCharge)
         } else if (operatorCode === "RIGHTEL") {
 
-            this.props.handelChange("typeOfOrederText", "شارژ رایتل")
+            this.props.handelChange("typeOfOrederText", this.props.languageParameter.rightelCharge)
         } else if (operatorCode === "SAMANTEL") {
-            this.props.handelChange("typeOfOrederText", "شارژ سامانتل")
+            this.props.handelChange("typeOfOrederText", this.props.languageParameter.samantelCharge)
         }
         this.props.handelChange("operatorCode", operatorCode)
         this.props.handelChange("type", "CHARGE")
@@ -113,7 +113,7 @@ class Services extends React.Component {
             bill: false,
             internetPack: true,
         })
-        this.props.handelChange('typeOfOrederText', "بسته اینترنت")
+        this.props.handelChange("typeOfOrederText", this.props.languageParameter.internetPack)
         this.props.handelChange("type", "INTERNET")
         this.props.handelChange("operatorCode", "IRANCELL")
         this.props.handelChange("sumOfAmount", 0);
@@ -132,16 +132,20 @@ class Services extends React.Component {
             bill: false,
             internetPack: true
         });
+
+
+
+
         this.props.handelChange("operatorCode", operatorCode)
         this.props.handelChange("type", "INTERNET")
         if (operatorCode === "MCI") {
-            this.props.handelChange("typeOfOrederText", "بسته همراه اول")
+            this.props.handelChange("typeOfOrederText", this.props.languageParameter.mciNetPack)
         } else if (operatorCode === "RIGHTEL") {
-            this.props.handelChange("typeOfOrederText", "بسته رایتل")
+            this.props.handelChange("typeOfOrederText", this.props.languageParameter.rightelNetPack)
         } else if (operatorCode === "SAMANTEL") {
-            this.props.handelChange("typeOfOrederText", "بسته سامانتل")
+            this.props.handelChange("typeOfOrederText", this.props.languageParameter.samantelNetPack)
         } else if (operatorCode === "IRANCELL") {
-            this.props.handelChange("typeOfOrederText", "بسته ایرانسل")
+            this.props.handelChange("typeOfOrederText", this.props.languageParameter.irancellNetPack)
         }
         this.props.handelChange("sumOfAmount", 0);
         this.props.handelChange("priceText", "0");
@@ -160,7 +164,7 @@ class Services extends React.Component {
             internetPack: false
         })
         this.props.handelChange("type", "BILL")
-        this.props.handelChange("typeOfOrederText", "پرداخت قبض")
+        this.props.handelChange("typeOfOrederText", this.props.languageParameter.bill)
         this.props.handelChange("sumOfAmount", 0);
         this.props.handelChange("priceText", "0");
         this.props.handelChange('postalCode', "");
@@ -178,7 +182,7 @@ class Services extends React.Component {
             internetPack: false
         });
         this.props.handelChange("type", "BILL")
-        this.props.handelChange("typeOfOrederText", "پرداخت قبض")
+        this.props.handelChange("typeOfOrederText", this.props.languageParameter.bill)
         this.props.handelChange("sumOfAmount", 0);
         this.props.handelChange("priceText", "0");
         this.props.handelChange('postalCode', "");
@@ -279,7 +283,9 @@ class Services extends React.Component {
 
                                 <div className="row py-4 mb-1 actionType">
                                     <div className=" item-style border actionTypeItem actionTypeTitle">
-                                        <span className={languageParameter.rtl ? "font-weight-bold" : " font-custom-net font-weight-bold"} onClick={((e) => this.showNetPack(e))}>{languageParameter.internetPack}</span>
+                                        <span
+                                            className={languageParameter.rtl ? "font-weight-bold" : " font-custom-net font-weight-bold"}
+                                            onClick={((e) => this.showNetPack(e))}>{languageParameter.internetPack}</span>
                                     </div>
                                     <div className=" image-style actionTypeItem">
                                         <img className=" download-app img-fluid "
@@ -304,8 +310,9 @@ class Services extends React.Component {
                                 </div>
                                 <div className="row py-4 mb-3 actionType">
                                     <div className=" item-style border actionTypeItem actionTypeTitle">
-                                        <span className={languageParameter.rtl ? "font-weight-bold" : " font-custom font-weight-bold"}
-                                              onClick={((e) => this.showPaymentBill(e))}>{languageParameter.bill}
+                                        <span
+                                            className={languageParameter.rtl ? "font-weight-bold" : " font-custom font-weight-bold"}
+                                            onClick={((e) => this.showPaymentBill(e))}>{languageParameter.bill}
                                         </span>
                                     </div>
                                     <div className=" image-style actionTypeItem">
@@ -367,6 +374,8 @@ class Services extends React.Component {
                                     priceText={this.props.priceText}
                                     isAmazing={this.props.isAmazing}
                                     loginList={this.props.loginList}
+                                    languageParameter={this.props.languageParameter}
+
                                 />
                             </div>
                         </div>

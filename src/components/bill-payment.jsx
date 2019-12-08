@@ -28,24 +28,25 @@ class billPayment extends React.Component {
     };
 
     findBillType = (list) => {
+        const {languageParameter} = this.props;
         if (list[list.length - 2] === 1) {
-            this.props.handelChange('typeOfOrederText', "قبض آب");
+            this.props.handelChange('typeOfOrederText', languageParameter.waterBill);
         } else if (list[list.length - 2] === 2) {
-            this.props.handelChange('typeOfOrederText', "قبض برق");
+            this.props.handelChange('typeOfOrederText', languageParameter.ElectricBill);
         } else if (list[list.length - 2] === 3) {
-            this.props.handelChange('typeOfOrederText', "قبض گاز");
+            this.props.handelChange('typeOfOrederText', languageParameter.gasBill);
         } else if (list[list.length - 2] === 4) {
-            this.props.handelChange('typeOfOrederText', "قبض تلفن ثابت");
+            this.props.handelChange('typeOfOrederText', languageParameter.LandlinePhoneBill);
         } else if (list[list.length - 2] === 5) {
-            this.props.handelChange('typeOfOrederText', "قبض تلفن همراه");
+            this.props.handelChange('typeOfOrederText', languageParameter.PhoneBill);
         }
     };
 
     handelChangeInputPaymentId = () => {
         if (this.state.paymentId !== null && this.state.paymentId !== 0 && this.state.paymentId !== "") {
             const price = this.state.paymentId.replace(/^0+/, '').substr(0, 3);
-            this.props.handelChange('sumOfAmount',price + "000" );
-            this.props.handelChange('priceText',price + "00" );
+            this.props.handelChange('sumOfAmount', price + "000");
+            this.props.handelChange('priceText', price + "00");
         } else {
             this.setState({
                 stylePaymentId: "wrong text-danger form-control",
@@ -184,13 +185,13 @@ class billPayment extends React.Component {
                 this.setState({
                     style: "success text-success form-control",
                 });
-                this.props.handelChange(name,value );
+                this.props.handelChange(name, value);
             }
             else if (remain >= 2 && 11 - (remain) === list[9]) {
                 this.setState({
                     style: "success text-success form-control",
                 });
-                this.props.handelChange(name,value );
+                this.props.handelChange(name, value);
             }
             else {
                 this.setState({
@@ -206,13 +207,14 @@ class billPayment extends React.Component {
     };
 
     render() {
+        const {languageParameter} = this.props;
         return (
             <div className="py-2">
 
-                <div className="row justify-content-center py-2 text-left">
-
+                <div className={languageParameter.rtl ? "row justify-content-center py-2 text-left" : "row justify-content-center py-2 text-right"}>
                     <div className=" form-group checkbox-item-info">
-                        <label htmlFor="num1">شناسه قبض</label>
+                        <label className={languageParameter.rtl ? "" : "font-custom-number"}
+                               htmlFor="num1">{languageParameter.billId}</label>
                         <input
                             type="number" className={this.state.styleBill} id="num1"
                             name={"billId"}
@@ -221,7 +223,8 @@ class billPayment extends React.Component {
                         />
                     </div>
                     <div className=" form-group checkbox-item-info">
-                        <label htmlFor="num1">شناسه پرداخت </label>
+                        <label className={languageParameter.rtl ? "" : "font-custom-number"}
+                               htmlFor="num1">{languageParameter.paymentId}</label>
                         <input
                             type="number" className={this.state.stylePaymentId} id="num1"
                             name={"paymentId"}
@@ -230,17 +233,20 @@ class billPayment extends React.Component {
                         />
                     </div>
                 </div>
+
                 <div className=" justify-content-center ">
                     <button
                         onClick={this.onAccept}
                         type="button" className="btn border button-item btn-success">
-                        تایید
+                        {languageParameter.confirm}
                     </button>
                 </div>
-                <div className="row justify-content-center text-left py-3 ">
 
+                <div
+                    className={languageParameter.rtl ? "row justify-content-center text-left py-3" : "row justify-content-center text-right py-3"}>
                     <div className=" form-group checkbox-item">
-                        <label htmlFor="num1">شماره خریدار </label>
+                        <label className={languageParameter.rtl ? "" : "font-custom-number"}
+                               htmlFor="num1">{languageParameter.mobileNumber} </label>
                         <input
                             type="number" className="radius form-control" id="num1"
                             name={"mobileNumber"}
@@ -249,7 +255,8 @@ class billPayment extends React.Component {
                         />
                     </div>
                     <div className=" form-group checkbox-item">
-                        <label htmlFor="num1"> شماره ملی خریدار</label>
+                        <label className={languageParameter.rtl ? "" : "font-custom-number"}
+                               htmlFor="num1">{languageParameter.subscriberNumber}</label>
                         <input
                             type="number" className={this.state.style} id="num1"
                             name={"nationalCode"}
@@ -258,7 +265,8 @@ class billPayment extends React.Component {
                         />
                     </div>
                     <div className=" form-group checkbox-item">
-                        <label htmlFor="num1">کد پستی خریدار</label>
+                        <label className={languageParameter.rtl ? "" : "font-custom-number"}
+                               htmlFor="num1">{languageParameter.postalCode}</label>
                         <input
                             type="number" className="radius form-control" id="num1"
                             name={"postalCode"}
@@ -266,7 +274,6 @@ class billPayment extends React.Component {
                             onChange={((e) => this.handelChangeInput(e.target.value, e.target.name))}
                         />
                     </div>
-
                 </div>
 
             </div>

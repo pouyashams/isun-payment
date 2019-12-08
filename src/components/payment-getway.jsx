@@ -128,17 +128,19 @@ class paymentGetway extends React.Component {
     };
 
     render() {
+        const {languageParameter} = this.props;
         return (
             <div className="py-3">
-                <div className="row justify-content-center text-left">
+                <div
+                    className={languageParameter.rtl ? "row justify-content-center text-left" : "row justify-content-center text-right"}>
                     <div className=" form-group checkbox-item">
-                        <label htmlFor="num1"> نوع درخواست</label>
+                        <label htmlFor="num1">{languageParameter.typeOfRequest}</label>
                         <input type="text" className="radius form-control" id="num1"
                                value={this.props.typeOfOrederText}
                         />
                     </div>
                     <div className=" form-group checkbox-item">
-                        <label htmlFor="num2">قیمت (تومان)</label>
+                        <label htmlFor="num2">{languageParameter.price}</label>
                         <input type="text" className="radius form-control" id="num2"
                                value={this.props.priceText}
                         />
@@ -146,7 +148,7 @@ class paymentGetway extends React.Component {
                 </div>
                 <div className="row justify-content-center pt-2 ">
                     <div className="form-group payment-item">
-                        <label htmlFor="1">درگاه پرداخت</label>
+                        <label htmlFor="1">{languageParameter.PaymentGateway}</label>
                         <div className="row justify-content-center payment-item">
                             {this.state.parsian ?
                                 <div
@@ -178,10 +180,10 @@ class paymentGetway extends React.Component {
                 </div>
                 <div className="py-3 justify-content-center ">
                     <button onClick={this.sendData} type="button"
-                            className="btn border button-item btn-success">پرداخت
+                            className="btn border button-item btn-success">{languageParameter.pay}
                     </button>
                 </div>
-                <p className=" py-3 text-danger font-weight-bold">(خرید با کلیه کارت های بانکی امکان پذیر است)</p>
+                <p className={languageParameter.rtl ? " py-3 text-danger font-weight-bold" : " py-3 text-danger font-weight-bold font-custom-charge"}>{languageParameter.bio}</p>
             </div>
         );
     }
