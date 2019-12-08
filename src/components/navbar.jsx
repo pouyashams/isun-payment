@@ -32,11 +32,13 @@ const Navbar = (props) => {
                                     value: "english",
                                     title: "English",
                                     selected: true
-                                }, {
-                                    value: "arabic",
-                                    title: "عربی",
-                                    selected: false
-                                }].map(
+                                },
+                                //     {
+                                //     value: "arabic",
+                                //     title: "عربی",
+                                //     selected: false
+                                // }
+                                ].map(
                                     (option) => {
                                         return (<option value={option.value}
                                                         selected={option.value === "persian"}>{option.title}</option>)

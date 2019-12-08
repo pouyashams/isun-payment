@@ -15,24 +15,54 @@ class internetPackage extends React.Component {
             typeOfSim: "etebari",
             time: "ONE_DAY",
             internetPackageCode: "",
+            style: "radius form-control"
         };
     };
-    componentDidMount() {
-        localStorage.removeItem('sumOfAmount');
-        localStorage.setItem('sumOfAmount', 0);
-        localStorage.removeItem('priceText');
-        localStorage.setItem('priceText', "0");
-        localStorage.removeItem('typeOfOreder');
-        localStorage.setItem('typeOfOreder', "INTERNET");
-        localStorage.removeItem('typeOfOrederText');
-        localStorage.setItem('typeOfOrederText', "بسته اینترنت");
-        localStorage.removeItem('mobileNumber');
-        localStorage.removeItem('nationalCode');
-        localStorage.removeItem('postalCode');
-    };
 
+    handelChangeNationalCode = (value, name) => {
+        this.setState({[name]: value, item: value});
+        let num = value;
+        let digits = num.toString().split('');
+        const list = digits.map(Number);
+        if (list.length === 10) {
+            let sum = 0;
+            for (let i = 0; i < list.length; i++) {
+                if (i !== 8) {
+                    let y = list[i] * (list.length - i);
+                    sum = y + sum
+                }
+            }
+            let remain = sum % 11;
+            if (remain < 2 && remain === list[9]) {
+                this.setState({
+                    style: "success text-success form-control",
+                });
+                this.props.handelChange(name, value);
+            }
+            else if (remain >= 2 && 11 - (remain) === list[9]) {
+                this.setState({
+                    style: "success text-success form-control",
+                });
+                this.props.handelChange(name, value);
+            }
+            else {
+                this.setState({
+                    style: "wrong text-danger form-control",
+                });
+            }
+        }
+        else {
+            this.setState({
+                style: "wrong text-danger form-control",
+            });
+        }
+    };
     handelChangeSelect = (value, name) => {
         this.setState({[name]: value});
+    };
+    handelChangeInput = (value, name) => {
+        this.setState({[name]: value, item: value});
+        this.props.handelChange(name, value);
     };
 
     // reciveInternetPack = async (value, name) => {
@@ -55,21 +85,24 @@ class internetPackage extends React.Component {
     // };
 
     render() {
+        const {languageParameter} = this.props;
         return (
             <div>
 
-                <div className="row justify-content-center py-2 text-left">
+                <div
+                    className={languageParameter.rtl ? "row justify-content-center py-2 text-left" : "row justify-content-center py-2 text-right"}>
 
                     <div className=" form-group checkbox-item">
-                        <label htmlFor="1">نوع سیمکارت</label>
+                        <label className={languageParameter.rtl ? "" : "font-custom-number"}
+                               htmlFor="1">{languageParameter.typeOfSim}</label>
                         <select className="form-control radius" id="1"
 
                                 onChange={((e) => this.handelChangeSelect(e.target.value, "typeOfSim"))}
                         >
 
-                            {[{value: "etebari", title: "اعتباری", selected: true}, {
+                            {[{value: "etebari", title: languageParameter.Credit, selected: true}, {
                                 value: "daemi",
-                                title: "داعمی",
+                                title: languageParameter.Permanent,
                                 selected: false
                             }].map(
                                 (option) => {
@@ -79,23 +112,18 @@ class internetPackage extends React.Component {
                         </select>
                     </div>
                     <div className=" form-group checkbox-item">
-                        <label htmlFor="2">مدت بسته</label>
+                        <label className={languageParameter.rtl ? "" : "font-custom-number"}
+                               htmlFor="2">{languageParameter.internetPeriod}</label>
                         <select className="form-control radius" id="2"
                                 onChange={((e) => this.reciveInternetPack(e.target.value, "time"))}
                         >
-                            {[{value: "ONE_DAY", title: "روزانه", selected: true}, {
-                                value: "ONE_WEAK",
-                                title: "هفتگی",
-                                selected: false
-                            }, {
-                                value: "ONE_MOUNTH"
-                                , title: "ماهانه", selected: false
-                            }, {value: "THREE_MOUNTH", title: "۳ ماهه", selected: false},
-                                {value: "SIX_MOUNTH", title: "۶ ماهه", selected: false}, {
-                                    value: "ONE_YEAR",
-                                    title: "سالانه",
-                                    selected: false
-                                }].map(
+                            {[
+                                {value: "ONE_DAY", title: languageParameter.Daily, selected: true},
+                                {value: "ONE_WEAK", title: languageParameter.Weekly, selected: false},
+                                {value: "ONE_MOUNTH", title: languageParameter.monthly, selected: false},
+                                {value: "THREE_MOUNTH", title: languageParameter.threeMonths, selected: false},
+                                {value: "SIX_MOUNTH", title: languageParameter.sixMonths, selected: false},
+                                {value: "ONE_YEAR", title: languageParameter.yearly, selected: false}].map(
                                 (option) => {
                                     return (<option value={option.value}
                                                     selected={option.value === this.state.time}>{option.title}</option>)
@@ -106,30 +134,58 @@ class internetPackage extends React.Component {
                         </select>
                     </div>
                     <div className=" form-group checkbox-item">
-                        <label htmlFor="sel1">انتخاب بسته</label>
+                        <label htmlFor="sel1"
+                               className={languageParameter.rtl ? "" : "font-custom-number"}>{languageParameter.chooseInternetPeriod}</label>
                         <select className="form-control radius" id="sel1">
                         </select>
                     </div>
 
                 </div>
-                <div className="row justify-content-center text-left ">
+                <div
+                    className={languageParameter.rtl ? "row justify-content-center text-left" : "row justify-content-center text-right"}>
+                    <div className=" mt-1 form-group checkbox-item">
+                        <label htmlFor="num1" className={languageParameter.rtl ? "" : "font-custom-number"}>
+                            {languageParameter.subscriberNumber}
+                        </label>
+                        <input
+                            type="number" className="radius form-control" id="num1"
+                            name={"subscriberNumber"}
+                            value={this.state.subscriberNumber}
+                            onChange={((e) => this.handelChangeInput(e.target.value, e.target.name))}
+                        />
+                    </div>
+                    <div className=" mt-1 form-group checkbox-item">
+                        <label htmlFor="num2"
+                               className={languageParameter.rtl ? "" : "font-custom-number "}>{languageParameter.mobileNumber}</label>
+                        <input type="number" className="radius form-control" id="num2"
+                               name={"mobileNumber"}
+                               value={this.state.mobileNumber}
+                               onChange={((e) => this.handelChangeInput(e.target.value, e.target.name))}
+                        />
 
-                    <div className=" form-group checkbox-item">
-                        <label htmlFor="num1"> شماره موبایل ذینفع</label>
-                        <input type="number" className="radius form-control" id="num1"/>
                     </div>
-                    <div className=" form-group checkbox-item">
-                        <label htmlFor="num2">شماره خریدار</label>
-                        <input type="number" className="radius form-control" id="num2"/>
+                    <div className="row margin-item ">
+                        <div className=" py-2 form-group mb-2 checkbox-item">
+                            <label htmlFor="num1"
+                                   className={languageParameter.rtl ? "" : "font-custom-number "}>{languageParameter.nationalCode}</label>
+                            <input type="number" className={this.state.style} id="num1"
+                                   name={"nationalCode"}
+                                   value={this.state.nationalCode}
+                                   onChange={((e) => this.handelChangeNationalCode(e.target.value, e.target.name))}
+                            />
+
+                        </div>
+                        <div className="py-2 form-group checkbox-item">
+                            <label htmlFor="num2"
+                                   className={languageParameter.rtl ? "" : "font-custom-number "}>{languageParameter.postalCode}</label>
+                            <input type="number" className="radius form-control" id="num2"
+                                   name={"postalCode"}
+                                   value={this.state.postalCode}
+                                   onChange={((e) => this.handelChangeInput(e.target.value, e.target.name))}
+                            />
+                        </div>
                     </div>
-                    <div className=" form-group checkbox-item">
-                        <label htmlFor="num1"> شماره ملی خریدار </label>
-                        <input type="number" className="radius form-control" id="num1"/>
-                    </div>
-                    <div className=" form-group checkbox-item">
-                        <label htmlFor="num2">کد پستی خریدار</label>
-                        <input type="number" className="radius form-control" id="num2"/>
-                    </div>
+
 
                 </div>
 

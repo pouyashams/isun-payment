@@ -224,9 +224,9 @@ class billPayment extends React.Component {
                     </div>
                     <div className=" form-group checkbox-item-info">
                         <label className={languageParameter.rtl ? "" : "font-custom-number"}
-                               htmlFor="num1">{languageParameter.paymentId}</label>
+                               htmlFor="num2">{languageParameter.paymentId}</label>
                         <input
-                            type="number" className={this.state.stylePaymentId} id="num1"
+                            type="number" className={this.state.stylePaymentId} id="num2"
                             name={"paymentId"}
                             value={this.state.paymentId}
                             onChange={((e) => this.handelChangeInput(e.target.value, e.target.name))}

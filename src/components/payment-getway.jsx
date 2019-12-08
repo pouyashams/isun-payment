@@ -134,13 +134,13 @@ class paymentGetway extends React.Component {
                 <div
                     className={languageParameter.rtl ? "row justify-content-center text-left" : "row justify-content-center text-right"}>
                     <div className=" form-group checkbox-item">
-                        <label htmlFor="num1">{languageParameter.typeOfRequest}</label>
+                        <label htmlFor="num1" className={languageParameter.rtl ? "" : "font-custom-number "}>{languageParameter.typeOfRequest}</label>
                         <input type="text" className="radius form-control" id="num1"
                                value={this.props.typeOfOrederText}
                         />
                     </div>
                     <div className=" form-group checkbox-item">
-                        <label htmlFor="num2">{languageParameter.price}</label>
+                        <label htmlFor="num2" className={languageParameter.rtl ? "" : "font-custom-number "}>{languageParameter.price}</label>
                         <input type="text" className="radius form-control" id="num2"
                                value={this.props.priceText}
                         />
@@ -148,7 +148,7 @@ class paymentGetway extends React.Component {
                 </div>
                 <div className="row justify-content-center pt-2 ">
                     <div className="form-group payment-item">
-                        <label htmlFor="1">{languageParameter.PaymentGateway}</label>
+                        <label htmlFor="1" className={languageParameter.rtl ? "" : "font-custom-number "}>{languageParameter.PaymentGateway}</label>
                         <div className="row justify-content-center payment-item">
                             {this.state.parsian ?
                                 <div

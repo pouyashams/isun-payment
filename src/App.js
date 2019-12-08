@@ -37,6 +37,14 @@ class App extends React.Component {
         languageParameter: {
             rtl: true,
             home: "خانه",
+            Credit: "اعتباری",
+            Permanent: "دائمی",
+            Daily: "روزانه",
+            Weekly: "هفتگی",
+            monthly: "ماهانه",
+            sixMonths: "6 ماه",
+            threeMonths: "3 ماهه",
+            yearly: "سالانه",
             services: "خدمات",
             aboutUs: "درباره ما",
             rules: "قوانین",
@@ -105,6 +113,14 @@ class App extends React.Component {
             const language = {
                 rtl: true,
                 home: "خانه",
+                Credit: "اعتباری",
+                Permanent: "دائمی",
+                Daily: "روزانه",
+                Weekly: "هفتگی",
+                monthly: "ماهانه",
+                sixMonths: "6 ماه",
+                threeMonths: "3 ماهه",
+                yearly: "سالانه",
                 services: "خدمات",
                 aboutUs: "درباره ما",
                 rules: "قوانین",
@@ -158,6 +174,14 @@ class App extends React.Component {
             const language = {
                 rtl: false,
                 home: "home",
+                Credit: "credit",
+                Permanent: "permanent",
+                Daily: "daily",
+                Weekly: "weekly",
+                monthly: "monthly",
+                sixMonths: "6 months",
+                threeMonths: "3 months",
+                yearly: "yearly",
                 services: "services",
                 aboutUs: "about us",
                 rules: "rules",
@@ -202,6 +226,7 @@ class App extends React.Component {
                 samantelNetPack:"samantel internet",
                 rightelNetPack:"rightel internet",
                 irancellNetPack:"irancell internet",
+                chooseInternetPeriod:"choose internet",
             };
             return language;
         }
