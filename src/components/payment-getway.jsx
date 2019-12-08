@@ -183,7 +183,7 @@ class paymentGetway extends React.Component {
                             className="btn border button-item btn-success">{languageParameter.pay}
                     </button>
                 </div>
-                <p className={languageParameter.rtl ? " py-3 text-danger font-weight-bold" : " py-3 text-danger font-weight-bold font-custom-charge"}>{languageParameter.bio}</p>
+                <p className={languageParameter.rtl ? " py-3 text-danger font-weight-bold" : " py-3 text-danger font-weight-bold font-custom-charge-bank"}>{languageParameter.bio}</p>
             </div>
         );
     }
