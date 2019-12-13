@@ -11,17 +11,16 @@ const Navbar = (props) => {
                 </button>
                 <div className="collapse navbar-collapse" id="nav-content">
                     <ul className="navbar-nav">
+
                         <li className="nav-item">
-                            <a className="nav-link text-light" href="#">{props.languageParameter.home}</a>
+                            <a className="nav-link text-light" href="/home">{props.languageParameter.home}</a>
+                        </li>
+
+                        <li className="nav-item">
+                            <a className="nav-link text-light" href="/rule">{props.languageParameter.rules}</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link text-light" href="#">{props.languageParameter.services}</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link text-light" href="#">{props.languageParameter.rules}</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link text-light" href="#">{props.languageParameter.aboutUs}</a>
+                            <a className="nav-link text-light" href="/contact-us">{props.languageParameter.aboutUs}</a>
                         </li>
                         <li className="nav-item">
 

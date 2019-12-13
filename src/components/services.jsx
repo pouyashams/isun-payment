@@ -345,6 +345,7 @@ class Services extends React.Component {
                                     />
                                     : this.state.operatorsCharge === true ?
                                         <Operators
+                                            handelChange={this.props.handelChange}
                                             languageParameter={this.props.languageParameter}
                                         />
                                         : this.state.bill === true ?
