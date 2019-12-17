@@ -70,8 +70,8 @@ class paymentGetway extends React.Component {
         let accesstoken = await login(loginList.username, loginList.password, loginList.clientId, loginList.clientSecret);
         try {
             const result = await axios.post(`http://shop.isuncharge.com/isunshop/register/charge-order?access_token=` + accesstoken, data);
-            console.log(result);
             if (result.status === 200) {
+
                 window.location = result.data.data.url;
             }
         }
@@ -82,18 +82,33 @@ class paymentGetway extends React.Component {
     };
 
     buyInternet = async () => {
-        const data = {};
+        const data = {
+            "operatorCode": this.props.operatorCode,
+            "internetPackageCode": this.props.pack,
+            "mobileNumber": this.props.mobileNumber,
+            "subscriberNumber": this.props.subscriberNumber,
+            "paymentGatewayProviderCode": this.state.paymentType,
+            "terminalTypeCode": "INTERNET",
+            "nationalCode": this.props.nationalCode,
+            "postalCode": this.props.postalCode,
+            "orderRequesterInfo": {
+                "callBackURL": "http://shop.isuncharge.com",
+                "traceCode": ""
+            }
+        };
         const loginList = this.props.loginList;
         let accesstoken = await login(loginList.username, loginList.password, loginList.clientId, loginList.clientSecret);
         try {
-            const result = axios.post(`http://shop.isuncharge.com/isunshop/register/internet-package-order?access_token=` + accesstoken, data);
+            const result = await axios.post(`http://shop.isuncharge.com/isunshop/register/internet-package-order?access_token=` + accesstoken, data);
             if (result.status === 200) {
+                window.location = result.data.data.url;
             }
         }
         catch (ex) {
             if (ex.response && ex.response.status === 400) {
             }
         }
+        console.log(12345)
     };
 
     payBill = async () => {
@@ -112,13 +127,11 @@ class paymentGetway extends React.Component {
                 "traceCode": ""
             }
         };
-        console.log(data)
 
         const loginList = this.props.loginList;
         let accesstoken = await login(loginList.username, loginList.password, loginList.clientId, loginList.clientSecret);
         try {
             const result = await axios.post(`http://shop.isuncharge.com/isunshop/register/bill-order?access_token=` + accesstoken, data);
-            console.log(result);
             if (result.status === 200) {
                 window.location = result.data.data.url;
             }

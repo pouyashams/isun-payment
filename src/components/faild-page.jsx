@@ -47,7 +47,7 @@ class faildPage extends React.Component {
                 <div className=" py-5 services text-center">
                     <div className="row justify-content-center">
                         <div className="item-first">
-                            <div className=" ml-20 shadow border radius-first">
+                            <div className=" ml-20 shadow border radius-first-item">
                                 <h3 className=" col-12 py-3 services-title-danger">پایان عملیات</h3>
                                 <div className="row py-4 mb-1 actionType ">
                                     <div className="  image-style actionTypeItem ">

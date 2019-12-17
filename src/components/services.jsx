@@ -4,6 +4,8 @@ import Operators from "./other-operators-item"
 import Internet from "./internet-package"
 import Bill from "./bill-payment"
 import Payment from "./payment-getway"
+import axios from "axios/index";
+import {login} from "../services/loginService";
 
 class Services extends React.Component {
 
@@ -105,7 +107,7 @@ class Services extends React.Component {
         this.props.handelChange('mobileNumber', "");
     }
 
-    showNetPack(e) {
+    async showNetPack(e) {
         this.handleClick(e);
         this.setState({
             irancellCharge: false,
@@ -122,9 +124,28 @@ class Services extends React.Component {
         this.props.handelChange('subscriberNumber', "");
         this.props.handelChange('nationalCode', "");
         this.props.handelChange('mobileNumber', "");
+
+        this.props.handelChange('typeOfSim', "");
+        this.props.handelChange('packTime', "");
+        this.props.handelChange('pack', "");
+        const data = {
+            "operatorCode": "IRANCELL"
+        };
+        const loginList = this.props.loginList;
+        let accesstoken = await login(loginList.username, loginList.password, loginList.clientId, loginList.clientSecret);
+        try {
+            const result = await axios.post(`http://shop.isuncharge.com/isunshop/fetch/all-internet-package?access_token=` + accesstoken, data);
+            if (result.status === 200) {
+                this.props.handelChange('netPack', result.data.data);
+            }
+        }
+        catch (ex) {
+            if (ex.response && ex.response.status === 400) {
+            }
+        }
     };
 
-    showInternetPack(e, operatorCode) {
+    async showInternetPack(e, operatorCode) {
         this.handleClickImage(e);
         this.setState({
             irancellCharge: false,
@@ -132,8 +153,6 @@ class Services extends React.Component {
             bill: false,
             internetPack: true
         });
-
-
 
 
         this.props.handelChange("operatorCode", operatorCode)
@@ -153,6 +172,25 @@ class Services extends React.Component {
         this.props.handelChange('subscriberNumber', "");
         this.props.handelChange('nationalCode', "");
         this.props.handelChange('mobileNumber', "");
+        this.props.handelChange('typeOfSim', "");
+        this.props.handelChange('packTime', "");
+        this.props.handelChange('pack', "");
+
+        const data = {
+            "operatorCode": operatorCode
+        };
+        const loginList = this.props.loginList;
+        let accesstoken = await login(loginList.username, loginList.password, loginList.clientId, loginList.clientSecret);
+        try {
+            const result = await axios.post(`http://shop.isuncharge.com/isunshop/fetch/all-internet-package?access_token=` + accesstoken, data);
+            if (result.status === 200) {
+                this.props.handelChange('netPack', result.data.data);
+            }
+        }
+        catch (ex) {
+            if (ex.response && ex.response.status === 400) {
+            }
+        }
     };
 
     showPaymentBill(e) {
@@ -356,6 +394,12 @@ class Services extends React.Component {
                                             : this.state.internetPack ?
                                                 <Internet
                                                     languageParameter={this.props.languageParameter}
+                                                    operatorCode={this.props.operatorCode}
+                                                    netPack={this.props.netPack}
+                                                    packTime={this.props.packTime}
+                                                    pack={this.props.pack}
+                                                    typeOfSim={this.props.typeOfSim}
+                                                    handelChange={this.props.handelChange}
                                                 />
                                                 : null}
                             </div>
@@ -378,6 +422,7 @@ class Services extends React.Component {
                                     languageParameter={this.props.languageParameter}
                                     paymentId={this.props.paymentId}
                                     billId={this.props.billId}
+                                    pack={this.props.pack}
                                 />
                             </div>
                         </div>

@@ -41,7 +41,10 @@ class App extends React.Component {
             languageParameter: language,
             paymentId: "",
             billId: "",
-
+            netPack: "",
+            packTime: "",
+            pack: "",
+            typeOfSim: "",
         };
     };
 
@@ -53,10 +56,6 @@ class App extends React.Component {
     handelChangeLanguage = (name, value) => {
         const language = this.setLanguage(value);
         this.setState({[name]: value, languageParameter: language});
-    };
-
-    handelChangeLogo = (event, isOutEvent) => {
-        console.log(isOutEvent);
     };
 
     setLanguage = (language) => {
@@ -117,7 +116,8 @@ class App extends React.Component {
                 rightelNetPack: "بسته رایتل",
                 irancellNetPack: "بسته ایرانسل",
                 ruleTitle: "قوانین استفاده از خدمات فروشگاه",
-                contactTitle: "ارتباط با ما",
+                contactTitle: "تماس با ما",
+                choose: "انتخاب کنید",
                 ruleItems: [
                     "تمامی حقوق مادی و معنوی این وبسایت متعلق به شرکت خدمات همراه آیسان می باشد.",
                     "سرویس های ارائه شده در این وبسایت با مجوز از تمامی از ارگان‌ها و سازمان‌های نظارتی ارائه شده است.",
@@ -200,6 +200,7 @@ class App extends React.Component {
                     "", "", "",
                 ],
                 contactTitle: "contact us",
+                choose: "choose",
                 ruleTitle: "terms and conditions",
                 contactItems: "",
 
@@ -227,7 +228,6 @@ class App extends React.Component {
                         handelChange={this.handelChange}
                         handelChangeLanguage={this.handelChangeLanguage}
                         languageParameter={this.state.languageParameter}
-                        handleChangeLogo={this.handelChangeLogo}
                         colorInfo={{
                             bgColor: this.state.isTop ? 'dark' : 'dark',
                             color: this.state.isTop ? 'dark' : 'dark'
@@ -269,6 +269,10 @@ class App extends React.Component {
                                     languageParameter={this.state.languageParameter}
                                     paymentId={this.state.paymentId}
                                     billId={this.state.billId}
+                                    netPack={this.state.netPack}
+                                    packTime={this.state.packTime}
+                                    pack={this.state.pack}
+                                    typeOfSim={this.state.typeOfSim}
                                 />
                             )}/>
                             <Route path="/" render={() => (
@@ -288,9 +292,12 @@ class App extends React.Component {
                                     languageParameter={this.state.languageParameter}
                                     paymentId={this.state.paymentId}
                                     billId={this.state.billId}
+                                    netPack={this.state.netPack}
+                                    packTime={this.state.packTime}
+                                    pack={this.state.pack}
+                                    typeOfSim={this.state.typeOfSim}
                                 />
                             )}/>
-                            {/*<Route path="/rule" component={Rule}/>*/}
                             <Redirect to="/not-found"/>
                         </Switch>
                     </BrowserRouter>

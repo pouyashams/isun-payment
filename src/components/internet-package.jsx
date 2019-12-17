@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from "axios";
+import {login} from "../services/loginService";
 
 class internetPackage extends React.Component {
 
@@ -13,9 +15,9 @@ class internetPackage extends React.Component {
 
             item: "",
             typeOfSim: "etebari",
-            time: "ONE_DAY",
             internetPackageCode: "",
-            style: "radius form-control"
+            style: "radius form-control",
+            packData: []
         };
     };
 
@@ -57,54 +59,302 @@ class internetPackage extends React.Component {
             });
         }
     };
-    handelChangeSelect = (value, name) => {
-        this.setState({[name]: value});
+    handelChangeSelect = (value) => {
+
+        this.props.handelChange("typeOfSim", value);
     };
     handelChangeInput = (value, name) => {
         this.setState({[name]: value, item: value});
         this.props.handelChange(name, value);
     };
+    makeInternetPack = (value) => {
+        const {typeOfSim, netPack, languageParameter} = this.props;
 
-    // reciveInternetPack = async (value, name) => {
-    //     this.setState({[name]: value});
-    //
-    //     if (localStorage.getItem("type") === "internet") {
-    //         console.log(localStorage.getItem("operatorCode"), 12345)
-    //         try {
-    //             const result = await http.post("", localStorage.getItem("operatorCode"));
-    //             if (result.status === 200) {
-    //                 toast.success(' با موفقیت انجام شد.');
-    //             }
-    //         } catch (ex) {
-    //             if (ex.response && ex.response.status === 400) {
-    //                 toast.error('خطایی در دریافت اطلاعات رخ داده است.');
-    //             }
-    //         }
-    //         document.getElementById("loading").style.display = "none";
-    //     }
-    // };
+        if (typeOfSim === "daemi") {
+            if (value === "ONE_DAY") {
+                this.props.handelChange('packTime', value);
+
+                netPack.postPaidInternetPackageList.forEach((net) => {
+                    if (net.code === "DAILY_INTERNET_PACKAGE_PERIOD") {
+                        const packData = [{
+                            value: "",
+                            title: languageParameter.choose,
+                        }];
+                        net.internetPackageList.forEach((pack) => {
+                            packData.push({
+                                value: pack.code,
+                                title: pack.title,
+                                price: pack.price,
+                            })
+                        });
+                        this.setState({packData});
+                    }
+                });
+
+            }
+            else if (value === "ONE_WEAK") {
+                this.props.handelChange('packTime', value);
+                netPack.postPaidInternetPackageList.forEach((net) => {
+                    if (net.code === "WEEKLY_INTERNET_PACKAGE_PERIOD") {
+                        const packData = [{
+                            value: "",
+                            title: languageParameter.choose
+                        }];
+                        net.internetPackageList.forEach((pack) => {
+                            packData.push({
+                                value: pack.code,
+                                title: pack.title,
+                                price: pack.price,
+                            })
+                        });
+                        this.setState({packData});
+                    }
+                });
+
+            }
+            else if (value === "ONE_MOUNTH") {
+                this.props.handelChange('packTime', value);
+                netPack.postPaidInternetPackageList.forEach((net) => {
+                    if (net.code === "MONTHLY_INTERNET_PACKAGE_PERIOD") {
+                        const packData = [{
+                            value: "",
+                            title: languageParameter.choose
+                        }];
+                        net.internetPackageList.forEach((pack) => {
+                            packData.push({
+                                value: pack.code,
+                                title: pack.title,
+                                price: pack.price,
+
+                            })
+                        });
+                        this.setState({packData});
+                    }
+                });
+
+            }
+            else if (value === "THREE_MOUNTH") {
+                this.props.handelChange('packTime', value);
+                netPack.postPaidInternetPackageList.forEach((net) => {
+                    if (net.code === "THREE_MONTHLY_INTERNET_PACKAGE_PERIOD") {
+                        const packData = [{
+                            value: "",
+                            title: languageParameter.choose
+                        }];
+                        net.internetPackageList.forEach((pack) => {
+                            packData.push({
+                                value: pack.code,
+                                title: pack.title,
+                                price: pack.price,
+
+                            })
+                        });
+                        this.setState({packData});
+                    }
+                });
+
+            }
+            else if (value === "SIX_MOUNTH") {
+                this.props.handelChange('packTime', value);
+                netPack.postPaidInternetPackageList.forEach((net) => {
+                    if (net.code === "SIX_MONTHLY_INTERNET_PACKAGE_PERIOD") {
+                        const packData = [{
+                            value: "",
+                            title: languageParameter.choose
+                        }];
+                        net.internetPackageList.forEach((pack) => {
+                            packData.push({
+                                value: pack.code,
+                                title: pack.title,
+                                price: pack.price,
+                            })
+                        });
+                        this.setState({packData});
+                    }
+                });
+
+            }
+            else if (value === "ONE_YEAR") {
+                this.props.handelChange('packTime', value);
+                netPack.postPaidInternetPackageList.forEach((net) => {
+                    if (net.code === "YEARLY_INTERNET_PACKAGE_PERIOD") {
+                        const packData = [{
+                            value: "",
+                            title: languageParameter.choose
+                        }];
+                        net.internetPackageList.forEach((pack) => {
+                            packData.push({
+                                value: pack.code,
+                                title: pack.title,
+                                price: pack.price,
+
+                            })
+                        });
+                        this.setState({packData});
+                    }
+                });
+
+            }
+        } else {
+            {
+                if (value === "ONE_DAY") {
+                    this.props.handelChange('packTime', value);
+
+                    netPack.prePaidInternetPackageList.forEach((net) => {
+                        if (net.code === "DAILY_INTERNET_PACKAGE_PERIOD") {
+                            const packData = [{
+                                value: "",
+                                title: languageParameter.choose,
+                            }];
+                            net.internetPackageList.forEach((pack) => {
+                                packData.push({
+                                    value: pack.code,
+                                    title: pack.title,
+                                    price: pack.price,
+                                })
+                            });
+                            this.setState({packData});
+                        }
+                    });
+
+                }
+                else if (value === "ONE_WEAK") {
+                    this.props.handelChange('packTime', value);
+                    netPack.prePaidInternetPackageList.forEach((net) => {
+                        if (net.code === "WEEKLY_INTERNET_PACKAGE_PERIOD") {
+                            const packData = [{
+                                value: "",
+                                title: languageParameter.choose
+                            }];
+                            net.internetPackageList.forEach((pack) => {
+                                packData.push({
+                                    value: pack.code,
+                                    title: pack.title,
+                                    price: pack.price,
+                                })
+                            });
+                            this.setState({packData});
+                        }
+                    });
+
+                }
+                else if (value === "ONE_MOUNTH") {
+                    this.props.handelChange('packTime', value);
+                    netPack.prePaidInternetPackageList.forEach((net) => {
+                        if (net.code === "MONTHLY_INTERNET_PACKAGE_PERIOD") {
+                            const packData = [{
+                                value: "",
+                                title: languageParameter.choose
+                            }];
+                            net.internetPackageList.forEach((pack) => {
+                                packData.push({
+                                    value: pack.code,
+                                    title: pack.title,
+                                    price: pack.price,
+
+                                })
+                            });
+                            this.setState({packData});
+                        }
+                    });
+
+                }
+                else if (value === "THREE_MOUNTH") {
+                    this.props.handelChange('packTime', value);
+                    netPack.prePaidInternetPackageList.forEach((net) => {
+                        if (net.code === "THREE_MONTHLY_INTERNET_PACKAGE_PERIOD") {
+                            const packData = [{
+                                value: "",
+                                title: languageParameter.choose
+                            }];
+                            net.internetPackageList.forEach((pack) => {
+                                packData.push({
+                                    value: pack.code,
+                                    title: pack.title,
+                                    price: pack.price,
+
+                                })
+                            });
+                            this.setState({packData});
+                        }
+                    });
+
+                }
+                else if (value === "SIX_MOUNTH") {
+                    this.props.handelChange('packTime', value);
+                    netPack.prePaidInternetPackageList.forEach((net) => {
+                        if (net.code === "SIX_MONTHLY_INTERNET_PACKAGE_PERIOD") {
+                            const packData = [{
+                                value: "",
+                                title: languageParameter.choose
+                            }];
+                            net.internetPackageList.forEach((pack) => {
+                                packData.push({
+                                    value: pack.code,
+                                    title: pack.title,
+                                    price: pack.price,
+                                })
+                            });
+                            this.setState({packData});
+                        }
+                    });
+
+                }
+                else if (value === "ONE_YEAR") {
+                    this.props.handelChange('packTime', value);
+                    netPack.prePaidInternetPackageList.forEach((net) => {
+                        if (net.code === "YEARLY_INTERNET_PACKAGE_PERIOD") {
+                            const packData = [{
+                                value: "",
+                                title: languageParameter.choose
+                            }];
+                            net.internetPackageList.forEach((pack) => {
+                                packData.push({
+                                    value: pack.code,
+                                    title: pack.title,
+                                    price: pack.price,
+
+                                })
+                            });
+                            this.setState({packData});
+                        }
+                    });
+
+                }
+            }
+        }
+
+    };
+    chooseInternetPack = (value) => {
+        this.props.handelChange("pack", value);
+        this.state.packData.forEach((pack) => {
+            if (pack.value === value) {
+                const price = pack.price.toString()
+                this.props.handelChange("sumOfAmount", price);
+                this.props.handelChange("priceText", price.substr(0, price.length - 1));
+            }
+        });
+    };
 
     render() {
         const {languageParameter} = this.props;
         return (
             <div>
-
                 <div
                     className={languageParameter.rtl ? "row justify-content-center py-2 text-left" : "row justify-content-center py-2 text-right"}>
-
                     <div className=" form-group checkbox-item">
                         <label className={languageParameter.rtl ? "" : "font-custom-number"}
                                htmlFor="1">{languageParameter.typeOfSim}</label>
                         <select className="form-control radius" id="1"
-
-                                onChange={((e) => this.handelChangeSelect(e.target.value, "typeOfSim"))}
+                                onChange={((e) => this.handelChangeSelect(e.target.value))}
+                                value={this.props.typeOfSim}
                         >
-
-                            {[{value: "etebari", title: languageParameter.Credit, selected: true}, {
-                                value: "daemi",
-                                title: languageParameter.Permanent,
-                                selected: false
-                            }].map(
+                            {[{value: "", title: languageParameter.choose, selected: true},
+                                {value: "etebari", title: languageParameter.Credit, selected: false}, {
+                                    value: "daemi",
+                                    title: languageParameter.Permanent,
+                                    selected: false
+                                }].map(
                                 (option) => {
                                     return (<option value={option.value}
                                                     selected={option.value === this.state.typeOfSim}>{option.title}</option>)
@@ -115,10 +365,12 @@ class internetPackage extends React.Component {
                         <label className={languageParameter.rtl ? "" : "font-custom-number"}
                                htmlFor="2">{languageParameter.internetPeriod}</label>
                         <select className="form-control radius" id="2"
-                                onChange={((e) => this.reciveInternetPack(e.target.value, "time"))}
+                                onChange={((e) => this.makeInternetPack(e.target.value))}
+                                value={this.props.packTime}
                         >
                             {[
-                                {value: "ONE_DAY", title: languageParameter.Daily, selected: true},
+                                {value: "", title: languageParameter.choose, selected: true},
+                                {value: "ONE_DAY", title: languageParameter.Daily, selected: false},
                                 {value: "ONE_WEAK", title: languageParameter.Weekly, selected: false},
                                 {value: "ONE_MOUNTH", title: languageParameter.monthly, selected: false},
                                 {value: "THREE_MOUNTH", title: languageParameter.threeMonths, selected: false},
@@ -130,13 +382,23 @@ class internetPackage extends React.Component {
                                 }
                             )
                             }
-
                         </select>
                     </div>
+
                     <div className=" form-group checkbox-item">
                         <label htmlFor="sel1"
                                className={languageParameter.rtl ? "" : "font-custom-number"}>{languageParameter.chooseInternetPeriod}</label>
-                        <select className="form-control radius" id="sel1">
+                        <select className="form-control radius" id="sel1"
+                                value={this.props.pack}
+                                onChange={((e) => this.chooseInternetPack(e.target.value))}
+                        >
+                            {this.state.packData.map(
+                                (option) => {
+                                    return (<option value={option.value}
+                                                    selected={option.value === this.state.time}>{option.title}</option>)
+                                }
+                            )
+                            }
                         </select>
                     </div>
 
