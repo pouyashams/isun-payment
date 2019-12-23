@@ -20,7 +20,10 @@ class IrancellItem extends React.Component {
             panjaHezar: false,
             sadHezar: false,
 
-            style: "radius form-control"
+            style: "radius form-control",
+            styleNum: "radius form-control",
+            styleSub: "radius form-control",
+            stylepst: "radius form-control",
         };
     }
 
@@ -113,9 +116,51 @@ class IrancellItem extends React.Component {
         }
     };
 
+    handelChangeInputNumber = (value, name) => {
+        let digits = value.toString().split('');
+        if (digits.length === 11) {
+            this.setState({
+                [name]: value, item: value,
+                styleNum: "success text-success form-control",
+            });
+            this.props.handelChange(name, value);
+        } else {
+            this.setState({
+                [name]: value, item: value,
+                styleNum: "wrong text-danger form-control",
+            });
+        }
+    };
     handelChangeInput = (value, name) => {
-        this.setState({[name]: value, item: value});
-        this.props.handelChange(name, value);
+        let digits = value.toString().split('');
+        if (digits.length === 11) {
+            this.setState({
+                [name]: value, item: value,
+                styleSub: "success text-success form-control",
+            });
+            this.props.handelChange(name, value);
+        } else {
+            this.setState({
+                [name]: value, item: value,
+                styleSub: "wrong text-danger form-control",
+            });
+        }
+    };
+    handelChangeInputPostal = (value, name) => {
+        let digits = value.toString().split('');
+        if (digits.length === 10) {
+
+            this.setState({
+                [name]: value, item: value,
+                stylepst: "success text-success form-control",
+            });
+            this.props.handelChange(name, value);
+        } else {
+            this.setState({
+                [name]: value, item: value,
+                stylepst: "wrong text-danger form-control",
+            });
+        }
     };
 
     handelChangeNationalCode = (value, name) => {
@@ -224,7 +269,7 @@ class IrancellItem extends React.Component {
                             {languageParameter.subscriberNumber}
                         </label>
                         <input
-                            type="number" className="radius form-control" id="num1"
+                            type="number" className={this.state.styleSub} id="num1"
                             name={"subscriberNumber"}
                             value={this.state.subscriberNumber}
                             onChange={((e) => this.handelChangeInput(e.target.value, e.target.name))}
@@ -233,10 +278,10 @@ class IrancellItem extends React.Component {
                     <div className=" mt-1 form-group checkbox-item">
                         <label htmlFor="num2"
                                className={languageParameter.rtl ? "" : "font-custom-number "}>{languageParameter.mobileNumber}</label>
-                        <input type="number" className="radius form-control" id="num2"
+                        <input type="number" className={this.state.styleNum} id="num2"
                                name={"mobileNumber"}
                                value={this.state.mobileNumber}
-                               onChange={((e) => this.handelChangeInput(e.target.value, e.target.name))}
+                               onChange={((e) => this.handelChangeInputNumber(e.target.value, e.target.name))}
                         />
 
                     </div>
@@ -254,10 +299,10 @@ class IrancellItem extends React.Component {
                         <div className="form-group checkbox-item">
                             <label htmlFor="num2"
                                    className={languageParameter.rtl ? "" : "font-custom-number "}>{languageParameter.postalCode}</label>
-                            <input type="number" className="radius form-control" id="num2"
+                            <input type="number" className={this.state.stylepst} id="num2"
                                    name={"postalCode"}
                                    value={this.state.postalCode}
-                                   onChange={((e) => this.handelChangeInput(e.target.value, e.target.name))}
+                                   onChange={((e) => this.handelChangeInputPostal(e.target.value, e.target.name))}
                             />
                         </div>
                     </div>
