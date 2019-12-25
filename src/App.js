@@ -13,7 +13,8 @@ class App extends React.Component {
 
     constructor(props) {
         super(props);
-        const language = this.setLanguage("persian");
+
+
         this.state = {
             isTop: true,
 
@@ -38,7 +39,7 @@ class App extends React.Component {
 
             isAmazing: "",
             language: "persian",
-            languageParameter: language,
+            languageParameter: "",
             paymentId: "",
             billId: "",
             netPack: "",
@@ -54,11 +55,13 @@ class App extends React.Component {
     };
 
     handelChangeLanguage = (name, value) => {
-        const language = this.setLanguage(value);
-        this.setState({[name]: value, languageParameter: language});
+        sessionStorage.setItem('language', value);
+        const language = this.setLanguage();
+        this.setState({languageParameter: language});
     };
 
-    setLanguage = (language) => {
+    setLanguage = () => {
+        const language = sessionStorage.getItem('language');
         if (language === "persian") {
             const language = {
                 rtl: true,
@@ -219,6 +222,12 @@ class App extends React.Component {
     };
 
     componentDidMount() {
+        if (sessionStorage.getItem('language') === null || sessionStorage.getItem('language') === "" || sessionStorage.getItem('language') === undefined) {
+            sessionStorage.setItem('language', 'persian');
+            const language = this.setLanguage();
+            this.setState({languageParameter: language});
+        }
+
         document.addEventListener('scroll', () => {
             const isTop = window.scrollY < 100;
             if (isTop !== this.state.isTop) {
