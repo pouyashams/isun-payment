@@ -188,7 +188,7 @@ class successPage extends React.Component {
 
                                 </div>
                                 <div className="pb-4 pt-2 justify-content-center ">
-                                    <button onClick={""} type="button" className="btn border button-item btn-danger">
+                                    <button onClick={this.sendInformationToCallBackURL} type="button" className="btn border button-item btn-danger">
                                         <span> انتقال به سایت پذیرنده</span>
                                         <br/>
                                         <span id="timerSpan">{this.state.currentCount}</span>

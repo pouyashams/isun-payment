@@ -8,7 +8,7 @@ import './App.css';
 import {Switch, Redirect, Route, withRouter, BrowserRouter} from 'react-router-dom';
 import SuccessPayment from './components/success-page';
 import ErrorPayment from './components/error-page';
-
+// import Modal from 'react-modal';
 
 
 class App extends React.Component {
@@ -224,6 +224,14 @@ class App extends React.Component {
         }
     };
 
+    // afterOpenModal() {
+    //     this.subtitle.style.color = '#f00';
+    // }
+    //
+    // closeModal() {
+    //     this.setState({modalIsOpen: false});
+    // }
+
     componentDidMount() {
         if (sessionStorage.getItem('language') === null || sessionStorage.getItem('language') === "" || sessionStorage.getItem('language') === undefined) {
             sessionStorage.setItem('language', 'persian');
@@ -245,9 +253,41 @@ class App extends React.Component {
 
 
     render() {
+        // const customStyles = {
+        //     content: {
+        //         top: '50%',
+        //         left: '50%',
+        //         right: 'auto',
+        //         bottom: 'auto',
+        //         marginRight: '-50%',
+        //         transform: 'translate(-50%, -50%)',
+        //         minWidth: "450px",
+        //         height:"450px",
+        //         borderRadius: "15px 15px 15px 15px",
+        //         overflow:"hidden"
+        //     }
+        // };
         return (
             <React.Fragment>
                 <div className="container-fluid rtl pr-0 pl-0">
+                    {/*<Modal*/}
+                           {/*isOpen={true}*/}
+                        {/*// onAfterOpen={this.afterOpenModal}*/}
+                        {/*// onRequestClose={this.closeModal}*/}
+                           {/*style={customStyles}*/}
+                           {/*contentLabel="Example Modal"*/}
+                    {/*>*/}
+                        {/*<h3 className="text-center pb-3" ref={subtitle => this.subtitle = subtitle}>تخفیف ویژه</h3>*/}
+                        {/*<img className=" modal-image img-fluid "*/}
+                             {/*src={require('./img/rightel.png')} alt=""/>*/}
+                        {/*<div className="row pt-3 justify-content-center">*/}
+                            {/*<div className="py-3 px-2 justify-content-center ">*/}
+                                {/*<button onClick={this.sendData} type="button"*/}
+                                        {/*className="btn border button-item btn-danger">بستن*/}
+                                {/*</button>*/}
+                            {/*</div>*/}
+                        {/*</div>*/}
+                    {/*</Modal>*/}
                     <Navbar
                         handelChange={this.handelChange}
                         handelChangeLanguage={this.handelChangeLanguage}
