@@ -66,11 +66,11 @@ class successPage extends React.Component {
         let params = queryString.parse(this.props.location.search);
         let url = params["callBackURL"];
         if (url.includes("http")) {
-            let form = document.createElement("form");
-            let hiddenField;
+            var form = document.createElement("form");
+            var hiddenField;
             hiddenField = document.createElement("input");
             hiddenField.setAttribute("name", "success");
-            hiddenField.setAttribute("value", 'true');
+            hiddenField.setAttribute("value", 'false');
             form.appendChild(hiddenField);
             if (this.hasValue(params["orderIdentifier"])) {
                 hiddenField = document.createElement("input");
@@ -79,10 +79,17 @@ class successPage extends React.Component {
                 form.appendChild(hiddenField);
             }
 
-            if (this.hasValue(params["referenceNumber"])) {
+            if (this.hasValue(params["errorCode"])) {
                 hiddenField = document.createElement("input");
-                hiddenField.setAttribute("name", "referenceNumber");
-                hiddenField.setAttribute("value", params["referenceNumber"]);
+                hiddenField.setAttribute("name", "token");
+                hiddenField.setAttribute("value", params["errorCode"]);
+                form.appendChild(hiddenField);
+            }
+
+            if (this.hasValue(params["errorDescription"])) {
+                hiddenField = document.createElement("input");
+                hiddenField.setAttribute("name", "errorDescription");
+                hiddenField.setAttribute("value", params["errorDescription"]);
                 form.appendChild(hiddenField);
             }
 
@@ -92,7 +99,7 @@ class successPage extends React.Component {
                 hiddenField.setAttribute("value", params["requesterTraceCode"]);
                 form.appendChild(hiddenField);
             }
-
+            window.location.href = url;
             form.setAttribute("method", "POST");
             form.setAttribute("action", url);
             form.setAttribute("target", "_self");
@@ -101,21 +108,25 @@ class successPage extends React.Component {
             document.body.removeChild(form);
         } else {
             if (this.hasValue(params["requesterDevicePlatformCode"]) && params["requesterDevicePlatformCode"] === 'ANDROID') {
-                let indexOfSuccess = url.indexOf("success");
+                var indexOfSuccess = url.indexOf("success");
                 if (indexOfSuccess > 0) {
-                    let endOfSuccessParam = indexOfSuccess + url.substring(indexOfSuccess).indexOf(";");
-                    url = url.replace(url.substring(indexOfSuccess, endOfSuccessParam), "success=" + true);
+                    var endOfSuccessParam = indexOfSuccess + url.substring(indexOfSuccess).indexOf(";");
+                    url = url.replace(url.substring(indexOfSuccess, endOfSuccessParam), "success=" + false);
                 } else {
-                    url = this.addParameter(url, "success", true);
+                    url = this.addParameter(url, "success", false);
                 }
             } else {
-                url += 'success?token=' + params["orderIdentifier"];
-                if (this.hasValue(params["requesterTraceCode"])) {
-                    url += '&traceCode=' + params["requesterTraceCode"];
+                url += 'unsuccessful?token=' + params["orderIdentifier"];
+                if (this.hasValue(params["errorCode"])) {
+                    url += '&errorCode=' + params["errorCode"];
                 }
 
-                if (this.hasValue(params["referenceNumber"])) {
-                    url += '&referenceNumber=' + params["referenceNumber"];
+                if (this.hasValue(params["errorDescription"])) {
+                    url += '&errorDescription=' + params["errorDescription"];
+                }
+
+                if (this.hasValue(params["traceCode"])) {
+                    url += '&traceCode=' + params["traceCode"];
                 }
             }
             url = url.replace(/ /g,"_");
@@ -152,7 +163,7 @@ class successPage extends React.Component {
                                              src={require('./../img/success.jpg')} alt=""/>
                                     </div>
                                     <div className=" image-style text-right">
-                                        <label>عملیات با موفقیت انجام شد.</label>
+                                        <label>خطا در عملیات</label>
                                     </div>
 
                                 </div>
@@ -172,12 +183,9 @@ class successPage extends React.Component {
 
                                     <div className="row pt-2 image-style  ">
                                         <div className="col-3 text-left">
-                                            <label>شماره پیگیری :</label>
+                                            <label>مشتری گرامی، با پوزش از شما، سفارش شما با موفقیت به پایان نرسیده است. در صورت کسر از حساب تا 72 ساعت
+                                                آینده مبلغ به حساب شما بازگشت داده خواهد شد.</label>
                                         </div>
-                                        <div className="col-3 text-right">
-                                            <label>{params["referenceNumber"]}</label>
-                                        </div>
-
                                     </div>
 
                                 </div>

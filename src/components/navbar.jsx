@@ -27,10 +27,9 @@ const Navbar = (props) => {
                             <select className="form-control bg-dark text-light border-0 selected-size change-language" id=""
                                     onChange={((e) => props.handelChangeLanguage("language", e.target.value))}
                             >
-                                {[{value: "persian", title: "فارسی", selected: true}, {
+                                {[{value: "persian", title: "فارسی"}, {
                                     value: "english",
                                     title: "English",
-                                    selected: true
                                 },
                                 //     {
                                 //     value: "arabic",
@@ -40,7 +39,7 @@ const Navbar = (props) => {
                                 ].map(
                                     (option) => {
                                         return (<option value={option.value}
-                                                        selected={option.value === "persian"}>{option.title}</option>)
+                                                        selected={sessionStorage.getItem('language') === option.value}>{option.title}</option>)
                                     })}
                             </select>
                         </li>

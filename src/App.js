@@ -226,6 +226,9 @@ class App extends React.Component {
             sessionStorage.setItem('language', 'persian');
             const language = this.setLanguage();
             this.setState({languageParameter: language});
+        } else {
+            const language = this.setLanguage();
+            this.setState({languageParameter: language});
         }
 
         document.addEventListener('scroll', () => {
