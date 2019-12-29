@@ -210,13 +210,14 @@ class App extends React.Component {
                 irancellNetPack: "irancell internet",
                 chooseInternetPeriod: "choose internet",
                 ruleItems: [
-                    "de", "wde", "wde",
+                    "All intellectual property rights in this website are owned by ISUN Mobile Service Company", "The services provided on this website are provided with the authorization of all regulatory agencies", "Customers will be liable for any misstatement of customer information",
+                    "ISUN reserves the right to change or delete any service","Use of the Website Services constitutes acceptance of the rules and is also a subscription to ISUN's customer list"
                 ],
                 contactTitle: "contact us",
                 choose: "choose",
                 ruleTitle: "terms and conditions",
-                contactItems: " pouya\n" +
-                "pouya: 021-22924567\n"
+                contactItems: " Support phone : 021-22924567\n" +
+                "Fax : 22906883\n"+"email : info@isuncorp.com\n"+"telegram : 09100051482\n"+"address : tehran/zafar street/Plaque262/third floor/Unit Eight\n"
 
 
             };
