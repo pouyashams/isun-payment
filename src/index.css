@@ -440,8 +440,12 @@ code {
     font-size: 14px;
 }
 
+.display-coustom{
+    display: inherit;
+}
+
 .checkbox-style-per {
-    padding-top: 4px;
+    padding-top: 7px;
     padding-right: 17px;
     padding-left: 10px;
     line-height: 10px;

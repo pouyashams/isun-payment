@@ -7,6 +7,8 @@ import ContactPage from "./components/contact-page";
 import './App.css';
 import {Switch, Redirect, Route, withRouter, BrowserRouter} from 'react-router-dom';
 import SuccessPayment from './components/success-page';
+import ErrorPayment from './components/error-page';
+
 
 
 class App extends React.Component {
@@ -208,12 +210,13 @@ class App extends React.Component {
                 irancellNetPack: "irancell internet",
                 chooseInternetPeriod: "choose internet",
                 ruleItems: [
-                    "", "", "",
+                    "de", "wde", "wde",
                 ],
                 contactTitle: "contact us",
                 choose: "choose",
                 ruleTitle: "terms and conditions",
-                contactItems: "",
+                contactItems: " pouya\n" +
+                "pouya: 021-22924567\n"
 
 
             };
@@ -230,6 +233,7 @@ class App extends React.Component {
             const language = this.setLanguage();
             this.setState({languageParameter: language});
         }
+
 
         document.addEventListener('scroll', () => {
             const isTop = window.scrollY < 100;
@@ -256,18 +260,24 @@ class App extends React.Component {
                     <BrowserRouter>
                         <Switch>
 
-                            <Route path="/rule" render={() => (
-                                <Rule
-                                    languageParameter={this.state.languageParameter}
-                                />
-                            )}/>
                             <Route path="/contact-us" render={() => (
                                 <ContactPage
                                     languageParameter={this.state.languageParameter}
                                 />
                             )}/>
+                            <Route path="/rule" render={() => (
+                                <Rule
+                                    languageParameter={this.state.languageParameter}
+                                />
+                            )}/>
+
                             <Route path="/success" render={(routeProps) => (
                                 <SuccessPayment
+                                    {...routeProps}
+                                />
+                            )}/>
+                            <Route path="/error" render={(routeProps) => (
+                                <ErrorPayment
                                     {...routeProps}
                                 />
                             )}/>

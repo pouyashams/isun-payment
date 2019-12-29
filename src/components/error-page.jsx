@@ -6,8 +6,8 @@ class successPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            language: "" ,
-            currentCount : 10 ,
+            language: "",
+            currentCount: 10,
             intervalId: null
         };
         this.addParameter = this.addParameter.bind(this);
@@ -16,7 +16,7 @@ class successPage extends React.Component {
 
     componentDidMount() {
         let params = queryString.parse(this.props.location.search);
-        if(this.hasValue(params["callBackURL"]) && params["callBackURL"] !== 'http://shop.isuncharge.com'){
+        if (this.hasValue(params["callBackURL"]) && params["callBackURL"] !== 'http://shop.isuncharge.com') {
             var intervalId = setInterval(this.timer, 1000);
             this.setState({intervalId: intervalId});
         }
@@ -129,7 +129,7 @@ class successPage extends React.Component {
                     url += '&traceCode=' + params["traceCode"];
                 }
             }
-            url = url.replace(/ /g,"_");
+            url = url.replace(/ /g, "_");
             window.open(url, "_blank");
         }
     };
@@ -138,12 +138,11 @@ class successPage extends React.Component {
         return item !== null && item !== '' && item !== undefined;
     }
 
-    addParameter(urlTest, parameterName , value) {
+    addParameter(urlTest, parameterName, value) {
         let endOfUrlIndex = urlTest.indexOf("end");
         urlTest = urlTest.replace(urlTest.substring(endOfUrlIndex), parameterName + "=" + value) + ";end";
         return urlTest;
     }
-
 
 
     render() {
@@ -156,42 +155,42 @@ class successPage extends React.Component {
                     <div className="row justify-content-center">
                         <div className="item-first">
                             <div className=" ml-20 shadow border radius-first-item">
-                                <h3 className=" col-12 py-3 services-title-sucssecc">پایان عملیات</h3>
-                                <div className="row py-4 mb-1 actionType ">
+                                <h3 className=" col-12 py-3 services-title-danger">پایان عملیات</h3>
+                                <div className="row py-2 mb-1 actionType ">
                                     <div className="  image-style actionTypeItem ">
-                                        <img className=" success-img img-fluid " onClick={((e) => this.showBill(e))}
-                                             src={require('./../img/success.jpg')} alt=""/>
+                                        <img className=" success-img img-fluid "
+                                             src={require('./../img/failed.jpg')} alt=""/>
                                     </div>
                                     <div className=" image-style text-right">
                                         <label>خطا در عملیات</label>
                                     </div>
 
                                 </div>
-                                <div className="pb-4 pt-2 mb-3    pad-item">
+                                <div className="pb-4 pt-2 mb-3 pad-item">
+                                    <div className="row  image-style  ">
+                                        <div className="col-12 text-left mb-2">
+                                            <label>مشتری گرامی، با پوزش از شما، سفارش شما با موفقیت به پایان نرسیده است.
+                                                در صورت کسر از حساب تا 72 ساعت
+                                                آینده مبلغ به حساب شما بازگشت داده خواهد شد.</label>
+                                        </div>
+                                    </div>
 
+                                    <div className="col-8 border-bottom-item-fail"/>
                                     <div className="row pb-1 image-style  ">
-                                        <div className="col-3 text-left">
+                                        <div className="col-4 mt-3 text-left">
                                             <label>شناسه سفارش :</label>
                                         </div>
-                                        <div className="col-3 text-right">
+                                        <div className="col-4 pt-3 text-right">
                                             <label>{params["orderIdentifier"]}</label>
                                         </div>
 
                                     </div>
 
-                                    <div className="col-6 border-bottom-item"/>
-
-                                    <div className="row pt-2 image-style  ">
-                                        <div className="col-3 text-left">
-                                            <label>مشتری گرامی، با پوزش از شما، سفارش شما با موفقیت به پایان نرسیده است. در صورت کسر از حساب تا 72 ساعت
-                                                آینده مبلغ به حساب شما بازگشت داده خواهد شد.</label>
-                                        </div>
-                                    </div>
-
                                 </div>
                                 <div className="pb-4 pt-2 justify-content-center ">
-                                    <button onClick={""} type="button" className="btn border button-item btn-success">
+                                    <button onClick={""} type="button" className="btn border button-item btn-danger">
                                         <span> انتقال به سایت پذیرنده</span>
+                                        <br/>
                                         <span id="timerSpan">{this.state.currentCount}</span>
                                     </button>
                                 </div>

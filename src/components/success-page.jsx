@@ -148,7 +148,7 @@ class successPage extends React.Component {
                                 <h3 className=" col-12 py-3 services-title-sucssecc">پایان عملیات</h3>
                                 <div className="row py-4 mb-1 actionType ">
                                     <div className="  image-style actionTypeItem ">
-                                        <img className=" success-img img-fluid " onClick={((e) => this.showBill(e))}
+                                        <img className=" success-img img-fluid "
                                              src={require('./../img/success.jpg')} alt=""/>
                                     </div>
                                     <div className=" image-style text-right">
@@ -159,31 +159,30 @@ class successPage extends React.Component {
                                 <div className="pb-4 pt-2 mb-3    pad-item">
 
                                     <div className="row pb-1 image-style  ">
-                                        <div className="col-3 text-left">
-                                            <label>شناسه سفارش :</label>
+                                        <div className="col-4 text-left">
+                                            <label className="pouya">شناسه سفارش :</label>
                                         </div>
-                                        <div className="col-3 text-right">
+                                        <div className="col-4 text-right">
                                             <label>{params["orderIdentifier"]}</label>
                                         </div>
 
                                     </div>
 
-                                    <div className="col-6 border-bottom-item"/>
+                                    <div className="col-8 border-bottom-item"/>
 
                                     <div className="row pt-2 image-style  ">
-                                        <div className="col-3 text-left">
+                                        <div className="col-4 text-left">
                                             <label>شماره پیگیری :</label>
                                         </div>
-                                        <div className="col-3 text-right">
+                                        <div className="col-4 text-right">
                                             <label>{params["referenceNumber"]}</label>
                                         </div>
-
                                     </div>
-
                                 </div>
                                 <div className="pb-4 pt-2 justify-content-center ">
                                     <button onClick={""} type="button" className="btn border button-item btn-success">
                                         <span> انتقال به سایت پذیرنده</span>
+                                        <br/>
                                         <span id="timerSpan">{this.state.currentCount}</span>
                                     </button>
                                 </div>

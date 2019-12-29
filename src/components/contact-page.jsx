@@ -1,6 +1,6 @@
 import React from 'react';
 
-class rulePage extends React.Component {
+class contactPage extends React.Component {
 
     constructor(props) {
         super(props);
@@ -16,7 +16,7 @@ class rulePage extends React.Component {
                         <div className="item-first">
                             <div className=" ml-20 shadow border radius-first-item">
                                 <h3 className=" col-12 py-3 services-title-warning text-center">{languageParameter.contactTitle}</h3>
-                                <pre className="px-4 py-2 font-size-contact">
+                                <pre className={languageParameter.rtl?"px-4 py-2 font-size-contact":"px-4 py-2 font-size-contact text-right"}>
                                                 {languageParameter.contactItems}
                                 </pre>
                             </div>
@@ -28,4 +28,4 @@ class rulePage extends React.Component {
     }
 }
 
-export default rulePage;
+export default contactPage;
