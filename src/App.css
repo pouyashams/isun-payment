@@ -39,10 +39,14 @@ visibility: hidden;
 .change-language {
   border-radius: 12px;
   border: 1px solid #fd5200 !important;
+}.change-language-nav {
+  border-radius: 12px;
 }
 
 .navbar-brand:hover {
   color: #fd5200 !important;
+}.text-font-nav {
+  font-size: 15px;
 }
 
 .nav-link:hover{

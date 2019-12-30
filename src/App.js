@@ -170,7 +170,7 @@ class App extends React.Component {
                 payment: "نهایی اودمه",
                 charge: "مستقیم شارژ",
                 internetPack: "اینترنت بسته سی",
-                bill: "قبض اودمه سی",
+                bill: "قبض اودمه",
                 pay: "اودمه",
                 amazingCharge: " شگفت انگیز",
                 mobileNumber: "آلانین موبایل شماره سی",
