@@ -9,9 +9,6 @@ class rulePage extends React.Component {
 
     render() {
         const {languageParameter} = this.props;
-        {
-            console.log(languageParameter, 1234)
-        }
         return (
             <section>
                 <div className=" py-5 services ">

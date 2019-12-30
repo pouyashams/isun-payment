@@ -33,6 +33,9 @@
 }
 
 
+.but-visi {
+visibility: hidden;
+}
 .change-language {
   border-radius: 12px;
   border: 1px solid #fd5200 !important;

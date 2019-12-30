@@ -5,7 +5,7 @@ const Navbar = (props) => {
     return (
         <nav className={navClass}>
             <div className="container-fluid rtl float-right pr-0 pl-0">
-                <button className="navbar-toggler float-right" type="button" data-toggle="collapse"
+                <button className="navbar-toggler float-right but-visi" type="button" data-toggle="collapse"
                         data-target="#isun-navbar">
                     <span className="navbar-toggler-icon"/>
                 </button>
@@ -27,15 +27,14 @@ const Navbar = (props) => {
                             <select className="form-control bg-dark text-light border-0 selected-size change-language" id=""
                                     onChange={((e) => props.handelChangeLanguage("language", e.target.value))}
                             >
-                                {[{value: "persian", title: "فارسی"}, {
-                                    value: "english",
-                                    title: "English",
+                                {[{value: "persian", title: "فارسی"},
+                                    {
+                                    value: "arabic",
+                                    title: "عربی",
+                                },{
+                                    value: "turkish",
+                                    title: "ترکی",
                                 },
-                                //     {
-                                //     value: "arabic",
-                                //     title: "عربی",
-                                //     selected: false
-                                // }
                                 ].map(
                                     (option) => {
                                         return (<option value={option.value}
