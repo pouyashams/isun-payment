@@ -8,7 +8,7 @@ const Navbar = (props) => {
         <nav className={navClass}>
             <div className="container-fluid rtl float-right pr-0 pl-0">
                 <div>
-                    <button {...getToggleProps()} isOpen={true} className="navbar-toggler border-0 float-right">
+                    <button {...getToggleProps()} className="navbar-toggler border-0 float-right">
                         <span className="navbar-toggler-icon"/>
                         <section {...getCollapseProps()} className="my-2 navbar-toggler">
                             <a className=" text-font-nav text-light" href="/home">{props.languageParameter.home}</a>
