@@ -39,7 +39,6 @@ class Services extends React.Component {
         this.props.handelChange("priceText", "2,000");
         this.props.handelChange("typeOfOrederText", "شارژ مستقیم");
         this.props.handelChange('isAmazing', false);
-        this.props.handelChange('postalCode', "");
         this.props.handelChange('subscriberNumber', "");
         this.props.handelChange('nationalCode', "");
         this.props.handelChange('mobileNumber', "");
@@ -53,7 +52,6 @@ class Services extends React.Component {
         this.props.handelChange("typeOfOrederText", this.props.languageParameter.charge)
         this.props.handelChange("type", "CHARGE");
         this.props.handelChange('isAmazing', false);
-        this.props.handelChange('postalCode', "");
         this.props.handelChange('subscriberNumber', "");
         this.props.handelChange('nationalCode', "");
         this.props.handelChange('mobileNumber', "");
@@ -74,7 +72,6 @@ class Services extends React.Component {
         this.props.handelChange("priceText", "2,000");
         this.props.handelChange("typeOfOrederText", this.props.languageParameter.charge)
         this.props.handelChange('isAmazing', false);
-        this.props.handelChange('postalCode', "");
         this.props.handelChange('subscriberNumber', "");
         this.props.handelChange('nationalCode', "");
         this.props.handelChange('mobileNumber', "");
@@ -101,7 +98,6 @@ class Services extends React.Component {
         this.props.handelChange("sumOfAmount", 20000);
         this.props.handelChange("priceText", "2,000");
         this.props.handelChange('isAmazing', false);
-        this.props.handelChange('postalCode', "");
         this.props.handelChange('subscriberNumber', "");
         this.props.handelChange('nationalCode', "");
         this.props.handelChange('mobileNumber', "");
@@ -120,7 +116,6 @@ class Services extends React.Component {
         this.props.handelChange("operatorCode", "IRANCELL")
         this.props.handelChange("sumOfAmount", 0);
         this.props.handelChange("priceText", "0");
-        this.props.handelChange('postalCode', "");
         this.props.handelChange('subscriberNumber', "");
         this.props.handelChange('nationalCode', "");
         this.props.handelChange('mobileNumber', "");
@@ -168,7 +163,6 @@ class Services extends React.Component {
         }
         this.props.handelChange("sumOfAmount", 0);
         this.props.handelChange("priceText", "0");
-        this.props.handelChange('postalCode', "");
         this.props.handelChange('subscriberNumber', "");
         this.props.handelChange('nationalCode', "");
         this.props.handelChange('mobileNumber', "");
@@ -205,7 +199,6 @@ class Services extends React.Component {
         this.props.handelChange("typeOfOrederText", this.props.languageParameter.bill)
         this.props.handelChange("sumOfAmount", 0);
         this.props.handelChange("priceText", "0");
-        this.props.handelChange('postalCode', "");
         this.props.handelChange('subscriberNumber', "");
         this.props.handelChange('nationalCode', "");
         this.props.handelChange('mobileNumber', "");
@@ -223,7 +216,6 @@ class Services extends React.Component {
         this.props.handelChange("typeOfOrederText", this.props.languageParameter.bill)
         this.props.handelChange("sumOfAmount", 0);
         this.props.handelChange("priceText", "0");
-        this.props.handelChange('postalCode', "");
         this.props.handelChange('subscriberNumber', "");
         this.props.handelChange('nationalCode', "");
         this.props.handelChange('mobileNumber', "");
@@ -355,20 +347,20 @@ class Services extends React.Component {
                                     </div>
                                     <div className=" image-style actionTypeItem">
                                         <img className=" download-app img-fluid " onClick={((e) => this.showBill(e))}
-                                             src={require('./../img/waterBill.jpg')} alt=""/>
+                                             src={require('./../img/waterBill.png')} alt=""/>
                                     </div>
                                     <div className="  image-style actionTypeItem">
                                         <img className=" download-app img-fluid " onClick={((e) => this.showBill(e))}
-                                             src={require('./../img/elcbill.jpg')} alt=""/>
+                                             src={require('./../img/elcbill.png')} alt=""/>
                                     </div>
                                     <div className=" image-style actionTypeItem">
-                                        <img className=" border download-app img-fluid "
+                                        <img className="download-app img-fluid "
                                              onClick={((e) => this.showBill(e))} src={require('./../img/NIOC.png')}
                                              alt=""/>
                                     </div>
                                     <div className=" image-style actionTypeItem">
                                         <img className=" download-app img-fluid " onClick={((e) => this.showBill(e))}
-                                             src={require('./../img/Tci-Arm-Larg.jpg')} alt=""/>
+                                             src={require('./../img/Tci-Arm-Larg.png')} alt=""/>
                                     </div>
                                 </div>
                             </div>
@@ -414,7 +406,6 @@ class Services extends React.Component {
                                     subscriberNumber={this.props.subscriberNumber}
                                     mobileNumber={this.props.mobileNumber}
                                     nationalCode={this.props.nationalCode}
-                                    postalCode={this.props.postalCode}
                                     sumOfAmount={this.props.sumOfAmount}
                                     priceText={this.props.priceText}
                                     isAmazing={this.props.isAmazing}

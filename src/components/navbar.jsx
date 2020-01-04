@@ -2,7 +2,7 @@ import React from 'react';
 import useCollapse from 'react-collapsed';
 
 const Navbar = (props) => {
-    const {getCollapseProps, getToggleProps, isOpen} = useCollapse();
+    const {getCollapseProps, getToggleProps} = useCollapse();
     const navClass = "rtl navbar navbar-expand-lg fixed-top flex-md-nowrap shadow bg-" + props.colorInfo.bgColor + " navbar-" + props.colorInfo.color;
     return (
         <nav className={navClass}>
@@ -43,13 +43,6 @@ const Navbar = (props) => {
                             >
                                 {[{value: "persian", title: "فارسی"},
                                     {
-                                        value: "arabic",
-                                        title: "عربی",
-                                    }, {
-                                        value: "turkish",
-                                        title: "ترکی",
-                                    },
-                                    {
                                         value: "english",
                                         title: "english",
                                     },
@@ -67,13 +60,6 @@ const Navbar = (props) => {
                             onChange={((e) => props.handelChangeLanguage("language", e.target.value))}
                     >
                         {[{value: "persian", title: "فارسی"},
-                            {
-                                value: "arabic",
-                                title: "عربی",
-                            }, {
-                                value: "turkish",
-                                title: "ترکی",
-                            },
                             {
                                 value: "english",
                                 title: "english",

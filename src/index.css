@@ -256,7 +256,14 @@ code {
 }
 
 .margin-item {
-    margin-top: -16px;
+    margin-top: -7px;
+}.margin-item-other {
+    margin-top: 5px;
+}
+.margin-item-eng {
+    margin-top: -18px;
+}.margin-item-eng-other {
+    margin-top: -4px;
 }
 
 .button-item {

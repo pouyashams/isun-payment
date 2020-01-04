@@ -9,6 +9,7 @@ import {Switch, Redirect, Route, withRouter, BrowserRouter} from 'react-router-d
 import SuccessPayment from './components/success-page';
 import ErrorPayment from './components/error-page';
 import {setLanguage} from './setLanguage'
+
 // import Modal from 'react-modal';
 
 
@@ -35,7 +36,6 @@ class App extends React.Component {
             subscriberNumber: "",
             mobileNumber: "",
             nationalCode: "",
-            postalCode: "",
 
             sumOfAmount: "",
             priceText: "",
@@ -170,7 +170,6 @@ class App extends React.Component {
                                     subscriberNumber={this.state.subscriberNumber}
                                     mobileNumber={this.state.mobileNumber}
                                     nationalCode={this.state.nationalCode}
-                                    postalCode={this.state.postalCode}
                                     sumOfAmount={this.state.sumOfAmount}
                                     priceText={this.state.priceText}
                                     isAmazing={this.state.isAmazing}
@@ -193,7 +192,6 @@ class App extends React.Component {
                                     subscriberNumber={this.state.subscriberNumber}
                                     mobileNumber={this.state.mobileNumber}
                                     nationalCode={this.state.nationalCode}
-                                    postalCode={this.state.postalCode}
                                     sumOfAmount={this.state.sumOfAmount}
                                     priceText={this.state.priceText}
                                     isAmazing={this.state.isAmazing}

@@ -18,7 +18,6 @@ class paymentGetway extends React.Component {
             subscriberNumber: "",
             mobileNumber: "",
             nationalCode: "",
-            postalCode: "",
             isAmazing: "",
             fanava: false,
             parsian: true,
@@ -42,12 +41,21 @@ class paymentGetway extends React.Component {
         });
     };
     sendData = () => {
-        if (this.props.type === "CHARGE") {
-            this.buyCharge();
-        } else if (this.props.type === "INTERNET") {
-            this.buyInternet();
-        } else if (this.props.type === "BILL") {
-            this.payBill();
+        if(this.props.mobileNumber!==""){
+            if(this.props.subscriberNumber!==""){
+                if (this.props.type === "CHARGE") {
+                    this.buyCharge();
+                } else if (this.props.type === "INTERNET") {
+                    this.buyInternet();
+                } else if (this.props.type === "BILL") {
+                    this.payBill();
+                }
+            }else{
+                console.log(123)
+            }
+
+        }else{
+            console.log(1234)
         }
     };
     buyCharge = async () => {
@@ -58,7 +66,6 @@ class paymentGetway extends React.Component {
             "subscriberNumber": this.props.subscriberNumber,
             "sumOfAmount": this.props.sumOfAmount,
             "nationalCode": this.props.nationalCode,
-            "postalCode": this.props.postalCode,
             "paymentGatewayProviderCode": this.state.paymentType,
             "terminalTypeCode": "INTERNET",
             "orderRequesterInfo": {
@@ -90,7 +97,6 @@ class paymentGetway extends React.Component {
             "paymentGatewayProviderCode": this.state.paymentType,
             "terminalTypeCode": "INTERNET",
             "nationalCode": this.props.nationalCode,
-            "postalCode": this.props.postalCode,
             "orderRequesterInfo": {
                 "callBackURL": "http://shop.isuncharge.com",
                 "traceCode": ""
@@ -114,7 +120,6 @@ class paymentGetway extends React.Component {
     payBill = async () => {
         const data = {
             "mobileNumber": this.props.mobileNumber,
-            "postalCode": this.props.postalCode,
             "nationalCode": this.props.nationalCode,
             "terminalTypeCode": "INTERNET",
             "paymentGatewayProviderCode": this.state.paymentType,

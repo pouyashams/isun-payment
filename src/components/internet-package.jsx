@@ -11,7 +11,6 @@ class internetPackage extends React.Component {
             mobileNumber: "",
             subscriberNumber: "",
             nationalCode: "",
-            postalCode: "",
 
             item: "",
             internetPackageCode: "",
@@ -657,16 +656,6 @@ class internetPackage extends React.Component {
                                    onChange={((e) => this.handelChangeNationalCode(e.target.value, e.target.name))}
                             />
 
-                        </div>
-
-                        <div className="py-2 form-group checkbox-item">
-                            <label htmlFor="num2"
-                                   className={languageParameter.rtl ? "" : "font-custom-number "}>{languageParameter.postalCode}</label>
-                            <input type="number" className={this.state.stylepst} id="num2"
-                                   name={"postalCode"}
-                                   value={this.state.postalCode}
-                                   onChange={((e) => this.handelChangeInputPostal(e.target.value, e.target.name))}
-                            />
                         </div>
                     </div>
 

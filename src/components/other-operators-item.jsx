@@ -11,7 +11,6 @@ class otheroperators extends React.Component {
             mobileNumber: "",
             subscriberNumber: "",
             nationalCode: "",
-            postalCode: "",
 
             doHezar: true,
             panjHezar: false,
@@ -210,7 +209,7 @@ class otheroperators extends React.Component {
                         />
 
                     </div>
-                    <div className="row margin-item ">
+                    <div className={languageParameter.rtl ? "row margin-item-other" : "margin-item-eng-other"}>
                         <div className="form-group mb-2 checkbox-item">
                             <label htmlFor="num1"
                                    className={languageParameter.rtl ? "" : "font-custom-number "}>{languageParameter.nationalCode}</label>
@@ -220,15 +219,6 @@ class otheroperators extends React.Component {
                                    onChange={((e) => this.handelChangeNationalCode(e.target.value, e.target.name))}
                             />
 
-                        </div>
-                        <div className="form-group checkbox-item">
-                            <label htmlFor="num2"
-                                   className={languageParameter.rtl ? "" : "font-custom-number "}>{languageParameter.postalCode}</label>
-                            <input type="number" className={this.state.stylepst} id="num2"
-                                   name={"postalCode"}
-                                   value={this.state.postalCode}
-                                   onChange={((e) => this.handelChangeInputPostal(e.target.value, e.target.name))}
-                            />
                         </div>
                     </div>
 

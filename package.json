@@ -11,13 +11,14 @@
     "prop-types": "^15.7.2",
     "query-string": "^6.9.0",
     "react": "^16.8.6",
+    "react-collapsed": "^2.2.3",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "react-scrollmagic": "^2.1.0",
     "react-smart-slider": "^0.1.0",
-    "react-toastify": "^5.2.1",
+    "react-toastify": "^5.5.0",
     "redux": "^4.0.1"
   },
   "scripts": {

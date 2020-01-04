@@ -11,7 +11,6 @@ class IrancellItem extends React.Component {
             mobileNumber: "",
             subscriberNumber: "",
             nationalCode: "",
-            postalCode: "",
 
             doHezar: true,
             panjHezar: false,
@@ -146,23 +145,6 @@ class IrancellItem extends React.Component {
             });
         }
     };
-    handelChangeInputPostal = (value, name) => {
-        let digits = value.toString().split('');
-        if (digits.length === 10) {
-
-            this.setState({
-                [name]: value, item: value,
-                stylepst: "success text-success form-control",
-            });
-            this.props.handelChange(name, value);
-        } else {
-            this.setState({
-                [name]: value, item: value,
-                stylepst: "wrong text-danger form-control",
-            });
-        }
-    };
-
     handelChangeNationalCode = (value, name) => {
         this.setState({[name]: value, item: value});
         let num = value;
@@ -285,7 +267,7 @@ class IrancellItem extends React.Component {
                         />
 
                     </div>
-                    <div className="row margin-item ">
+                    <div className={languageParameter.rtl ? "row margin-item" : "margin-item-eng "}>
                         <div className="form-group mb-2 checkbox-item">
                             <label htmlFor="num1"
                                    className={languageParameter.rtl ? "" : "font-custom-number "}>{languageParameter.nationalCode}</label>
@@ -296,15 +278,7 @@ class IrancellItem extends React.Component {
                             />
 
                         </div>
-                        <div className="form-group checkbox-item">
-                            <label htmlFor="num2"
-                                   className={languageParameter.rtl ? "" : "font-custom-number "}>{languageParameter.postalCode}</label>
-                            <input type="number" className={this.state.stylepst} id="num2"
-                                   name={"postalCode"}
-                                   value={this.state.postalCode}
-                                   onChange={((e) => this.handelChangeInputPostal(e.target.value, e.target.name))}
-                            />
-                        </div>
+
                     </div>
 
 

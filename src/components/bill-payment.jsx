@@ -9,7 +9,6 @@ class billPayment extends React.Component {
             paymentId: "",
             mobileNumber: "",
             nationalCode: "",
-            postalCode: "",
             style: "radius form-control",
             styleBill: "radius form-control",
             stylePaymentId: "radius form-control",
@@ -246,7 +245,7 @@ class billPayment extends React.Component {
                     </div>
                 </div>
 
-                <div className=" justify-content-center ">
+                <div className=" justify-content-center py-3">
                     <button
                         onClick={this.onAccept}
                         type="button" className="btn border button-item btn-success">
@@ -255,7 +254,7 @@ class billPayment extends React.Component {
                 </div>
 
                 <div
-                    className={languageParameter.rtl ? "row justify-content-center text-left py-3" : "row justify-content-center text-right py-3"}>
+                    className={languageParameter.rtl ? "row justify-content-center text-left py-5" : "row justify-content-center text-right py-5"}>
                     <div className=" form-group checkbox-item">
                         <label className={languageParameter.rtl ? "" : "font-custom-number"}
                                htmlFor="num1">{languageParameter.mobileNumber} </label>
@@ -274,16 +273,6 @@ class billPayment extends React.Component {
                             name={"nationalCode"}
                             value={this.state.nationalCode}
                             onChange={((e) => this.handelChangeNationalCode(e.target.value, e.target.name))}
-                        />
-                    </div>
-                    <div className=" form-group checkbox-item">
-                        <label className={languageParameter.rtl ? "" : "font-custom-number"}
-                               htmlFor="num1">{languageParameter.postalCode}</label>
-                        <input
-                            type="number" className="radius form-control" id="num1"
-                            name={"postalCode"}
-                            value={this.state.postalCode}
-                            onChange={((e) => this.handelChangeInput(e.target.value, e.target.name))}
                         />
                     </div>
                 </div>
