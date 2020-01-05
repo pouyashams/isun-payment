@@ -312,7 +312,7 @@ code {
 .image-style {
     margin-right: 10px;
 }
-.pouya{
+.img-style{
     width: 100px;
     height: 100px;
     cursor:pointer;
@@ -408,6 +408,10 @@ code {
     font-family: "normal";
     color: black;
     font-size: 18px;
+}
+.required:after {
+    content:" *";
+    color: red;
 }
 
 .font-custom {

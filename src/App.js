@@ -107,7 +107,6 @@ class App extends React.Component {
         //         overflow:"hidden"
         //     }
         // };
-        const pouya = "https://trustseal.enamad.ir/logo.aspx?id=21183&amp;Code=OGERIqdPmMkIhRNjoueR"
         return (
             <React.Fragment>
                 <div className="container-fluid rtl pr-0 pl-0">
@@ -219,7 +218,7 @@ class App extends React.Component {
                     <a target="_blank"
                        href="https://trustseal.enamad.ir/?id=21183&amp;Code=OGERIqdPmMkIhRNjoueR">
                         <img
-                            className="pouya"
+                            className="img-style"
                             src="https://Trustseal.eNamad.ir/logo.aspx?id=21183&amp;Code=OGERIqdPmMkIhRNjoueR"
                             alt=""
                             id="OGERIqdPmMkIhRNjoueR"
