@@ -214,17 +214,6 @@ class App extends React.Component {
 
                     />
                 </div>
-                <div className="margin-enamad">
-                    <a target="_blank"
-                       href="https://trustseal.enamad.ir/?id=21183&amp;Code=OGERIqdPmMkIhRNjoueR">
-                        <img
-                            className="img-style"
-                            src="https://Trustseal.eNamad.ir/logo.aspx?id=21183&amp;Code=OGERIqdPmMkIhRNjoueR"
-                            alt=""
-                            id="OGERIqdPmMkIhRNjoueR"
-                        />
-                    </a>
-                </div>
             </React.Fragment>
         );
     }
