@@ -9,6 +9,7 @@ import {Switch, Redirect, Route, withRouter, BrowserRouter} from 'react-router-d
 import SuccessPayment from './components/success-page';
 import ErrorPayment from './components/error-page';
 import {setLanguage} from './setLanguage'
+import Img from 'react-image'
 
 // import Modal from 'react-modal';
 
@@ -77,7 +78,7 @@ class App extends React.Component {
             const language = setLanguage();
             this.setState({languageParameter: language});
         } else {
-            const language =setLanguage();
+            const language = setLanguage();
             this.setState({languageParameter: language});
         }
 
@@ -106,26 +107,27 @@ class App extends React.Component {
         //         overflow:"hidden"
         //     }
         // };
+        const pouya = "https://trustseal.enamad.ir/logo.aspx?id=21183&amp;Code=OGERIqdPmMkIhRNjoueR"
         return (
             <React.Fragment>
                 <div className="container-fluid rtl pr-0 pl-0">
                     {/*<Modal*/}
-                           {/*isOpen={true}*/}
-                        {/*// onAfterOpen={this.afterOpenModal}*/}
-                        {/*// onRequestClose={this.closeModal}*/}
-                           {/*style={customStyles}*/}
-                           {/*contentLabel="Example Modal"*/}
+                    {/*isOpen={true}*/}
+                    {/*// onAfterOpen={this.afterOpenModal}*/}
+                    {/*// onRequestClose={this.closeModal}*/}
+                    {/*style={customStyles}*/}
+                    {/*contentLabel="Example Modal"*/}
                     {/*>*/}
-                        {/*<h3 className="text-center pb-3" ref={subtitle => this.subtitle = subtitle}>تخفیف ویژه</h3>*/}
-                        {/*<img className=" modal-image img-fluid "*/}
-                             {/*src={require('./img/rightel.png')} alt=""/>*/}
-                        {/*<div className="row pt-3 justify-content-center">*/}
-                            {/*<div className="py-3 px-2 justify-content-center ">*/}
-                                {/*<button onClick={this.sendData} type="button"*/}
-                                        {/*className="btn border button-item btn-danger">بستن*/}
-                                {/*</button>*/}
-                            {/*</div>*/}
-                        {/*</div>*/}
+                    {/*<h3 className="text-center pb-3" ref={subtitle => this.subtitle = subtitle}>تخفیف ویژه</h3>*/}
+                    {/*<img className=" modal-image img-fluid "*/}
+                    {/*src={require('./img/rightel.png')} alt=""/>*/}
+                    {/*<div className="row pt-3 justify-content-center">*/}
+                    {/*<div className="py-3 px-2 justify-content-center ">*/}
+                    {/*<button onClick={this.sendData} type="button"*/}
+                    {/*className="btn border button-item btn-danger">بستن*/}
+                    {/*</button>*/}
+                    {/*</div>*/}
+                    {/*</div>*/}
                     {/*</Modal>*/}
                     <Navbar
                         handelChange={this.handelChange}
@@ -212,6 +214,17 @@ class App extends React.Component {
                         languageParameter={this.state.languageParameter}
 
                     />
+                </div>
+                <div className="margin-enamad">
+                    <a target="_blank"
+                       href="https://trustseal.enamad.ir/?id=21183&amp;Code=OGERIqdPmMkIhRNjoueR">
+                        <img
+                            className="pouya"
+                            src="https://Trustseal.eNamad.ir/logo.aspx?id=21183&amp;Code=OGERIqdPmMkIhRNjoueR"
+                            alt=""
+                            id="OGERIqdPmMkIhRNjoueR"
+                        />
+                    </a>
                 </div>
             </React.Fragment>
         );

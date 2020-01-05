@@ -420,8 +420,8 @@ class Services extends React.Component {
                     </div>
                 </div>
             </section>
-        );
+    );
     }
-}
+    }
 
-export default Services;
+    export default Services;
