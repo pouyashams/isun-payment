@@ -14,11 +14,14 @@ class contactPage extends React.Component {
                 <div className=" py-5 services ">
                     <div className="row justify-content-center">
                         <div className="item-first">
-                            <div className=" ml-20 shadow border radius-first-item">
+                            <div className=" ml-20 shadow border radius-first-item ">
                                 <h3 className=" col-12 py-3 services-title-warning text-center">{languageParameter.contactTitle}</h3>
-                                <pre className={languageParameter.rtl?"px-4 py-2 font-size-contact":"px-4 py-2 font-size-contact text-right"}>
-                                                {languageParameter.contactItems}
-                                </pre>
+                                <ul>
+                                    {languageParameter.contactItems !== undefined ? languageParameter.contactItems.map((rule) => (
+                                        <li className={languageParameter.rtl ? "py-1 text-left" : "font-weight-bold py-1 px-4 text-right display-coustom "}>
+                                            <span className=" font-size-rule">{rule}</span>
+                                        </li>)) : null}
+                                </ul>
                             </div>
                         </div>
                     </div>

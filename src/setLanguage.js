@@ -1,5 +1,3 @@
-
-
 export function setLanguage() {
     const language = sessionStorage.getItem('language');
     if (language === "persian") {
@@ -63,6 +61,7 @@ export function setLanguage() {
             irancellNetPack: "بسته ایرانسل",
             ruleTitle: "قوانین استفاده از خدمات فروشگاه",
             choose: "انتخاب کنید",
+            contactTitle: "ارتباط با ما",
             ruleItems: [
                 "تمامی حقوق مادی و معنوی این وبسایت متعلق به شرکت خدمات همراه آیسان می باشد.",
                 "سرویس های ارائه شده در این وبسایت با مجوز از تمامی از ارگان‌ها و سازمان‌های نظارتی ارائه شده است.",
@@ -73,12 +72,14 @@ export function setLanguage() {
                 "تمامی اطلاعات پرداخت اعم از شماره کارت، رمز اینترنتی و.... توسط شبکه شاپرک دریافت خواهد شد و آیسان حق هیچ گونه ذخیره سازی در این مورد را نخواهد داشت.",
                 "استفاده از سرویس‌های وبسایت به منزله پذیرفتن قوانین و هم چنین عضویت در لیست مشتریان شرکت آیسان می‌باشد."
             ],
-            contactItems: " جهت تماس با ما می توانید از راه های زیر اقدام فرمایید.\n" +
-            "تلفن پشتیبانی : 021-22924567\n" +
-            "نمابر : 22906883\n" +
-            "ایمیل : info@isuncorp.com\n" +
-            "تلگرام : 09100051482\n" +
-            "نشانی : تهران - خیابان ظفر - پلاک 262 - طبقه 3 - واحد 8"
+            contactItems: [
+                " جهت تماس با ما می توانید از راه های زیر اقدام فرمایید.",
+                "تلفن پشتیبانی : 021-22924567",
+                "نمابر : 22906883",
+                "ایمیل : info@isuncorp.com",
+                "تلگرام : 09100051482",
+                "نشانی : تهران - خیابان ظفر - پلاک 262 - طبقه 3 - واحد 8"
+            ]
         };
         return language;
 
@@ -125,7 +126,7 @@ export function setLanguage() {
             billId: "bill ID",
             paymentId: "payment ID",
             confirm: "confirm",
-            price: "(toman) price ",
+            price: "price",
             pay: "pay",
             PaymentGateway: "Payment gateway",
             bio: "(It's possible to purchase with all bank cards)",
@@ -145,18 +146,22 @@ export function setLanguage() {
             chooseInternetPeriod: "choose internet",
             ruleItems: [
                 "All intellectual property rights in this website are owned by ISUN Mobile Service Company", "The services provided on this website are provided with the authorization of all regulatory agencies", "Customers will be liable for any misstatement of customer information",
-                "ISUN reserves the right to change or delete any service","Use of the Website Services constitutes acceptance of the rules and is also a subscription to ISUN's customer list"
+                "ISUN reserves the right to change or delete any service", "Use of the Website Services constitutes acceptance of the rules and is also a subscription to ISUN's customer list"
             ],
             contactTitle: "contact us",
             choose: "choose",
             ruleTitle: "terms and conditions",
-            contactItems: " Support phone : 021-22924567\n" +
-            "Fax : 22906883\n"+"email : info@isuncorp.com\n"+"telegram : 09100051482\n"+"address : tehran/zafar street/Plaque262/third floor/Unit Eight\n"
-
-
+            contactItems: [
+                "Support phone : 021-22924567",
+                "Fax : 22906883",
+                "email : info@isuncorp.com",
+                "telegram : 09100051482",
+                "تلگرام : 09100051482",
+                "address : tehran/zafar street/Plaque262/third floor/Unit Eight"
+            ]
         };
         return language;
-    };
+    }
 }
 
 

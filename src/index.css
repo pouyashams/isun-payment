@@ -223,6 +223,11 @@ code {
     margin-left: 10px;
     margin-right: 10px;
     width: 900px;
+}.item-contact {
+    padding-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 800px;
 }
 
 .feature-item i {
@@ -435,12 +440,7 @@ code {
     margin-right: 10px;
 }
 
-.font-custom-charge {
-    font-weight: 600;
-    font-size: 14px;
-    padding-right: 15px;
-    padding-top: 5px;
-}
+
 
 .font-custom-charge-bank {
     font-weight: 600;
@@ -463,7 +463,7 @@ code {
 
 .font-custom-number-price {
     padding-top: 6px;
-    margin-right: 19px;
+    margin-right: 10px;
     font-weight: 600;
     font-size: 14px;
 }
@@ -481,12 +481,12 @@ code {
 
 .checkbox-style-amzing {
     padding-top: 5px;
-    padding-right: 15px;
+    padding-right: 12px;
 }
 
 .checkbox-style-isAmzing {
     padding-top: 5px;
-    padding-right: 8px;
+    padding-right: 5px;
 }
 
 .checkbox-style-price {
@@ -509,6 +509,12 @@ code {
     padding-right: 17px;
     padding-left: 10px;
     line-height: 10px;
+}
+.font-custom-charge {
+    font-weight: 600;
+    font-size: 14px;
+    margin-right: 10px;
+    padding-top: 5px;
 }
 
 .font-custom-net {

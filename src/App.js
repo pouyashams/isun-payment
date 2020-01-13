@@ -9,8 +9,6 @@ import {Switch, Redirect, Route, withRouter, BrowserRouter} from 'react-router-d
 import SuccessPayment from './components/success-page';
 import ErrorPayment from './components/error-page';
 import {setLanguage} from './setLanguage'
-import Img from 'react-image'
-
 // import Modal from 'react-modal';
 
 
