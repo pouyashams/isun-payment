@@ -129,13 +129,20 @@ code {
 }
 
 
-/*.modal-image {*/
-    /*width: 100px;*/
-    /*height: 100px;*/
-    /*align-content: center;*/
-    /*border-radius: 15px 15px 15px 15px;*/
-    /*justify-content: center;*/
-/*}*/
+.modal-image {
+    width: 300px;
+    height: 250px;
+    align-content: center;
+    border-radius: 15px 15px 15px 15px;
+    justify-content: center;
+}
+.modal-image-ozviyat {
+    width: 550px;
+    height: 450px;
+    align-content: center;
+    border-radius: 15px 15px 15px 15px;
+    justify-content: center;
+}
 
 .success-img {
     margin-right: 40px;

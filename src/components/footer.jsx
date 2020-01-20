@@ -7,12 +7,15 @@ const Footer = (props) => {
                 <a target="_blank"
                    href="https://trustseal.enamad.ir/?id=21183&amp;Code=OGERIqdPmMkIhRNjoueR">
                     <img
-                        className="img-style"
+                        className=" mx-3 img-style"
                         src="https://Trustseal.eNamad.ir/logo.aspx?id=21183&amp;Code=OGERIqdPmMkIhRNjoueR"
                         alt=""
                         id="OGERIqdPmMkIhRNjoueR"
                     />
                 </a>
+                <img className="img-style"
+                     onClick={((e) =>props.showRecoveredModal())}
+                     src={require('../img/logo-recovered.png')} alt=""/>
             </div>
             <div className="row fixed-bottom float-right bg-dark  shadow py-2 px-3">
                 <div className="copyright">
