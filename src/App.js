@@ -123,7 +123,7 @@ class App extends React.Component {
                         <h3 className="text-center pb-3  border-bottom border-dark"
                             ref={subtitle => this.subtitle = subtitle}>وب اپلیکیشن</h3>
                         <img className=" modal-image img-fluid justify-content-center align-items-center mt-1"
-                             src={require('./img/yalda.jpeg')} alt=""/>
+                             src={require('./img/pic.jpeg')} alt=""/>
 
                         <div className="row pt-3 justify-content-center">
                             <div className="pt-1 px-2 justify-content-center ">
