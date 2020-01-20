@@ -13,7 +13,7 @@ class contactPage extends React.Component {
             <section>
                 <div className=" py-5 services ">
                     <div className="row justify-content-center">
-                        <div className="item-first">
+                        <div className="item-first-contact">
                             <div className=" ml-20 shadow border radius-first-item ">
                                 <h3 className=" col-12 py-3 services-title-warning text-center">{languageParameter.contactTitle}</h3>
                                 <ul>
