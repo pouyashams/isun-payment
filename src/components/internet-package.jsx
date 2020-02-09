@@ -640,7 +640,6 @@ class internetPackage extends React.Component {
                     <div className=" mt-1 form-group checkbox-item">
                         <label htmlFor="num2"
                                className={languageParameter.rtl ? "" : "font-custom-number "}>{languageParameter.mobileNumber}</label>
-                        <span className="required font-weight-bold"/>
                         <input type="number" className={this.state.styleNum} id="num2"
                                name={"mobileNumber"}
                                value={this.state.mobileNumber}

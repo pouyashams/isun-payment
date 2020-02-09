@@ -258,7 +258,6 @@ class billPayment extends React.Component {
                     <div className=" form-group checkbox-item">
                         <label className={languageParameter.rtl ? "" : "font-custom-number"}
                                htmlFor="num1">{languageParameter.mobileNumber} </label>
-                        <span className="required font-weight-bold"/>
                         <input
                             type="number" className="radius form-control" id="num1"
                             name={"mobileNumber"}

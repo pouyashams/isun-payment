@@ -8,17 +8,8 @@ class paymentGetway extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            typeOfOreder: "",
-            typeOfOrederText: "",
-            priceText: "",
-            sumOfAmount: "",
+            dataInfo:"",
             paymentType: "PARSIAN_PAYMENT_GATEWAY_PROVIDER",
-            time: "",
-            operatorCode: "",
-            subscriberNumber: "",
-            mobileNumber: "",
-            nationalCode: "",
-            isAmazing: "",
             fanava: false,
             parsian: true,
             fanavaClick: false,
@@ -33,6 +24,7 @@ class paymentGetway extends React.Component {
             paymentType: "PARSIAN_PAYMENT_GATEWAY_PROVIDER",
         });
     };
+
     setPaymentFanava = () => {
         this.setState({
             fanavaClick: true,
@@ -40,45 +32,64 @@ class paymentGetway extends React.Component {
             paymentType: "FANAVA_PAYMENT_GATEWAY_PROVIDER",
         });
     };
-    sendData = () => {
-        if(this.props.mobileNumber!==""){
-            if(this.props.subscriberNumber!==""){
-                if (this.props.type === "CHARGE") {
-                    this.buyCharge();
-                } else if (this.props.type === "INTERNET") {
-                    this.buyInternet();
-                } else if (this.props.type === "BILL") {
-                    this.payBill();
-                }
-            }else{
-                console.log(123)
-            }
 
-        }else{
-            console.log(1234)
+    sendData = () => {
+        if (this.props.subscriberNumber !== "") {
+            if (this.props.type === "CHARGE") {
+                this.buyCharge();
+            } else if (this.props.type === "INTERNET") {
+                this.buyInternet();
+            } else if (this.props.type === "BILL") {
+                this.payBill();
+            }
+        } else {
+            console.log(123)
         }
     };
+
     buyCharge = async () => {
-        const data = {
-            "operatorCode": this.props.operatorCode,
-            "isAmazing": this.props.isAmazing,
-            "mobileNumber": this.props.mobileNumber,
-            "subscriberNumber": this.props.subscriberNumber,
-            "sumOfAmount": this.props.sumOfAmount,
-            "nationalCode": this.props.nationalCode,
-            "paymentGatewayProviderCode": this.state.paymentType,
-            "terminalTypeCode": "INTERNET",
-            "orderRequesterInfo": {
-                "callBackURL": "http://shop.isuncharge.com",
-                "traceCode": "",
-            }
-        };
+        if (this.props.mobileNumber === null || this.props.mobileNumber === "" || this.props.mobileNumber === undefined) {
+            this.setState({
+                dataInfo: {
+                    "operatorCode": this.props.operatorCode,
+                    "isAmazing": this.props.isAmazing,
+                    "mobileNumber": this.props.subscriberNumber,
+                    "subscriberNumber": this.props.subscriberNumber,
+                    "sumOfAmount": this.props.sumOfAmount,
+                    "nationalCode": this.props.nationalCode,
+                    "paymentGatewayProviderCode": this.state.paymentType,
+                    "terminalTypeCode": "INTERNET",
+                    "orderRequesterInfo": {
+                        "callBackURL": "http://shop.isuncharge.com",
+                        "traceCode": "",
+                    }
+                }
+            })
+            ;
+        }
+        else{
+            this.setState({
+                dataInfo: {
+                    "operatorCode": this.props.operatorCode,
+                    "isAmazing": this.props.isAmazing,
+                    "mobileNumber": this.props.mobileNumber,
+                    "subscriberNumber": this.props.subscriberNumber,
+                    "sumOfAmount": this.props.sumOfAmount,
+                    "nationalCode": this.props.nationalCode,
+                    "paymentGatewayProviderCode": this.state.paymentType,
+                    "terminalTypeCode": "INTERNET",
+                    "orderRequesterInfo": {
+                        "callBackURL": "http://shop.isuncharge.com",
+                        "traceCode": "",
+                    }
+                }
+            });
+        }
         const loginList = this.props.loginList;
         let accesstoken = await login(loginList.username, loginList.password, loginList.clientId, loginList.clientSecret);
         try {
-            const result = await axios.post(`http://shop.isuncharge.com/isunshop/register/charge-order?access_token=` + accesstoken, data);
+            const result = await axios.post(`http://shop.isuncharge.com/isunshop/register/charge-order?access_token=` + accesstoken, this.state.dataInfo);
             if (result.status === 200) {
-
                 window.location = result.data.data.url;
             }
         }
@@ -89,23 +100,45 @@ class paymentGetway extends React.Component {
     };
 
     buyInternet = async () => {
-        const data = {
-            "operatorCode": this.props.operatorCode,
-            "internetPackageCode": this.props.pack,
-            "mobileNumber": this.props.mobileNumber,
-            "subscriberNumber": this.props.subscriberNumber,
-            "paymentGatewayProviderCode": this.state.paymentType,
-            "terminalTypeCode": "INTERNET",
-            "nationalCode": this.props.nationalCode,
-            "orderRequesterInfo": {
-                "callBackURL": "http://shop.isuncharge.com",
-                "traceCode": ""
-            }
-        };
+        if (this.props.mobileNumber === null || this.props.mobileNumber === "" || this.props.mobileNumber === undefined) {
+            this.setState({
+                dataInfo: {
+                    "operatorCode": this.props.operatorCode,
+                    "internetPackageCode": this.props.pack,
+                    "mobileNumber": this.props.subscriberNumber,
+                    "subscriberNumber": this.props.subscriberNumber,
+                    "paymentGatewayProviderCode": this.state.paymentType,
+                    "terminalTypeCode": "INTERNET",
+                    "nationalCode": this.props.nationalCode,
+                    "orderRequesterInfo": {
+                        "callBackURL": "http://shop.isuncharge.com",
+                        "traceCode": ""
+                    }
+                }
+            })
+            ;
+        }
+        else{
+            this.setState({
+                dataInfo: {
+                    "operatorCode": this.props.operatorCode,
+                    "internetPackageCode": this.props.pack,
+                    "mobileNumber": this.props.mobileNumber,
+                    "subscriberNumber": this.props.subscriberNumber,
+                    "paymentGatewayProviderCode": this.state.paymentType,
+                    "terminalTypeCode": "INTERNET",
+                    "nationalCode": this.props.nationalCode,
+                    "orderRequesterInfo": {
+                        "callBackURL": "http://shop.isuncharge.com",
+                        "traceCode": ""
+                    }
+                }
+            });
+        }
         const loginList = this.props.loginList;
         let accesstoken = await login(loginList.username, loginList.password, loginList.clientId, loginList.clientSecret);
         try {
-            const result = await axios.post(`http://shop.isuncharge.com/isunshop/register/internet-package-order?access_token=` + accesstoken, data);
+            const result = await axios.post(`http://shop.isuncharge.com/isunshop/register/internet-package-order?access_token=` + accesstoken,this.state.dataInfo);
             if (result.status === 200) {
                 window.location = result.data.data.url;
             }
@@ -114,7 +147,6 @@ class paymentGetway extends React.Component {
             if (ex.response && ex.response.status === 400) {
             }
         }
-        console.log(12345)
     };
 
     payBill = async () => {
