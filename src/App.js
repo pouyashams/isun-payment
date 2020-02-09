@@ -49,9 +49,11 @@ class App extends React.Component {
             pack: "",
             typeOfSim: "",
             modalIsOpen: false,
+            modalIsOpenApk: false,
             modalIsOpenRecovered: false
         };
         this.closeModal = this.closeModal.bind(this);
+        this.closeModalApk = this.closeModalApk.bind(this);
         this.closeModalRecovered = this.closeModalRecovered.bind(this);
 
     };
@@ -74,11 +76,28 @@ class App extends React.Component {
         this.setState({modalIsOpen: false});
     }
 
+    closeModalApk() {
+        this.setState({modalIsOpenApk: false});
+    }
+
     closeModalRecovered() {
         this.setState({modalIsOpenRecovered: false});
     }
 
     componentDidMount() {
+        if (window.navigator.standalone!==true) {
+            if (
+                navigator.userAgent.match(/iPhone/i)
+                || navigator.userAgent.match(/iPad/i)
+                || navigator.userAgent.match(/iPod/i)
+            ) {
+                this.setState({modalIsOpen: true});
+            }
+            if(navigator.userAgent.match(/Android/i)){
+                this.setState({modalIsOpenApk: true});
+            }
+        }
+
         if (sessionStorage.getItem('language') === null || sessionStorage.getItem('language') === "" || sessionStorage.getItem('language') === undefined) {
             sessionStorage.setItem('language', 'persian');
             const language = setLanguage();
@@ -128,6 +147,25 @@ class App extends React.Component {
                         <div className="row pt-3 justify-content-center">
                             <div className="pt-1 px-2 justify-content-center ">
                                 <button onClick={this.closeModal} type="button"
+                                        className="btn border button-item btn-danger">بستن
+                                </button>
+                            </div>
+                        </div>
+                    </Modal>
+                    <Modal
+                        isOpen={this.state.modalIsOpenApk}
+                        onRequestClose={this.closeModalApk}
+                        style={customStyles}
+                        contentLabel="Example Modal"
+                    >
+                        <h3 className="text-center pb-3  border-bottom border-dark"
+                            ref={subtitle => this.subtitle = subtitle}>وب اپلیکیشن</h3>
+                        <img className=" modal-image img-fluid justify-content-center align-items-center mt-1"
+                             src={require('./img/apk.jpeg')} alt=""/>
+
+                        <div className="row pt-3 justify-content-center">
+                            <div className="pt-1 px-2 justify-content-center ">
+                                <button onClick={this.closeModalApk} type="button"
                                         className="btn border button-item btn-danger">بستن
                                 </button>
                             </div>
