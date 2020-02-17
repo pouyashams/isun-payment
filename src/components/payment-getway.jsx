@@ -8,12 +8,13 @@ class paymentGetway extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            dataInfo:"",
+            dataInfo: "",
             paymentType: "PARSIAN_PAYMENT_GATEWAY_PROVIDER",
             fanava: false,
             parsian: true,
             fanavaClick: false,
             parsianClick: false,
+            requesterDevicePlatformCode: "",
         };
     }
 
@@ -23,6 +24,23 @@ class paymentGetway extends React.Component {
             parsianClick: true,
             paymentType: "PARSIAN_PAYMENT_GATEWAY_PROVIDER",
         });
+    };
+
+    componentDidMount() {
+        if (window.navigator.standalone !== true) {
+            if (
+                navigator.userAgent.match(/iPhone/i)
+                || navigator.userAgent.match(/iPad/i)
+                || navigator.userAgent.match(/iPod/i)
+            ) {
+                this.setState({requesterDevicePlatformCode: "IOS"});
+            }
+            else if (navigator.userAgent.match(/Android/i)) {
+                this.setState({requesterDevicePlatformCode: "ANDROID"});
+            } else {
+                this.setState({requesterDevicePlatformCode: "WEBSITE"});
+            }
+        }
     };
 
     setPaymentFanava = () => {
@@ -35,6 +53,7 @@ class paymentGetway extends React.Component {
 
     sendData = () => {
         if (this.props.subscriberNumber !== "") {
+
             if (this.props.type === "CHARGE") {
                 this.buyCharge();
             } else if (this.props.type === "INTERNET") {
@@ -43,7 +62,7 @@ class paymentGetway extends React.Component {
                 this.payBill();
             }
         } else {
-            console.log(123)
+            console.log("error")
         }
     };
 
@@ -58,6 +77,7 @@ class paymentGetway extends React.Component {
                     "sumOfAmount": this.props.sumOfAmount,
                     "nationalCode": this.props.nationalCode,
                     "paymentGatewayProviderCode": this.state.paymentType,
+                    "requesterDevicePlatformCode":this.state.requesterDevicePlatformCode,
                     "terminalTypeCode": "INTERNET",
                     "orderRequesterInfo": {
                         "callBackURL": "http://shop.isuncharge.com",
@@ -67,11 +87,12 @@ class paymentGetway extends React.Component {
             })
             ;
         }
-        else{
+        else {
             this.setState({
                 dataInfo: {
                     "operatorCode": this.props.operatorCode,
                     "isAmazing": this.props.isAmazing,
+                    "requesterDevicePlatformCode":this.state.requesterDevicePlatformCode,
                     "mobileNumber": this.props.mobileNumber,
                     "subscriberNumber": this.props.subscriberNumber,
                     "sumOfAmount": this.props.sumOfAmount,
@@ -109,6 +130,7 @@ class paymentGetway extends React.Component {
                     "subscriberNumber": this.props.subscriberNumber,
                     "paymentGatewayProviderCode": this.state.paymentType,
                     "terminalTypeCode": "INTERNET",
+                    "requesterDevicePlatformCode":this.state.requesterDevicePlatformCode,
                     "nationalCode": this.props.nationalCode,
                     "orderRequesterInfo": {
                         "callBackURL": "http://shop.isuncharge.com",
@@ -118,14 +140,15 @@ class paymentGetway extends React.Component {
             })
             ;
         }
-        else{
+        else {
             this.setState({
                 dataInfo: {
                     "operatorCode": this.props.operatorCode,
                     "internetPackageCode": this.props.pack,
                     "mobileNumber": this.props.mobileNumber,
                     "subscriberNumber": this.props.subscriberNumber,
-                    "paymentGatewayProviderCode": this.state.paymentType,
+                    "requesterDevicePlatformCode":this.state.requesterDevicePlatformCode,
+                    "paymentGatewayProviderCode": this.state.pxaymentType,
                     "terminalTypeCode": "INTERNET",
                     "nationalCode": this.props.nationalCode,
                     "orderRequesterInfo": {
@@ -138,7 +161,7 @@ class paymentGetway extends React.Component {
         const loginList = this.props.loginList;
         let accesstoken = await login(loginList.username, loginList.password, loginList.clientId, loginList.clientSecret);
         try {
-            const result = await axios.post(`http://shop.isuncharge.com/isunshop/register/internet-package-order?access_token=` + accesstoken,this.state.dataInfo);
+            const result = await axios.post(`http://shop.isuncharge.com/isunshop/register/internet-package-order?access_token=` + accesstoken, this.state.dataInfo);
             if (result.status === 200) {
                 window.location = result.data.data.url;
             }
@@ -154,6 +177,7 @@ class paymentGetway extends React.Component {
             "mobileNumber": this.props.mobileNumber,
             "nationalCode": this.props.nationalCode,
             "terminalTypeCode": "INTERNET",
+            "requesterDevicePlatformCode":this.state.requesterDevicePlatformCode,
             "paymentGatewayProviderCode": this.state.paymentType,
             "billInfo": {
                 "billId": this.props.billId,
